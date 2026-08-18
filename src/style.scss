@@ -13,12 +13,22 @@ h2 {
     margin: 0;
 }
 
-
-
 .header-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: fit-content;
     margin: 0 auto;
+}
+
+.header-title button {
+  align-self: center;
+  margin-top: 2rem;
+}
+
+button {
+      border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
 }
