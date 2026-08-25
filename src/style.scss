@@ -1,6 +1,7 @@
 body {
-    background-color: #2F3131  ;
+    background-color: #2F3131;
 }
+
 h1 {
     padding-top: 233px;
     font-size: 48px;
@@ -22,13 +23,17 @@ h2 {
 }
 
 .header-title button {
-  align-self: center;
-  margin-top: 2rem;
+    align-self: center;
+    margin-top: 2rem;
 }
 
 button {
-      border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.controller_icon {
+    padding-bottom: 100px;
 }
