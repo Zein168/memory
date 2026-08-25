@@ -3,33 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>setting</title>
+    <title>Settings</title>
   </head>
+
   <body>
     <section class="settings">
+
       <div class="settings__header">
         <h1>Settings</h1>
       </div>
+
       <div class="settings__group">
         <div class="settings__title">
           <img src="./public/palette.svg" alt="" />
           <h2>Game themes</h2>
         </div>
-        <p>Code vibes theme</p>
-        <p>Gaming theme</p>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          Code vibes theme
+        </p>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          Gaming theme
+        </p>
       </div>
+
       <div class="settings__group">
-        <h2>Choose player</h2>
-        <p>Blue</p>
-        <p>Orange</p>
+        <div class="settings__title">
+          <img src="./public/figur.svg" alt="" />
+          <h2>Choose player</h2>
+        </div>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          Blue
+        </p>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          Orange
+        </p>
       </div>
+
       <div class="settings__group">
-        <h2>Boars size</h2>
-        <p>16 cards</p>
-        <p>24 cards</p>
-        <p>36 cards</p>
+        <div class="settings__title">
+          <img src="./public/board.svg" alt="" />
+          <h2>Board size</h2>
+        </div>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          16 cards
+        </p>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          24 cards
+        </p>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          36 cards
+        </p>
       </div>
+
     </section>
+
     <script type="module" src="/src/settings.ts"></script>
   </body>
 </html>
