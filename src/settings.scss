@@ -33,6 +33,7 @@
             background-color: #F0EA6E;
             transform: rotate(45deg);
         }
+
     }
 
 
@@ -93,11 +94,21 @@
 
     &__theme-options {
         display: flex;
+        align-items: center;
+        justify-content: end;
         position: absolute;
         gap: 10px;
         top: 399px;
         right: 224px;
+        background-color: #F6F6F6;
+        width: 480px;
     }
 
+    &__divider {
+        width: 6px;
+        height: 30px;
+        background-color: #F0EA6E;
+        transform: rotate(20deg);
+    }
 
 }
