@@ -4,12 +4,37 @@
 
     &__header {
         margin-bottom: 40px;
+        position: relative;
 
         h1 {
             margin: 0;
             font-size: 32px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 200px;
+            height: 2px;
+            background-color: #F0EA6E;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 10px;
+            height: 10px;
+            background-color: #F0EA6E;
+            transform: rotate(45deg);
         }
     }
+
 
     &__group {
         margin-bottom: 30px;
@@ -64,6 +89,4 @@
         display: inline-block;
         flex-shrink: 0;
     }
-
-
 }
