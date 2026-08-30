@@ -118,11 +118,27 @@
         background-color: #F0EA6E;
         width: 110px;
         height: 34px;
+        font-family: "Fredoka";
 
         img {
             width: 20px;
             height: 20px;
         }
+
+        span {
+            font-family: inherit;
+        }
     }
 
+}
+
+@font-face {
+    font-family: "Fredoka";
+    src: url("./fonts/Fredoka-Regular.ttf") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: "Fredoka", sans-serif;
 }
