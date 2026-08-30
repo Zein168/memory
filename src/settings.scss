@@ -34,8 +34,17 @@
             transform: rotate(45deg);
         }
 
+
+
     }
 
+    &__theme-preview {
+        display: flex;
+        position: fixed;
+        flex-direction: column-reverse;
+        top: 290px;
+        left: 762px;
+    }
 
     &__group {
         margin-bottom: 30px;
@@ -68,9 +77,6 @@
     &__theme-image {
         width: 400px;
         height: auto;
-        position: absolute;
-        left: 483px;
-        top: 19px;
     }
 
     &__option {
@@ -96,12 +102,9 @@
         display: flex;
         align-items: center;
         justify-content: end;
-        position: absolute;
+        position: fixed;
         gap: 10px;
-        top: 399px;
-        right: 224px;
         background-color: #F6F6F6;
-        width: 480px;
     }
 
     &__divider {
@@ -134,7 +137,7 @@
 
 @font-face {
     font-family: "Fredoka";
-    src: url("./fonts/Fredoka-Regular.ttf") format("woff2");
+    src: url("./fonts/Fredoka-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
