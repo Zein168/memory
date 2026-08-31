@@ -41,9 +41,11 @@
     &__theme-preview {
         display: flex;
         position: fixed;
-        flex-direction: column-reverse;
+        flex-direction: column;
+        align-items: end;
         top: 290px;
         left: 762px;
+        gap: 10px;
     }
 
     &__group {
@@ -102,9 +104,9 @@
         display: flex;
         align-items: center;
         justify-content: end;
-        position: fixed;
         gap: 10px;
         background-color: #F6F6F6;
+        width: 450px;
     }
 
     &__divider {
