@@ -96,6 +96,10 @@
         width: fit-content;
 
         &.active {
+            .settings__radio {
+                border-width: 1px;
+            }
+
             &::after {
                 content: "";
                 position: absolute;
