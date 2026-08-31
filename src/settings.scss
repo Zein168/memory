@@ -88,6 +88,7 @@
         cursor: pointer;
         padding-left: 41px;
         position: relative;
+        width: fit-content;
 
         &.active {
             &::after {
