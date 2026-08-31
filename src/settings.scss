@@ -2,6 +2,11 @@
     margin-left: 262px;
     margin-top: 185px;
 
+    p {
+        margin: 0;
+        font-size: 18px;
+    }
+
     &__header {
         margin-bottom: 40px;
         position: relative;
@@ -94,7 +99,7 @@
             &::after {
                 content: "";
                 position: absolute;
-                left: 214px;
+                left: 223px;
                 bottom: 12px;
                 width: 50px;
                 height: 2px;
@@ -104,7 +109,7 @@
             &::before {
                 content: "";
                 position: absolute;
-                left: 258px;
+                left: 264px;
                 bottom: 8px;
                 width: 10px;
                 height: 10px;
@@ -143,6 +148,7 @@
         gap: 10px;
         background-color: #F6F6F6;
         width: 450px;
+        height: 72px;
     }
 
     &__divider {
@@ -155,11 +161,15 @@
     .start-button {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 8px;
         background-color: #F0EA6E;
         width: 110px;
         height: 34px;
         font-family: "Fredoka";
+        border: none;
+        font-size: 18px;
+        margin-right: 10px;
 
         img {
             width: 20px;
