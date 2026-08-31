@@ -1,9 +1,16 @@
+@font-face {
+    font-family: "Fredoka";
+    src: url("./fonts/Fredoka-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
+    font-family: "Fredoka", sans-serif;
     background-color: #2F3131;
 }
 
 h1 {
-    padding-top: 233px;
     font-size: 48px;
     color: white;
 }
@@ -15,6 +22,7 @@ h2 {
 }
 
 .header-title {
+    transform: translateY(233px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,3 +42,7 @@ button {
     cursor: pointer;
 }
 
+.controller_icon {
+    position: relative;
+    top: 100px;
+}
