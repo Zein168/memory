@@ -1,4 +1,5 @@
 import './settings.scss'
+import './global.scss'
 
 const options = document.querySelectorAll<HTMLParagraphElement>(
   ".settings__option"

@@ -1,4 +1,5 @@
 import './game.scss'
+import './global.scss'
 
 const cardCount = Number(localStorage.getItem("cardCount"));
 const board = document.querySelector<HTMLDivElement>(".game__board");
