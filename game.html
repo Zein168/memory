@@ -1,12 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game</title>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <section class="game">
+      <header class="game__header">
+        <div class="game__players">
+          <div class="game__player">
+            <img src="./public/blue.svg" alt="" />
+            <span>Blue</span>
+            <span>0</span>
+          </div>
+
+          <div class="game__player">
+            <img src="./public/orange.svg" alt="" />
+            <span>Orange</span>
+            <span>0</span>
+          </div>
+        </div>
+
+        <div class="game__current-player">Current player: Blue</div>
+
+        <button class="game__exit">
+          <img src="./public/exit.svg" alt="" />
+          <span>Exit game</span>
+        </button>
+      </header>
+    </section>
+
     <script type="module" src="/src/game.ts"></script>
-</body>
+  </body>
 </html>
