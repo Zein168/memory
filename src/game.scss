@@ -1,4 +1,12 @@
+body {
+    background-color: #303131;
+}
+
 .game {
+    span {
+        color: white;
+    }
+
     &__header {
         display: flex;
         align-items: center;
@@ -26,11 +34,21 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
     }
 
     &__exit {
         display: flex;
         align-items: center;
         gap: 8px;
+        background-color: transparent;
+        border: none;
     }
 }
