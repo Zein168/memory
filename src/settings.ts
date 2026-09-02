@@ -38,14 +38,10 @@ startButton?.addEventListener("click", () => {
   const selectedOption = document.querySelector<HTMLParagraphElement>(
     ".settings__board-size .settings__option.active"
   );
-
   if (!selectedOption) return;
-
   const cardCount = Number(
     selectedOption.textContent?.replace("cards", "").trim()
   );
-
   localStorage.setItem("cardCount", String(cardCount));
-
   window.location.href = "./game.html";
 });
