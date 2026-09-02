@@ -28,6 +28,8 @@ const cards = cardImages
     .slice(0, cardCount / 2)
     .flatMap((image) => [image, image]);
 
+cards.sort(() => Math.random() - 0.5);    
+
 const board = document.querySelector<HTMLDivElement>(".game__board");
 
 if (!board) {
@@ -37,28 +39,20 @@ if (!board) {
 for (const image of cards) {
   const card = document.createElement("div");
   card.classList.add("game__card");
-
   const cardInner = document.createElement("div");
   cardInner.classList.add("game__card-inner");
-
   const cardFront = document.createElement("div");
   cardFront.classList.add("game__card-front");
-
   const cardBack = document.createElement("div");
   cardBack.classList.add("game__card-back");
-
   const img = document.createElement("img");
   img.src = image;
   img.alt = "Tech icon";
-
   cardFront.appendChild(img);
-
   cardInner.appendChild(cardFront);
   cardInner.appendChild(cardBack);
-
   card.appendChild(cardInner);
   board.appendChild(card);
-
   card.addEventListener("click", () => {
     card.classList.toggle("flipped");
   });
