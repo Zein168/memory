@@ -34,7 +34,7 @@ const cards = cardImages
     .slice(0, cardCount / 2)
     .flatMap((image) => [image, image]);
 
-cards.sort(() => Math.random() - 0.5);    
+cards.sort(() => Math.random() - 0.5);
 
 const board = document.querySelector<HTMLDivElement>(".game__board");
 
@@ -43,121 +43,122 @@ if (!board) {
 }
 
 const currentPlayerText =
-  document.querySelector<HTMLSpanElement>("#current-player");
+    document.querySelector<HTMLSpanElement>("#current-player");
 
 const currentPlayerIcon =
-  document.querySelector<HTMLImageElement>("#current-player-icon");
+    document.querySelector<HTMLImageElement>("#current-player-icon");
 
 const blueScoreElement =
-  document.querySelector<HTMLSpanElement>("#blue-score");
+    document.querySelector<HTMLSpanElement>("#blue-score");
 
 const orangeScoreElement =
-  document.querySelector<HTMLSpanElement>("#orange-score");
+    document.querySelector<HTMLSpanElement>("#orange-score");
 
 function updateCurrentPlayer(): void {
-  if (currentPlayerText) {
-    currentPlayerText.textContent = currentPlayer;
-  }
+    if (currentPlayerText) {
+        currentPlayerText.textContent = currentPlayer;
+    }
 
-  if (currentPlayerIcon) {
-    currentPlayerIcon.src =
-      currentPlayer === "Blue"
-        ? "./public/frame_blue.svg"
-        : "./public/frame_orange.svg";
-  }
+    if (currentPlayerIcon) {
+        currentPlayerIcon.src =
+            currentPlayer === "Blue"
+                ? "./public/frame_blue.svg"
+                : "./public/frame_orange.svg";
+    }
 }
 
 function updateScores(): void {
-  if (blueScoreElement) {
-    blueScoreElement.textContent = String(blueScore);
-  }
+    if (blueScoreElement) {
+        blueScoreElement.textContent = String(blueScore);
+    }
 
-  if (orangeScoreElement) {
-    orangeScoreElement.textContent = String(orangeScore);
-  }
+    if (orangeScoreElement) {
+        orangeScoreElement.textContent = String(orangeScore);
+    }
 }
 
 
 function switchPlayer(): void {
-  currentPlayer = currentPlayer === "Blue" ? "Orange" : "Blue";
-  updateCurrentPlayer();
+    currentPlayer = currentPlayer === "Blue" ? "Orange" : "Blue";
+    updateCurrentPlayer();
 }
 
 updateCurrentPlayer();
 updateScores();
 
 for (const image of cards) {
-  const card = document.createElement("div");
-  card.classList.add("game__card");
-  card.dataset.image = image;
+    const card = document.createElement("div");
+    card.classList.add("game__card");
+    card.dataset.image = image;
 
-  const cardInner = document.createElement("div");
-  cardInner.classList.add("game__card-inner");
+    const cardInner = document.createElement("div");
+    cardInner.classList.add("game__card-inner");
 
-  const cardFront = document.createElement("div");
-  cardFront.classList.add("game__card-front");
+    const cardFront = document.createElement("div");
+    cardFront.classList.add("game__card-front");
 
-  const cardBack = document.createElement("div");
-  cardBack.classList.add("game__card-back");
+    const cardBack = document.createElement("div");
+    cardBack.classList.add("game__card-back");
 
-  const img = document.createElement("img");
-  img.src = image;
-  img.alt = "Tech icon";
+    const img = document.createElement("img");
+    img.src = image;
+    img.alt = "Tech icon";
 
-  cardFront.appendChild(img);
+    cardFront.appendChild(img);
 
-  cardInner.appendChild(cardFront);
-  cardInner.appendChild(cardBack);
+    cardInner.appendChild(cardFront);
+    cardInner.appendChild(cardBack);
 
-  card.appendChild(cardInner);
-  board.appendChild(card);
+    card.appendChild(cardInner);
+    board.appendChild(card);
 
-  card.addEventListener("click", () => {
-    if (isChecking) return;
-    if (card.classList.contains("flipped")) return;
-    if (card.classList.contains("matched")) return;
-    if (selectedCards.length === 2) return;
+    card.addEventListener("click", () => {
+        if (isChecking) return;
+        if (card.classList.contains("flipped")) return;
+        if (card.classList.contains("matched")) return;
+        if (selectedCards.length === 2) return;
 
-    card.classList.add("flipped");
-    selectedCards.push(card);
+        card.classList.add("flipped");
+        selectedCards.push(card);
 
-    if (selectedCards.length !== 2) return;
+        if (selectedCards.length !== 2) return;
 
-    isChecking = true;
+        isChecking = true;
 
-    const [firstCard, secondCard] = selectedCards;
+        const [firstCard, secondCard] = selectedCards;
 
-    const firstImage = firstCard.dataset.image;
-    const secondImage = secondCard.dataset.image;
+        const firstImage = firstCard.dataset.image;
+        const secondImage = secondCard.dataset.image;
 
-    if (firstImage === secondImage) {
-      firstCard.classList.add("matched");
-      secondCard.classList.add("matched");
+        if (firstImage === secondImage) {
+            firstCard.classList.add("matched");
+            secondCard.classList.add("matched");
 
-      if (currentPlayer === "Blue") {
-        blueScore++;
-      } else {
-        orangeScore++;
-      }
+            if (currentPlayer === "Blue") {
+                blueScore++;
+            } else {
+                orangeScore++;
+            }
 
-      updateScores();
+            updateScores();
 
-      selectedCards = [];
-      isChecking = false;
+            selectedCards = [];
+            isChecking = false;
+            switchPlayer();
 
-      switchPlayer();
-    } else {
-      setTimeout(() => {
-        firstCard.classList.remove("flipped");
-        secondCard.classList.remove("flipped");
 
-        selectedCards = [];
-        isChecking = false;
+        } else {
+            setTimeout(() => {
+                firstCard.classList.remove("flipped");
+                secondCard.classList.remove("flipped");
 
-        switchPlayer();
-      }, 800);
-    }
-  });
+                selectedCards = [];
+                isChecking = false;
+
+                switchPlayer();
+            }, 800);
+        }
+    });
 }
 
 if (cardCount === 16) {
