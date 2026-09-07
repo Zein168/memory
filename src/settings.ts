@@ -55,3 +55,4 @@ startButton?.addEventListener("click", () => {
   localStorage.setItem("player", player ?? "");
   window.location.href = "./game.html";
 });
+

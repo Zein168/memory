@@ -211,4 +211,8 @@ function showGameOver(): void {
     }
 }
 
+const exitButton = document.querySelector<HTMLButtonElement>(".game__exit");
 
+exitButton?.addEventListener("click", () => {
+    window.location.href = "./settings.html";
+});

@@ -55,16 +55,6 @@ body {
             height: 30px;
         }
     }
-
-    &__exit {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background-color: transparent;
-        border: none;
-        font-family: 'Fredoka', sans-serif;
-        cursor: pointer;
-    }
 }
 
 .game__board {
@@ -80,6 +70,16 @@ body {
     height: 100px;
 }
 
+.game__exit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Fredoka', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+}
 
 .game__card-inner {
     width: 100%;
@@ -118,7 +118,7 @@ body {
     background-image: url("./public/card.svg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
 }
 
 .game__game-over {
@@ -129,6 +129,6 @@ body {
 
     .game__players {
         background-color: #415652;
-        padding: 14px 16px;;
+        padding: 14px 16px;
     }
 }
