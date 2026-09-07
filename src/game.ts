@@ -1,6 +1,13 @@
 import './game.scss'
 import './global.scss'
 
+const finalBlueScoreElement =
+    document.querySelector<HTMLSpanElement>("#final-blue-score");
+
+const finalOrangeScoreElement =
+    document.querySelector<HTMLSpanElement>("#final-orange-score");
+
+
 const cardCount = Number(localStorage.getItem("cardCount"));
 type Player = "Blue" | "Orange";
 const savedPlayer = localStorage.getItem("player");
@@ -179,22 +186,29 @@ if (cardCount === 36) {
 
 
 function showGameOver(): void {
-  const header = document.querySelector<HTMLElement>(".game__header");
-  const board = document.querySelector<HTMLElement>(".game__board");
-  const gameOver = document.querySelector<HTMLElement>(".game__game-over");
+    const header = document.querySelector<HTMLElement>(".game__header");
+    const board = document.querySelector<HTMLElement>(".game__board");
+    const gameOver = document.querySelector<HTMLElement>(".game__game-over");
 
-  if (header) {
-    header.style.display = "none";
-  }
+    if (header) {
+        header.style.display = "none";
+    }
 
-  if (board) {
-    board.style.display = "none";
-  }
+    if (board) {
+        board.style.display = "none";
+    }
 
-  if (gameOver) {
-    gameOver.style.display = "flex";
-  }
+    if (finalBlueScoreElement) {
+        finalBlueScoreElement.textContent = String(blueScore);
+    }
+
+    if (finalOrangeScoreElement) {
+        finalOrangeScoreElement.textContent = String(orangeScore);
+    }
+
+    if (gameOver) {
+        gameOver.style.display = "flex";
+    }
 }
 
 
-showGameOver();

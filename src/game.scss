@@ -5,6 +5,14 @@ body {
 .game {
     h1 {
         color: #4DD5BC;
+        padding-top: 229px;
+        padding-bottom: 33px;
+        font-size: 140px;
+        margin: 0;
+    }
+
+    h2 {
+        color: white;
     }
 
     span {
@@ -114,8 +122,13 @@ body {
 }
 
 .game__game-over {
-    display: flex;
+    display: none;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
+    .game__players {
+        background-color: #415652;
+        padding: 14px 16px;;
+    }
 }
