@@ -1,11 +1,17 @@
 import './game.scss'
 import './global.scss'
 
-const finalBlueScoreElement =
-    document.querySelector<HTMLSpanElement>("#final-blue-score");
+const exitButton =document.querySelector<HTMLButtonElement>(".game__exit");
 
-const finalOrangeScoreElement =
-    document.querySelector<HTMLSpanElement>("#final-orange-score");
+const quitModal =document.querySelector<HTMLDivElement>(".game__quit-modal");
+
+const backButton =document.querySelector<HTMLButtonElement>(".game__quit-back");
+
+const confirmExitButton =document.querySelector<HTMLButtonElement>(".game__quit-confirm");
+
+const finalBlueScoreElement = document.querySelector<HTMLSpanElement>("#final-blue-score");
+
+const finalOrangeScoreElement = document.querySelector<HTMLSpanElement>("#final-orange-score");
 
 
 const cardCount = Number(localStorage.getItem("cardCount"));
@@ -211,8 +217,19 @@ function showGameOver(): void {
     }
 }
 
-const exitButton = document.querySelector<HTMLButtonElement>(".game__exit");
 
 exitButton?.addEventListener("click", () => {
+    if (quitModal) {
+        quitModal.style.display = "flex";
+    }
+});
+
+backButton?.addEventListener("click", () => {
+    if (quitModal) {
+        quitModal.style.display = "none";
+    }
+});
+
+confirmExitButton?.addEventListener("click", () => {
     window.location.href = "./settings.html";
 });
