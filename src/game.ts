@@ -9,6 +9,7 @@ let selectedCards: HTMLDivElement[] = [];
 let isChecking = false;
 let blueScore = 0;
 let orangeScore = 0;
+let matchedCards = 0;
 const cardImages: string[] = [
     "./public/typescript.svg",
     "./public/javascript.svg",
@@ -141,10 +142,13 @@ for (const image of cards) {
             }
 
             updateScores();
-
+            matchedCards += 2;
             selectedCards = [];
             isChecking = false;
             switchPlayer();
+            if (matchedCards === cardCount) {
+                showGameOver();
+            }
 
 
         } else {
@@ -173,3 +177,24 @@ if (cardCount === 36) {
     board.style.gridTemplateColumns = "repeat(6, 1fr)";
 }
 
+
+function showGameOver(): void {
+  const header = document.querySelector<HTMLElement>(".game__header");
+  const board = document.querySelector<HTMLElement>(".game__board");
+  const gameOver = document.querySelector<HTMLElement>(".game__game-over");
+
+  if (header) {
+    header.style.display = "none";
+  }
+
+  if (board) {
+    board.style.display = "none";
+  }
+
+  if (gameOver) {
+    gameOver.style.display = "flex";
+  }
+}
+
+
+showGameOver();

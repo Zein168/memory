@@ -33,6 +33,25 @@
         </button>
       </header>
       <div class="game__board"></div>
+      <div class="game__game-over">
+        <h1>Game Over</h1>
+
+        <h2>Final Score</h2>
+
+        <div class="game__players">
+          <div class="game__player">
+            <img src="./public/frame_blue.svg" alt="" />
+            <span>Blue</span>
+            <span id="final-blue-score">0</span>
+          </div>
+
+          <div class="game__player">
+            <img src="./public/frame_orange.svg" alt="" />
+            <span>Orange</span>
+            <span id="final-orange-score">0</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <script type="module" src="/src/game.ts"></script>
