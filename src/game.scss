@@ -130,6 +130,18 @@ body {
     .game__players {
         background-color: #415652;
         padding: 14px 16px;
+
+           .game__player:nth-child(1) {
+            span {
+                color: #2BB1FF;
+            }
+        }
+
+        .game__player:nth-child(2) {
+            span {
+                color: #F58E39;
+            }
+        }
     }
 }
 
@@ -199,4 +211,12 @@ body {
         font-family: 'Fredoka', sans-serif;
         border-radius: 8px;
     }
+}
+
+.game__next-screen #winner-player.blue {
+    color: #2BB1FF;
+}
+
+.game__next-screen #winner-player.orange {
+    color: #F58E39;
 }
