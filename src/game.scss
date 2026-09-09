@@ -24,11 +24,17 @@ body {
         align-items: center;
         justify-content: space-between;
         position: relative;
+        padding: 39px 90px;
     }
 
     &__players {
         display: flex;
         gap: 30px;
+        background-color: #415652;
+        width: 256px;
+        height: 45px;
+        align-items: center;
+        justify-content: center;
     }
 
     &__player {
@@ -73,12 +79,17 @@ body {
 .game__exit {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     background-color: transparent;
     border: none;
     font-family: 'Fredoka', sans-serif;
     cursor: pointer;
     text-decoration: none;
+    background-color: #415652;
+    border: 2px solid #4DD5BC;
+    width: 140px;
+    height: 45px;
 }
 
 .game__card-inner {
@@ -131,7 +142,7 @@ body {
         background-color: #415652;
         padding: 14px 16px;
 
-           .game__player:nth-child(1) {
+        .game__player:nth-child(1) {
             span {
                 color: #2BB1FF;
             }

@@ -59,23 +59,14 @@ if (!board) {
     throw new Error("Game board not found");
 }
 
-const currentPlayerText =
-    document.querySelector<HTMLSpanElement>("#current-player");
 
-const currentPlayerIcon =
-    document.querySelector<HTMLImageElement>("#current-player-icon");
+const currentPlayerIcon = document.querySelector<HTMLImageElement>("#current-player-icon");
 
-const blueScoreElement =
-    document.querySelector<HTMLSpanElement>("#blue-score");
+const blueScoreElement = document.querySelector<HTMLSpanElement>("#blue-score");
 
-const orangeScoreElement =
-    document.querySelector<HTMLSpanElement>("#orange-score");
+const orangeScoreElement = document.querySelector<HTMLSpanElement>("#orange-score");
 
 function updateCurrentPlayer(): void {
-    if (currentPlayerText) {
-        currentPlayerText.textContent = currentPlayer;
-    }
-
     if (currentPlayerIcon) {
         currentPlayerIcon.src =
             currentPlayer === "Blue"
