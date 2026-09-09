@@ -159,4 +159,43 @@ body {
 
 .game__next-screen {
     display: none;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .game__confetti {
+        width: 250px;
+        height: auto;
+    }
+
+    h2 {
+        color: white;
+        margin: 20px 0 10px;
+    }
+
+    #winner-player {
+        color: #4DD5BC;
+        font-size: 32px;
+        margin: 0 0 15px;
+    }
+
+    #winner-player-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 25px;
+    }
+
+    .game__back-to-start {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        color: white;
+        text-decoration: none;
+        background-color: #415652;
+        font-family: 'Fredoka', sans-serif;
+        border-radius: 8px;
+    }
 }
