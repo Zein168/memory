@@ -1,13 +1,13 @@
 import './game.scss'
 import './global.scss'
 
-const exitButton =document.querySelector<HTMLButtonElement>(".game__exit");
+const exitButton = document.querySelector<HTMLButtonElement>(".game__exit");
 
-const quitModal =document.querySelector<HTMLDivElement>(".game__quit-modal");
+const quitModal = document.querySelector<HTMLDivElement>(".game__quit-modal");
 
-const backButton =document.querySelector<HTMLButtonElement>(".game__quit-back");
+const backButton = document.querySelector<HTMLButtonElement>(".game__quit-back");
 
-const confirmExitButton =document.querySelector<HTMLButtonElement>(".game__quit-confirm");
+const confirmExitButton = document.querySelector<HTMLButtonElement>(".game__quit-confirm");
 
 const finalBlueScoreElement = document.querySelector<HTMLSpanElement>("#final-blue-score");
 
@@ -195,6 +195,7 @@ function showGameOver(): void {
     const header = document.querySelector<HTMLElement>(".game__header");
     const board = document.querySelector<HTMLElement>(".game__board");
     const gameOver = document.querySelector<HTMLElement>(".game__game-over");
+    const nextScreen = document.querySelector<HTMLElement>(".game__next-screen");
 
     if (header) {
         header.style.display = "none";
@@ -215,6 +216,15 @@ function showGameOver(): void {
     if (gameOver) {
         gameOver.style.display = "flex";
     }
+    setTimeout(() => {
+        if (gameOver) {
+            gameOver.style.display = "none";
+        }
+
+        if (nextScreen) {
+            nextScreen.style.display = "flex";
+        }
+    }, 4000);
 }
 
 
@@ -233,3 +243,5 @@ backButton?.addEventListener("click", () => {
 confirmExitButton?.addEventListener("click", () => {
     window.location.href = "./settings.html";
 });
+
+showGameOver();
