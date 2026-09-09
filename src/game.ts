@@ -13,6 +13,9 @@ const finalBlueScoreElement = document.querySelector<HTMLSpanElement>("#final-bl
 
 const finalOrangeScoreElement = document.querySelector<HTMLSpanElement>("#final-orange-score");
 
+const winnerPlayerElement = document.querySelector<HTMLParagraphElement>("#winner-player");
+
+const winnerPlayerIcon = document.querySelector<HTMLImageElement>("#winner-player-icon");
 
 const cardCount = Number(localStorage.getItem("cardCount"));
 type Player = "Blue" | "Orange";
@@ -216,6 +219,30 @@ function showGameOver(): void {
     if (gameOver) {
         gameOver.style.display = "flex";
     }
+
+    if (blueScore > orangeScore) {
+        if (winnerPlayerElement) {
+            winnerPlayerElement.textContent = "Blue player";
+            winnerPlayerElement.classList.add("blue");
+            winnerPlayerElement.classList.remove("orange");
+        }
+
+        if (winnerPlayerIcon) {
+            winnerPlayerIcon.src = "./public/chess_pawn_blue.svg";
+            winnerPlayerIcon.alt = "Blue player";
+        }
+    } else {
+        if (winnerPlayerElement) {
+            winnerPlayerElement.textContent = "Orange player";
+            winnerPlayerElement.classList.add("orange");
+            winnerPlayerElement.classList.remove("blue");
+        }
+
+        if (winnerPlayerIcon) {
+            winnerPlayerIcon.src = "./public/chess_pawn_orange.svg";
+            winnerPlayerIcon.alt = "Orange player";
+        }
+    }
     setTimeout(() => {
         if (gameOver) {
             gameOver.style.display = "none";
@@ -244,4 +271,3 @@ confirmExitButton?.addEventListener("click", () => {
     window.location.href = "./settings.html";
 });
 
-showGameOver();
