@@ -253,6 +253,10 @@ body {
     animation: slideDown 0.8s ease-out;
 }
 
+.game__next-screen.draw {
+    padding-top: 200px;
+}
+
 @keyframes slideDown {
     from {
         transform: translateY(-100%);

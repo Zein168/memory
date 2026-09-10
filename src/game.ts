@@ -18,6 +18,8 @@ const winnerPlayerElement = document.querySelector<HTMLParagraphElement>("#winne
 const winnerPlayerIcon = document.querySelector<HTMLImageElement>("#winner-player-icon");
 
 const cardCount = Number(localStorage.getItem("cardCount"));
+
+const winnerTitle = document.querySelector<HTMLHeadingElement>("#winner-title");
 type Player = "Blue" | "Orange";
 const savedPlayer = localStorage.getItem("player");
 let currentPlayer: Player = savedPlayer === "Orange" ? "Orange" : "Blue";
@@ -65,7 +67,7 @@ const currentPlayerIcon = document.querySelector<HTMLImageElement>("#current-pla
 const blueScoreElement = document.querySelector<HTMLSpanElement>("#blue-score");
 
 const orangeScoreElement = document.querySelector<HTMLSpanElement>("#orange-score");
-
+const confettiImage = document.querySelector<HTMLImageElement>(".game__confetti");
 function updateCurrentPlayer(): void {
     if (currentPlayerIcon) {
         currentPlayerIcon.src =
@@ -212,6 +214,12 @@ function showGameOver(): void {
     }
 
     if (blueScore > orangeScore) {
+        if (confettiImage) {
+            confettiImage.style.display = "block";
+        }
+        if (winnerTitle) {
+            winnerTitle.textContent = "The winner is";
+        }
         if (winnerPlayerElement) {
             winnerPlayerElement.textContent = "Blue player";
             winnerPlayerElement.classList.add("blue");
@@ -222,7 +230,13 @@ function showGameOver(): void {
             winnerPlayerIcon.src = "./public/chess_pawn_blue.svg";
             winnerPlayerIcon.alt = "Blue player";
         }
-    } else {
+    } else if (orangeScore > blueScore) {
+        if (confettiImage) {
+            confettiImage.style.display = "block";
+        }
+        if (winnerTitle) {
+            winnerTitle.textContent = "The winner is";
+        }
         if (winnerPlayerElement) {
             winnerPlayerElement.textContent = "Orange player";
             winnerPlayerElement.classList.add("orange");
@@ -232,6 +246,28 @@ function showGameOver(): void {
         if (winnerPlayerIcon) {
             winnerPlayerIcon.src = "./public/chess_pawn_orange.svg";
             winnerPlayerIcon.alt = "Orange player";
+        }
+
+    } else {
+        if (nextScreen) {
+            nextScreen.classList.add("draw");
+        }
+        if (confettiImage) {
+            confettiImage.style.display = "none";
+        }
+
+        if (winnerTitle) {
+            winnerTitle.textContent = "It's a";
+        }
+
+        if (winnerPlayerElement) {
+            winnerPlayerElement.textContent = "Draw";
+            winnerPlayerElement.classList.remove("blue", "orange");
+        }
+
+        if (winnerPlayerIcon) {
+            winnerPlayerIcon.src = "./public/draw.svg";
+            winnerPlayerIcon.alt = "Draw";
         }
     }
     setTimeout(() => {
