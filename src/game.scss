@@ -172,7 +172,7 @@ body {
     text-align: center;
     background-color: white;
     width: 343px;
-    height: 140px;
+    height: 175px;
 
     h2 {
         color: black;
@@ -188,6 +188,10 @@ body {
 .game__quit-confirm {
     cursor: pointer;
     border: 2px solid #4DD5BC;
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+
 }
 
 .game__quit-confirm {
