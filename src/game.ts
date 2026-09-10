@@ -240,7 +240,7 @@ function showGameOver(): void {
         }
 
         if (nextScreen) {
-            nextScreen.style.display = "flex";
+            nextScreen.classList.add("show");
         }
     }, 4000);
 }
@@ -262,3 +262,4 @@ confirmExitButton?.addEventListener("click", () => {
     window.location.href = "./settings.html";
 });
 
+showGameOver();
