@@ -224,13 +224,13 @@ body {
 
     #winner-player {
         color: #4DD5BC;
-        font-size: 32px;
+        font-size: 90px;
         margin: 0 0 15px;
     }
 
     #winner-player-icon {
-        width: 180px;
-        height: 180px;
+        width: 210px;
+        height: 210px;
         margin-bottom: 25px;
     }
 
@@ -255,6 +255,7 @@ body {
 
 .game__next-screen.draw {
     padding-top: 200px;
+    
 }
 
 @keyframes slideDown {
@@ -276,3 +277,4 @@ body {
 .game__next-screen #winner-player.orange {
     color: #F58E39;
 }
+
