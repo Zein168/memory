@@ -49,6 +49,7 @@ button {
 }
 
 .back-to-start {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,15 +60,28 @@ button {
     text-decoration: none;
     background-color: #F0EA6E;
     margin-top: 62px;
-}
+    transition: padding 0.2s ease;
 
-.back-to-start img {
-    width: 50px;
-    height: 50px;
-}
+    img {
+        width: 50px;
+        height: 50px;
+        transition: transform 0.2s ease;
+    }
 
-.back-to-start span {
-    color: white;
-    font-size: 40px;
-    color: black;
+    span {
+        color: black;
+        font-size: 40px;
+    }
+
+    &:hover {
+        padding: 5px;
+    }
+
+    &:hover img:first-child {
+        transform: rotate(-30deg);
+    }
+
+    &:hover img:last-child {
+        transform: scale(1.2);
+    }
 }
