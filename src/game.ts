@@ -298,4 +298,3 @@ confirmExitButton?.addEventListener("click", () => {
     window.location.href = "./settings.html";
 });
 
-showGameOver();

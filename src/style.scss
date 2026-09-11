@@ -13,6 +13,7 @@ body {
 h1 {
     font-size: 48px;
     color: white;
+    margin: 0;
 }
 
 h2 {
@@ -45,4 +46,28 @@ button {
 .controller_icon {
     position: relative;
     top: 100px;
+}
+
+.back-to-start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    height: 90px;
+    width: 254px;
+    margin: 0 auto;
+    text-decoration: none;
+    background-color: #F0EA6E;
+    margin-top: 62px;
+}
+
+.back-to-start img {
+    width: 50px;
+    height: 50px;
+}
+
+.back-to-start span {
+    color: white;
+    font-size: 40px;
+    color: black;
 }
