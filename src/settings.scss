@@ -7,6 +7,11 @@
         font-size: 18px;
     }
 
+    p.active {
+        font-size: 20px;
+    }
+
+
     &__header {
         margin-bottom: 40px;
         position: relative;
@@ -103,18 +108,19 @@
             &::after {
                 content: "";
                 position: absolute;
-                left: 223px;
-                bottom: 12px;
+                left: calc(100% + 12px);
+                top: 50%;
                 width: 50px;
                 height: 2px;
                 background-color: #F0EA6E;
+                transform: translateY(-50%);
             }
 
             &::before {
                 content: "";
                 position: absolute;
-                left: 264px;
-                bottom: 8px;
+                left: calc(100% + 58px);
+                top: 50%;
                 width: 10px;
                 height: 10px;
                 background-color: #F0EA6E;
@@ -187,4 +193,3 @@
     }
 
 }
-
