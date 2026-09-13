@@ -120,7 +120,7 @@
                 content: "";
                 position: absolute;
                 left: calc(100% + 58px);
-                top: 50%;
+                top: 38%;
                 width: 10px;
                 height: 10px;
                 background-color: #F0EA6E;
@@ -175,16 +175,26 @@
         gap: 8px;
         background-color: #F0EA6E;
         width: 110px;
-        height: 34px;
+        height: 49px;
         font-family: "Fredoka";
         border: none;
         font-size: 18px;
         margin-right: 10px;
         cursor: pointer;
+        transition: transform 0.25s ease;
+
+        &:hover {
+            transform: scale(1.08) translateY(-3px);
+        }
 
         img {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        &:hover img {
+            transform: rotate(-5deg);
         }
 
         span {
