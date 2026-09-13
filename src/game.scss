@@ -63,6 +63,19 @@ body {
     }
 }
 
+.game__players {
+    .game__player:nth-child(1) {
+        span {
+            color: #2BB1FF;
+        }
+    }
+
+    .game__player:nth-child(2) {
+        span {
+            color: #F58E39;
+        }
+    }
+}
 .game__board {
     display: grid;
     gap: 10px;
