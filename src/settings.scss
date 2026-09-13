@@ -171,8 +171,9 @@
 
         &.ready {
             width: 530px;
-            justify-content: center;
-            gap: 20px;
+            justify-content: space-around;
+            gap: 28px;
+            margin-right: -64px;
 
             .start-button {
                 animation: moveButton 1.2s ease-in-out infinite;

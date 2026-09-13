@@ -15,77 +15,103 @@ const themeOptions = document.querySelectorAll<HTMLParagraphElement>(
   ".settings__theme-option"
 );
 
-options.forEach((option) => {
-  if (option.classList.contains("settings__theme-option")) return;
 
-  option.addEventListener("click", () => {
-    const group = option.closest(".settings__group");
+function setActiveOption(option: HTMLParagraphElement): void {
+  const group = option.closest(".settings__group");
+  if (!group) return;
 
-    if (!group) return;
+  group
+    .querySelectorAll(".settings__option")
+    .forEach((item) => item.classList.remove("active"));
 
-    group
-      .querySelectorAll(".settings__option")
-      .forEach((item) => item.classList.remove("active"));
+  option.classList.add("active");
+  updateThemeOptions();
+}
 
-    option.classList.add("active");
-    updateThemeOptions();
+function setupOptions(): void {
+  options.forEach((option) => {
+    if (option.classList.contains("settings__theme-option")) return;
+
+    option.addEventListener("click", () => setActiveOption(option));
   });
-});
+}
 
-themeOptions.forEach((option) => {
-  option.addEventListener("mouseenter", () => {
-    themeOptions.forEach((item) => {
-      item.classList.remove("active");
+function updateThemeImage(option: HTMLParagraphElement): void {
+  if (!themeImage) return;
+
+  const selectedTheme = option.textContent?.trim();
+
+  if (selectedTheme === "Gaming theme") {
+    themeImage.src = "./public/Theme_Visual_2.png";
+  }
+
+  if (selectedTheme === "Code vibes theme") {
+    themeImage.src = "./public/Theme _Visual_1.png";
+  }
+}
+
+function handleThemeHover(option: HTMLParagraphElement): void {
+  themeOptions.forEach((item) => item.classList.remove("active"));
+
+  option.classList.add("active");
+  updateThemeOptions();
+  updateThemeImage(option);
+}
+
+function setupThemeOptions(): void {
+  themeOptions.forEach((option) => {
+    option.addEventListener("mouseenter", () => {
+      handleThemeHover(option);
     });
-
-    option.classList.add("active");
-    updateThemeOptions();
-    if (!themeImage) return;
-
-    const selectedTheme = option.textContent?.trim();
-
-    if (selectedTheme === "Gaming theme") {
-      themeImage.src = "./public/Theme_Visual_2.png";
-    }
-
-    if (selectedTheme === "Code vibes theme") {
-      themeImage.src = "./public/Theme _Visual_1.png";
-    }
   });
-});
+}
 
+function updateThemeOptions(): void {
+  const groups = document.querySelectorAll(".settings__group");
 
-const startButton = document.querySelector<HTMLButtonElement>(".start-button");
-startButton?.addEventListener("click", () => {
+  const allSelected = Array.from(groups).every(
+    (group) => group.querySelector(".settings__option.active")
+  );
 
-  const selectedCardOption = document.querySelector<HTMLParagraphElement>(
+  themeOptionsContainer?.classList.toggle("ready", allSelected);
+}
+
+function getSelectedCardCount(): number | null {
+  const option = document.querySelector<HTMLParagraphElement>(
     ".settings__board-size .settings__option.active"
   );
 
-  const selectedPlayerOption = document.querySelector<HTMLParagraphElement>(
-    ".settings__player-choice  .settings__option.active"
-  );
+  if (!option) return null;
 
-  if (!selectedCardOption || !selectedPlayerOption) return;
-
-  const cardCount = Number(
-    selectedCardOption.textContent?.replace("cards", "").trim()
-  );
-
-  const player = selectedPlayerOption.textContent?.trim();
-  localStorage.setItem("cardCount", String(cardCount));
-  localStorage.setItem("player", player ?? "");
-  window.location.href = "./game.html";
-});
-
-function updateThemeOptions(): void {
-    const groups = document.querySelectorAll(".settings__group");
-
-    const allSelected = Array.from(groups).every(
-        (group) => group.querySelector(".settings__option.active")
-    );
-
-    if (themeOptionsContainer) {
-        themeOptionsContainer.classList.toggle("ready", allSelected);
-    }
+  return Number(option.textContent?.replace("cards", "").trim());
 }
+
+function getSelectedPlayer(): string | null {
+  const option = document.querySelector<HTMLParagraphElement>(
+    ".settings__player-choice .settings__option.active"
+  );
+
+  return option?.textContent?.trim() ?? null;
+}
+
+function startGame(): void {
+  const cardCount = getSelectedCardCount();
+  const player = getSelectedPlayer();
+
+  if (cardCount === null || player === null) return;
+
+  localStorage.setItem("cardCount", String(cardCount));
+  localStorage.setItem("player", player);
+
+  window.location.href = "./game.html";
+}
+
+function setupStartButton(): void {
+  const startButton = document.querySelector<HTMLButtonElement>(".start-button");
+
+  startButton?.addEventListener("click", startGame);
+}
+
+setupOptions();
+setupThemeOptions();
+setupStartButton();
