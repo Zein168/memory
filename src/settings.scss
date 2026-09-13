@@ -11,6 +11,9 @@
         font-size: 20px;
     }
 
+    &__theme-text {
+        cursor: pointer;
+    }
 
     &__header {
         margin-bottom: 40px;
@@ -89,16 +92,19 @@
         height: auto;
     }
 
+
+
     &__option {
         display: flex;
         align-items: center;
         gap: 12px;
         margin: 0;
         padding: 6px 16px;
-        cursor: pointer;
-        padding-left: 41px;
+        cursor: default;
         position: relative;
         width: fit-content;
+
+
 
         &.active {
             .settings__radio {
