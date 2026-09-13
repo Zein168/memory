@@ -361,7 +361,7 @@
         &__theme-options {
             display: flex;
             align-items: center;
-            justify-content: end;
+            justify-content: space-around;
             gap: 10px;
             background-color: #F6F6F6;
             width: 450px;
@@ -371,7 +371,6 @@
 
             &.ready {
                 width: 530px;
-                justify-content: center;
                 gap: 20px;
 
                 .start-button {
