@@ -15,6 +15,17 @@ const themeOptions = document.querySelectorAll<HTMLParagraphElement>(
   ".settings__theme-option"
 );
 
+const selectedTheme = document.querySelector<HTMLParagraphElement>(
+  ".settings__selected-theme"
+);
+
+const selectedPlayer = document.querySelector<HTMLParagraphElement>(
+  ".settings__selected-player"
+);
+
+const selectedBoardSize = document.querySelector<HTMLParagraphElement>(
+  ".settings__selected-board-size"
+);
 
 function setActiveOption(option: HTMLParagraphElement): void {
   const group = option.closest(".settings__group");
@@ -25,6 +36,7 @@ function setActiveOption(option: HTMLParagraphElement): void {
     .forEach((item) => item.classList.remove("active"));
 
   option.classList.add("active");
+  updateSelectedValues();
   updateThemeOptions();
 }
 
@@ -63,6 +75,7 @@ function handleThemeClick(option: HTMLParagraphElement): void {
   themeOptions.forEach((item) => item.classList.remove("active"));
 
   option.classList.add("active");
+  updateSelectedValues();
   updateThemeOptions();
   updateThemeImage(option);
 }
@@ -112,6 +125,31 @@ function setupStartButton(): void {
 
   startButton?.addEventListener("click", startGame);
 }
+
+function updateSelectedValues(): void {
+  const player = document.querySelector<HTMLParagraphElement>(
+    ".settings__player-choice .settings__option.active"
+  );
+
+  const boardSize = document.querySelector<HTMLParagraphElement>(
+    ".settings__board-size .settings__option.active"
+  );
+
+  if (player && selectedPlayer) {
+    selectedPlayer.textContent = player.textContent?.trim() ?? "Player";
+  }
+
+  if (boardSize && selectedBoardSize) {
+    selectedBoardSize.textContent = boardSize.textContent?.trim() ?? "Board size";
+  }
+
+  if (boardSize && selectedBoardSize) {
+    selectedBoardSize.textContent =
+      boardSize.textContent?.trim() ?? "Board size";
+  }
+
+}
+
 
 setupOptions();
 setupThemeOptions();
