@@ -9,27 +9,46 @@ const themeImage = document.querySelector<HTMLImageElement>(
   ".settings__theme-image"
 );
 
+const themeOptions = document.querySelectorAll<HTMLParagraphElement>(
+    ".settings__theme-option"
+);
+
 options.forEach((option) => {
-  option.addEventListener("click", () => {
-    const group = option.closest(".settings__group");
+    if (option.classList.contains("settings__theme-option")) return;
 
-    if (!group) return;
-    group
-      .querySelectorAll(".settings__option")
-      .forEach((item) => item.classList.remove("active"));
-    option.classList.add("active");
+    option.addEventListener("click", () => {
+        const group = option.closest(".settings__group");
 
-    if (!themeImage) return;
-    const selectedTheme = option.textContent?.trim();
+        if (!group) return;
 
-    if (selectedTheme === "Gaming theme") {
-      themeImage.src = "./public/Theme_Visual_2.png";
-    }
+        group
+            .querySelectorAll(".settings__option")
+            .forEach((item) => item.classList.remove("active"));
 
-    if (selectedTheme === "Code vibes theme") {
-      themeImage.src = "./public/Theme _Visual_1.png";
-    }
-  });
+        option.classList.add("active");
+    });
+});
+
+themeOptions.forEach((option) => {
+    option.addEventListener("mouseenter", () => {
+        themeOptions.forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        option.classList.add("active");
+
+        if (!themeImage) return;
+
+        const selectedTheme = option.textContent?.trim();
+
+        if (selectedTheme === "Gaming theme") {
+            themeImage.src = "./public/Theme_Visual_2.png";
+        }
+
+        if (selectedTheme === "Code vibes theme") {
+            themeImage.src = "./public/Theme _Visual_1.png";
+        }
+    });
 });
 
 
