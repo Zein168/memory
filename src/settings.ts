@@ -9,46 +9,49 @@ const themeImage = document.querySelector<HTMLImageElement>(
   ".settings__theme-image"
 );
 
+const themeOptionsContainer = document.querySelector<HTMLDivElement>(".settings__theme-options");
+
 const themeOptions = document.querySelectorAll<HTMLParagraphElement>(
-    ".settings__theme-option"
+  ".settings__theme-option"
 );
 
 options.forEach((option) => {
-    if (option.classList.contains("settings__theme-option")) return;
+  if (option.classList.contains("settings__theme-option")) return;
 
-    option.addEventListener("click", () => {
-        const group = option.closest(".settings__group");
+  option.addEventListener("click", () => {
+    const group = option.closest(".settings__group");
 
-        if (!group) return;
+    if (!group) return;
 
-        group
-            .querySelectorAll(".settings__option")
-            .forEach((item) => item.classList.remove("active"));
+    group
+      .querySelectorAll(".settings__option")
+      .forEach((item) => item.classList.remove("active"));
 
-        option.classList.add("active");
-    });
+    option.classList.add("active");
+    updateThemeOptions();
+  });
 });
 
 themeOptions.forEach((option) => {
-    option.addEventListener("mouseenter", () => {
-        themeOptions.forEach((item) => {
-            item.classList.remove("active");
-        });
-
-        option.classList.add("active");
-
-        if (!themeImage) return;
-
-        const selectedTheme = option.textContent?.trim();
-
-        if (selectedTheme === "Gaming theme") {
-            themeImage.src = "./public/Theme_Visual_2.png";
-        }
-
-        if (selectedTheme === "Code vibes theme") {
-            themeImage.src = "./public/Theme _Visual_1.png";
-        }
+  option.addEventListener("mouseenter", () => {
+    themeOptions.forEach((item) => {
+      item.classList.remove("active");
     });
+
+    option.classList.add("active");
+    updateThemeOptions();
+    if (!themeImage) return;
+
+    const selectedTheme = option.textContent?.trim();
+
+    if (selectedTheme === "Gaming theme") {
+      themeImage.src = "./public/Theme_Visual_2.png";
+    }
+
+    if (selectedTheme === "Code vibes theme") {
+      themeImage.src = "./public/Theme _Visual_1.png";
+    }
+  });
 });
 
 
@@ -75,3 +78,14 @@ startButton?.addEventListener("click", () => {
   window.location.href = "./game.html";
 });
 
+function updateThemeOptions(): void {
+    const groups = document.querySelectorAll(".settings__group");
+
+    const allSelected = Array.from(groups).every(
+        (group) => group.querySelector(".settings__option.active")
+    );
+
+    if (themeOptionsContainer) {
+        themeOptionsContainer.classList.toggle("ready", allSelected);
+    }
+}

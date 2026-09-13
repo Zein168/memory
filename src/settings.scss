@@ -165,14 +165,43 @@
         background-color: #F6F6F6;
         width: 450px;
         height: 72px;
+        box-sizing: border-box;
+        transition: width 0.3s ease;
+
+        &.ready {
+            width: 530px;
+            justify-content: center;
+            gap: 20px;
+
+            .settings__divider {
+                height: 52px;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    bottom: -5px;
+                    width: 10px;
+                    height: 10px;
+                    background-color: #F0EA6E;
+                    transform: translateX(-50%) rotate(45deg);
+                }
+
+            }
+
+        }
     }
 
     &__divider {
-        width: 6px;
+        width: 4px;
         height: 30px;
         background-color: #F0EA6E;
         transform: rotate(20deg);
+        position: relative;
     }
+
+
+
 
     .start-button {
         display: flex;
