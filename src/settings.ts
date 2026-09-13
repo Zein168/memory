@@ -50,20 +50,21 @@ function updateThemeImage(option: HTMLParagraphElement): void {
   }
 }
 
-function handleThemeHover(option: HTMLParagraphElement): void {
+
+function setupThemeOptions(): void {
+  themeOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      handleThemeClick(option);
+    });
+  });
+}
+
+function handleThemeClick(option: HTMLParagraphElement): void {
   themeOptions.forEach((item) => item.classList.remove("active"));
 
   option.classList.add("active");
   updateThemeOptions();
   updateThemeImage(option);
-}
-
-function setupThemeOptions(): void {
-  themeOptions.forEach((option) => {
-    option.addEventListener("mouseenter", () => {
-      handleThemeHover(option);
-    });
-  });
 }
 
 function updateThemeOptions(): void {
