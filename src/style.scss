@@ -48,7 +48,7 @@ button {
     top: 100px;
 }
 
-.back-to-start {
+.start_button {
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -61,6 +61,14 @@ button {
     background-color: #F0EA6E;
     margin-top: 62px;
     transition: padding 0.2s ease;
+    transition:
+        width 0.3s ease,
+        transform 0.2s ease;
+
+    &:hover {
+        width: 270px;
+        transform: translateY(-2px);
+    }
 
     img {
         width: 50px;
@@ -73,9 +81,6 @@ button {
         font-size: 40px;
     }
 
-    &:hover {
-        padding: 5px;
-    }
 
     &:hover img:first-child {
         transform: rotate(-30deg);
