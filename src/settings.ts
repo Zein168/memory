@@ -69,6 +69,7 @@ function handleThemeClick(option: HTMLParagraphElement): void {
   themeOptions.forEach((item) => item.classList.remove("active"));
   option.classList.add("active");
   updateSelectedValues();
+  localStorage.setItem("theme", option.textContent?.trim() ?? "");
   updateThemeOptions();
   updateThemeImage(option);
 }

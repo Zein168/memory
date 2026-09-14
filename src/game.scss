@@ -76,6 +76,7 @@ body {
         }
     }
 }
+
 .game__board {
     display: grid;
     gap: 10px;
@@ -270,7 +271,7 @@ body {
 
 .game__next-screen.draw {
     padding-top: 200px;
-    
+
 }
 
 @keyframes slideDown {
@@ -293,3 +294,21 @@ body {
     color: #F58E39;
 }
 
+// gaming-theme
+
+body.gaming-theme {
+    background-color: #294F60;
+}
+
+.gaming-theme .game__header {
+    background-color: #535D75;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding: 15px 70px;
+    border-radius: 10px;
+}
+
+.gaming-theme .game__exit {
+    border: 2px solid #E71C4F;
+    background-color: transparent
+}

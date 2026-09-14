@@ -30,6 +30,10 @@ const confettiImage =
 
 const cardCount = Number(localStorage.getItem("cardCount"));
 const savedPlayer = localStorage.getItem("player");
+const selectedTheme = localStorage.getItem("theme");
+if (selectedTheme === "Gaming theme") {
+    document.body.classList.add("gaming-theme");
+}
 
 let currentPlayer: Player =
     savedPlayer === "Orange" ? "Orange" : "Blue";
