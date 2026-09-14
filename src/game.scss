@@ -1,0 +1,295 @@
+body {
+    background-color: #303131;
+}
+
+.game {
+    h1 {
+        color: #4DD5BC;
+        padding-top: 229px;
+        padding-bottom: 33px;
+        font-size: 140px;
+        margin: 0;
+    }
+
+    h2 {
+        color: white;
+    }
+
+    span {
+        color: white;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        padding: 39px 90px;
+    }
+
+    &__players {
+        display: flex;
+        gap: 30px;
+        background-color: #415652;
+        width: 256px;
+        height: 45px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__player {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &__current-player {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+.game__players {
+    .game__player:nth-child(1) {
+        span {
+            color: #2BB1FF;
+        }
+    }
+
+    .game__player:nth-child(2) {
+        span {
+            color: #F58E39;
+        }
+    }
+}
+.game__board {
+    display: grid;
+    gap: 10px;
+    width: 420px;
+    margin: 110px auto 0;
+    justify-content: center;
+}
+
+.game__card {
+    width: 100px;
+    height: 100px;
+}
+
+.game__exit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Fredoka', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #415652;
+    border: 2px solid #4DD5BC;
+    width: 140px;
+    height: 45px;
+}
+
+.game__card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.game__card.flipped .game__card-inner {
+    transform: rotateY(180deg);
+}
+
+.game__card-front,
+.game__card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: white;
+    cursor: pointer;
+}
+
+.game__card-front {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg);
+}
+
+.game__card-front img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.game__card-back {
+    background-image: url("./public/card.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.game__game-over {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .game__players {
+        background-color: #415652;
+        padding: 14px 16px;
+
+        .game__player:nth-child(1) {
+            span {
+                color: #2BB1FF;
+            }
+        }
+
+        .game__player:nth-child(2) {
+            span {
+                color: #F58E39;
+            }
+        }
+    }
+}
+
+.game__quit-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.game__quit-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    width: 343px;
+    height: 175px;
+
+    h2 {
+        color: black;
+    }
+}
+
+.game__quit-modal-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.game__quit-back,
+.game__quit-confirm {
+    cursor: pointer;
+    border: 2px solid #4DD5BC;
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+
+}
+
+.game__quit-confirm {
+    color: #4DD5BC;
+}
+
+.game__quit-back {
+    background-color: #4DD5BC;
+    color: white;
+}
+
+.game__next-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 10px;
+
+    .game__confetti {
+        width: 100%;
+        max-width: 1239px;
+        height: auto;
+    }
+
+    h2 {
+        color: white;
+        margin: 20px 0 10px;
+    }
+
+    #winner-player {
+        color: #4DD5BC;
+        font-size: 90px;
+        margin: 0 0 15px;
+    }
+
+    #winner-player-icon {
+        width: 210px;
+        height: 210px;
+        margin-bottom: 25px;
+    }
+
+    .game__back-to-start {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        color: white;
+        text-decoration: none;
+        background-color: #415652;
+        border: 2px solid #4DD5BC;
+        font-family: 'Fredoka', sans-serif;
+        border-radius: 8px;
+    }
+}
+
+.game__next-screen.show {
+    display: flex;
+    animation: slideDown 0.8s ease-out;
+}
+
+.game__next-screen.draw {
+    padding-top: 200px;
+    
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.game__next-screen #winner-player.blue {
+    color: #2BB1FF;
+}
+
+.game__next-screen #winner-player.orange {
+    color: #F58E39;
+}
+

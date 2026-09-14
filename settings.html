@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+  </head>
+
+  <body>
+    <section class="settings">
+      <div class="settings__header">
+        <h1>Settings</h1>
+      </div>
+
+      <div class="settings__group">
+        <div class="settings__title">
+          <div class="settings__title-left">
+            <img src="./public/palette.svg" alt="" />
+            <h2>Game themes</h2>
+          </div>
+        </div>
+
+        <p class="settings__option settings__theme-option active">
+          <span class="settings__radio"></span>
+          <span class="settings__theme-text">Code vibes theme</span>
+        </p>
+
+        <p class="settings__option settings__theme-option">
+          <span class="settings__radio"></span>
+          <span class="settings__theme-text">Gaming theme</span>
+        </p>
+      </div>
+
+      <div class="settings__group settings__player-choice">
+        <div class="settings__title">
+          <img src="./public/figur.svg" alt="" />
+          <h2>Choose player</h2>
+        </div>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          Blue
+        </p>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          Orange
+        </p>
+      </div>
+
+      <div class="settings__group settings__board-size">
+        <div class="settings__title">
+          <img src="./public/board.svg" alt="" />
+          <h2>Board size</h2>
+        </div>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          16 cards
+        </p>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          24 cards
+        </p>
+
+        <p class="settings__option">
+          <span class="settings__radio"></span>
+          36 cards
+        </p>
+      </div>
+      <div class="settings__theme-preview">
+        <img
+          class="settings__theme-image"
+          src="./public/Theme _Visual_1.png"
+          alt=""
+        />
+
+        <div class="settings__theme-options">
+          <p class="settings__selected-theme">Game theme</p>
+
+          <span class="settings__divider"></span>
+
+          <p class="settings__selected-player">Player</p>
+
+          <span class="settings__divider"></span>
+
+          <p class="settings__selected-board-size">Board size</p>
+          <button class="start-button">
+            <img src="./public/smart_display.svg" alt="" />
+            <span>Start</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="/src/settings.ts"></script>
+  </body>
+</html>

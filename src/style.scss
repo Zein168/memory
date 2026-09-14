@@ -1,0 +1,92 @@
+@font-face {
+    font-family: "Fredoka";
+    src: url("./fonts/Fredoka-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: "Fredoka", sans-serif;
+    background-color: #2F3131;
+}
+
+h1 {
+    font-size: 48px;
+    color: white;
+    margin: 0;
+}
+
+h2 {
+    font-size: 140px;
+    color: white;
+    margin: 0;
+}
+
+.header-title {
+    transform: translateY(233px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.header-title button {
+    align-self: center;
+    margin-top: 2rem;
+}
+
+button {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.controller_icon {
+    position: relative;
+    top: 100px;
+}
+
+.start_button {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    height: 90px;
+    width: 254px;
+    margin: 0 auto;
+    text-decoration: none;
+    background-color: #F0EA6E;
+    margin-top: 62px;
+    transition: padding 0.2s ease;
+    transition:
+        width 0.3s ease,
+        transform 0.2s ease;
+
+    &:hover {
+        width: 270px;
+        transform: translateY(-2px);
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+        transition: transform 0.2s ease;
+    }
+
+    span {
+        color: black;
+        font-size: 40px;
+    }
+
+
+    &:hover img:first-child {
+        transform: rotate(-30deg);
+    }
+
+    &:hover img:last-child {
+        transform: scale(1.2);
+    }
+}
