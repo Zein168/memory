@@ -434,10 +434,21 @@ const cardImages = getCardImages();
 const cards = createCardList();
 
 
+function updateGamingThemeQuitButtons(): void {
+    if (selectedTheme !== "Gaming theme") return;
 
+    if (backButton) {
+        backButton.textContent = "no, back to game";
+    }
+
+    if (confirmExitButton) {
+        confirmExitButton.textContent = "yes, quit game";
+    }
+}
 updateCurrentPlayer();
 updateScores();
 setupCards();
 setupBoard();
 setupExitModal();
 updateGamingThemeIcons();
+updateGamingThemeQuitButtons();

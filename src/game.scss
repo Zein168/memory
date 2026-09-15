@@ -344,9 +344,13 @@ body.gaming-theme {
     background-color: #ED1B76;
     border: none;
     text-decoration: none;
+    white-space: nowrap;
+    width: 140px;
 }
 
 .gaming-theme .game__quit-confirm {
     color: #ED1B76;
     border: 2px solid #ED1B76;
+    white-space: nowrap;
+    width: 140px;
 }
