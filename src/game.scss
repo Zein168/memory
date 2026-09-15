@@ -337,5 +337,16 @@ body.gaming-theme {
 .gaming-theme .game__card-back {
     background-image: url(./public/gaming_theme_card.svg);
     border-radius: 10px;
-    
+
+}
+
+.gaming-theme .game__quit-back {
+    background-color: #ED1B76;
+    border: none;
+    text-decoration: none;
+}
+
+.gaming-theme .game__quit-confirm {
+    color: #ED1B76;
+    border: 2px solid #ED1B76;
 }
