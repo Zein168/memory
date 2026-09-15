@@ -445,6 +445,22 @@ function updateGamingThemeQuitButtons(): void {
         confirmExitButton.textContent = "yes, quit game";
     }
 }
+
+const finalPlayerIcons = document.querySelectorAll<HTMLImageElement>(".game__game-over .game__player img");
+
+function updateGamingThemeFinalIcons(): void {
+    if (selectedTheme !== "Gaming theme") return;
+
+    if (finalPlayerIcons[0]) {
+        finalPlayerIcons[0].src = "./public/chess_pawn_blue.svg";
+    }
+
+    if (finalPlayerIcons[1]) {
+        finalPlayerIcons[1].src = "./public/chess_pawn_orange.svg";
+    }
+}
+
+
 updateCurrentPlayer();
 updateScores();
 setupCards();
@@ -452,3 +468,4 @@ setupBoard();
 setupExitModal();
 updateGamingThemeIcons();
 updateGamingThemeQuitButtons();
+updateGamingThemeFinalIcons();

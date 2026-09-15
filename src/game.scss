@@ -330,6 +330,10 @@ body.gaming-theme {
     font-size: 26px;
 }
 
+.gaming-theme .game__game-over .game__players {
+    width: 300px;
+}
+
 .gaming-theme .game__header .game__players .game__player span:nth-child(2) {
     display: none;
 }
@@ -353,4 +357,16 @@ body.gaming-theme {
     border: 2px solid #ED1B76;
     white-space: nowrap;
     width: 140px;
+}
+
+.gaming-theme .game__current-player {
+    font-size: 30px;
+}
+
+.gaming-theme .game__game-over h1 {
+    color: #ED1B76;
+}
+
+.gaming-theme .game__game-over .game__player span:nth-child(2) {
+    display: none;
 }
