@@ -224,6 +224,14 @@ function resetSelection(): void {
 
 function updateCurrentPlayer(): void {
     if (!currentPlayerIcon) return;
+       if (selectedTheme === "Gaming theme") {
+        currentPlayerIcon.src =
+            currentPlayer === "Blue"
+                ? "./public/chess_pawn_blue_with_background.svg"
+                : "./public/chess_pawn_orange_with_background .svg";
+
+        return;
+    }
 
     currentPlayerIcon.src =
         currentPlayer === "Blue"
