@@ -73,6 +73,12 @@ if (!board) {
     throw new Error("Game board not found");
 }
 
+const gamingThemeBluePlayerIcon =
+    document.querySelector<HTMLImageElement>("#gaming-theme-blue-player-icon");
+
+const gamingThemeOrangePlayerIcon =
+    document.querySelector<HTMLImageElement>("#gaming-theme-orange-player-icon");
+
 function createCardList(): string[] {
     const selected = cardImages.slice(0, cardCount / 2);
     const pairs = selected.flatMap((image) => [image, image]);
@@ -374,6 +380,21 @@ function exitGame(): void {
     window.location.href = "./settings.html";
 }
 
+function updateGamingThemeIcons(): void {
+    if (selectedTheme !== "Gaming theme") return;
+
+    gamingThemeBluePlayerIcon?.setAttribute(
+        "src",
+        "./public/chess_pawn_blue.svg"
+    );
+
+    gamingThemeOrangePlayerIcon?.setAttribute(
+        "src",
+        "./public/chess_pawn_orange.svg"
+    );
+}
+
+
 
 
 
@@ -382,4 +403,4 @@ updateScores();
 setupCards();
 setupBoard();
 setupExitModal();
-
+updateGamingThemeIcons();
