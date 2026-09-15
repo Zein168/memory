@@ -333,3 +333,9 @@ body.gaming-theme {
 .gaming-theme .game__header .game__players .game__player span:nth-child(2) {
     display: none;
 }
+
+.gaming-theme .game__card-back {
+    background-image: url(./public/gaming_theme_card.svg);
+    border-radius: 10px;
+    
+}
