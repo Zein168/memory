@@ -345,6 +345,7 @@ function setWinner(player: Player): void {
 
     winnerTitle.textContent = "The winner is";
     winnerPlayerElement.textContent = `${player} player`;
+     winnerPlayerElement.classList.remove("blue", "orange");
     winnerPlayerElement.classList.add(player.toLowerCase());
     winnerPlayerIcon.src = `./public/chess_pawn_${player.toLowerCase()}.svg`;
     winnerPlayerIcon.alt = `${player} player`;
