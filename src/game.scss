@@ -370,3 +370,7 @@ body.gaming-theme {
 .gaming-theme .game__game-over .game__player span:nth-child(2) {
     display: none;
 }
+
+.gaming-theme .game__next-screen.show {
+    padding-top: 200px;
+}

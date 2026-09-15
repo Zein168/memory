@@ -245,7 +245,7 @@ function resetSelection(): void {
 
 function updateCurrentPlayer(): void {
     if (!currentPlayerIcon) return;
-       if (selectedTheme === "Gaming theme") {
+    if (selectedTheme === "Gaming theme") {
         currentPlayerIcon.src =
             currentPlayer === "Blue"
                 ? "./public/chess_pawn_blue_with_background.svg"
@@ -368,9 +368,12 @@ function setDraw(): void {
 
 
 function showConfetti(): void {
-    if (confettiImage) {
-        confettiImage.style.display = "block";
+    if (!confettiImage) return;
+    if (selectedTheme === "Gaming theme") {
+        confettiImage.style.display = "none";
+        return;
     }
+    confettiImage.style.display = "block";
 }
 
 
