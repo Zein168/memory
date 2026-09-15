@@ -1,0 +1,18 @@
+ace.svg
+circle.svg
+coin.svg
+cool_banana.svg
+gameboy.svg
+gamepad.svg
+greeper_face.svg
+level_up.svg
+maze.svg
+pac.svg
+pac_man.svg
+play button@2x 1.svg
+playing_dice.svg
+puzzle.svg
+snake.svg
+square.svg
+super_mushroom.svg
+triangle.svg

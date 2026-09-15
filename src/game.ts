@@ -44,7 +44,7 @@ let blueScore = 0;
 let orangeScore = 0;
 let matchedCards = 0;
 
-const cardImages: string[] = [
+const codeVibesImages: string[] = [
     "./public/typescript.svg",
     "./public/javascript.svg",
     "./public/html5.svg",
@@ -65,7 +65,28 @@ const cardImages: string[] = [
     "./public/nextdotjs.svg",
 ];
 
-const cards = createCardList();
+const gamingThemeImages: string[] = [
+    "./public/gaming_theme_cards/ace.svg",
+    "./public/gaming_theme_cards/circle.svg",
+    "./public/gaming_theme_cards/coin.svg",
+    "./public/gaming_theme_cards/cool_banana.svg",
+    "./public/gaming_theme_cards/gameboy.svg",
+    "./public/gaming_theme_cards/gamepad.svg",
+    "./public/gaming_theme_cards/greeper_face.svg",
+    "./public/gaming_theme_cards/level_up.svg",
+    "./public/gaming_theme_cards/maze.svg",
+    "./public/gaming_theme_cards/pac.svg",
+    "./public/gaming_theme_cards/pac_man.svg",
+    "./public/gaming_theme_cards/play button@2x 1.svg",
+    "./public/gaming_theme_cards/playing_dice.svg",
+    "./public/gaming_theme_cards/puzzle.svg",
+    "./public/gaming_theme_cards/snake.svg",
+    "./public/gaming_theme_cards/square.svg",
+    "./public/gaming_theme_cards/super_mushroom.svg",
+    "./public/gaming_theme_cards/triangle.svg",
+];
+
+
 
 const board = document.querySelector<HTMLDivElement>(".game__board");
 
@@ -402,7 +423,15 @@ function updateGamingThemeIcons(): void {
     );
 }
 
+function getCardImages(): string[] {
+    if (selectedTheme === "Gaming theme") {
+        return gamingThemeImages;
+    }
 
+    return codeVibesImages;
+}
+const cardImages = getCardImages();
+const cards = createCardList();
 
 
 
