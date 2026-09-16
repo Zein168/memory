@@ -331,7 +331,9 @@ body.gaming-theme {
 }
 
 .gaming-theme .game__game-over .game__players {
-    width: 300px;
+    width: 142px;
+    height: 29px;
+    justify-content: space-between;
 }
 
 .gaming-theme .game__header .game__players .game__player span:nth-child(2) {
@@ -374,4 +376,3 @@ body.gaming-theme {
 .gaming-theme .game__next-screen.show {
     padding-top: 200px;
 }
-
