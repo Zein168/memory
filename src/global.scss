@@ -1,10 +1,14 @@
 @font-face {
-    font-family: "Fredoka";
-    src: url("./fonts/Fredoka-Regular.ttf") format("truetype");
+    font-family: "RedRose";
+    src: url("./fonts/RedRose-VariableFont_wght.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
 body {
-    font-family: "Fredoka", sans-serif;
+    font-family: "RedRose", sans-serif;
+}
+
+button {
+  font-family: "RedRose", sans-serif;
 }

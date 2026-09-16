@@ -97,7 +97,6 @@ body {
     gap: 8px;
     background-color: transparent;
     border: none;
-    font-family: 'Fredoka', sans-serif;
     cursor: pointer;
     text-decoration: none;
     background-color: #415652;
@@ -187,8 +186,9 @@ body {
     justify-content: center;
     text-align: center;
     background-color: white;
-    width: 343px;
+    width: 387px;
     height: 175px;
+    padding: 16px 16px;
 
     h2 {
         color: black;
@@ -207,6 +207,8 @@ body {
     width: 120px;
     height: 40px;
     font-size: 16px;
+    font-family: "RedRose", sans-serif ;
+    white-space: nowrap;
 
 }
 
@@ -259,7 +261,6 @@ body {
         text-decoration: none;
         background-color: #415652;
         border: 2px solid #4DD5BC;
-        font-family: 'Fredoka', sans-serif;
         border-radius: 8px;
     }
 }
@@ -387,7 +388,7 @@ body.gaming-theme {
 
 }
 
-.gaming-theme .game__next-screen .game__back-to-start{
+.gaming-theme .game__next-screen .game__back-to-start {
     background-color: #394B62;
     border: 2px solid #E71C4F;
 }
