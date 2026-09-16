@@ -481,7 +481,7 @@ function updateHomeButton(): void {
 updateCurrentPlayer();
 updateScores();
 blueScore = 3;
-orangeScore = 1;
+orangeScore = 5;
 showGameOver();
 setupCards();
 setupBoard();
