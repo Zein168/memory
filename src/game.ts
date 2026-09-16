@@ -280,11 +280,14 @@ function switchPlayer(): void {
 
 function setupBoard(): void {
     if (!board) return;
-
     const columns = getBoardColumns();
     board.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+    if (cardCount === 24) {
+        board.style.gap = "6px";
+    } else {
+        board.style.gap = "10px";
+    }
 }
-
 
 function getBoardColumns(): number {
     if (cardCount === 16) return 4;
@@ -300,11 +303,17 @@ function showGameOver(): void {
 
 
 function hideGameElements(): void {
-    const header = document.querySelector<HTMLElement>(".game__header");
-    const gameBoard = document.querySelector<HTMLElement>(".game__board");
+    if (!board) return;
 
-    if (header) header.style.display = "none";
-    if (gameBoard) gameBoard.style.display = "none";
+    const columns = getBoardColumns();
+
+    board.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+
+    if (cardCount === 24) {
+        board.style.gap = "6px";
+    } else {
+        board.style.gap = "10px";
+    }
 }
 
 
@@ -477,6 +486,8 @@ function updateHomeButton(): void {
         homeButton.textContent = "Home";
     }
 }
+
+
 
 updateCurrentPlayer();
 updateScores();
