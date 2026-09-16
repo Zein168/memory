@@ -282,12 +282,13 @@ function setupBoard(): void {
     if (!board) return;
     const columns = getBoardColumns();
     board.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-    if (cardCount === 24) {
+   if (cardCount >= 24) {
         board.style.gap = "6px";
     } else {
         board.style.gap = "10px";
     }
 }
+
 
 function getBoardColumns(): number {
     if (cardCount === 16) return 4;
