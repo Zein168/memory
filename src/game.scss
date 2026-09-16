@@ -86,8 +86,8 @@ body {
 }
 
 .game__card {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 }
 
 .game__exit {
@@ -341,6 +341,9 @@ body.gaming-theme {
 
 .gaming-theme .game__card-back {
     background-image: url(./public/gaming_theme_card.svg);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 10px;
 
 }
@@ -391,4 +394,16 @@ body.gaming-theme {
 .gaming-theme .game__next-screen .game__back-to-start {
     background-color: #394B62;
     border: 2px solid #E71C4F;
+}
+
+.gaming-theme .game__quit-modal-content {
+    border-radius: 10px;
+}
+
+
+.gaming-theme .game__card-back {
+    width: 105px;
+    height: 120px;
+    box-sizing: border-box;
+    background-color: transparent;
 }
