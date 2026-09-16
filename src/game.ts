@@ -470,6 +470,13 @@ function updateGamingThemeFinalIcons(): void {
     }
 }
 
+function updateHomeButton(): void {
+    const homeButton = document.querySelector<HTMLAnchorElement>(".game__back-to-start");
+
+    if (homeButton) {
+        homeButton.textContent = "Home";
+    }
+}
 
 updateCurrentPlayer();
 updateScores();
@@ -482,3 +489,4 @@ setupExitModal();
 updateGamingThemeIcons();
 updateGamingThemeQuitButtons();
 updateGamingThemeFinalIcons();
+updateHomeButton();
