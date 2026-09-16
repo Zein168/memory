@@ -1,14 +1,25 @@
 @font-face {
-    font-family: "RedRose";
-    src: url("./fonts/RedRose-VariableFont_wght.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
+  font-family: "RedRose";
+  src: url("./fonts/RedRose-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("./fonts/Orbitron-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
-    font-family: "RedRose", sans-serif;
+  font-family: "RedRose", sans-serif;
+}
+
+body.gaming-theme {
+  font-family: "Orbitron", sans-serif;
 }
 
 button {
-  font-family: "RedRose", sans-serif;
+  font-family: inherit;
 }

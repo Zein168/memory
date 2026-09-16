@@ -480,9 +480,9 @@ function updateHomeButton(): void {
 
 updateCurrentPlayer();
 updateScores();
-blueScore = 1;
-orangeScore = 3;
-showGameOver();
+//blueScore = 1;
+//orangeScore = 3;
+//showGameOver();
 setupCards();
 setupBoard();
 setupExitModal();
