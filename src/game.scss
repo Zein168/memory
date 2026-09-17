@@ -270,7 +270,6 @@ body {
 
 .game__next-screen.draw {
     padding-top: 200px;
-
 }
 
 @keyframes slideDown {
@@ -296,6 +295,7 @@ body {
 .game__header.cards-36 {
     padding-top: 4px;
 }
+
 // gaming-theme
 
 body.gaming-theme {
@@ -389,6 +389,10 @@ body.gaming-theme {
     padding-bottom: 46px;
 }
 
+.gaming-theme .game__next-screen.draw #winner-player {
+        margin: 0 0 -20px;
+}
+
 .gaming-theme .game__next-screen #winner-player-icon {
     width: 310px;
     height: 310px;
@@ -434,9 +438,24 @@ body.gaming-theme {
 }
 
 .gaming-theme .game__header.cards-36 {
-   margin-top:  4px;
+    margin-top: 4px;
 }
 
 .gaming-theme .game__current-player {
     align-items: flex-end;
+}
+
+.gaming-theme .game__next-screen.draw #winner-player {
+    color: #E71C4F;
+    padding-bottom: 0;
+}
+
+.gaming-theme .game__next-screen.draw #winner-player {
+    font-size: 140px;
+}
+
+.gaming-theme .game__next-screen.draw #winner-player-icon {
+    filter: brightness(0) saturate(100%)
+        invert(19%) sepia(94%) saturate(3825%)
+        hue-rotate(337deg) brightness(92%);
 }
