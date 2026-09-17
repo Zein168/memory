@@ -304,17 +304,11 @@ function showGameOver(): void {
 
 
 function hideGameElements(): void {
-    if (!board) return;
+  const header = document.querySelector<HTMLElement>(".game__header");
+    const gameBoard = document.querySelector<HTMLElement>(".game__board");
 
-    const columns = getBoardColumns();
-
-    board.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-
-    if (cardCount === 24) {
-        board.style.gap = "6px";
-    } else {
-        board.style.gap = "10px";
-    }
+    if (header) header.style.display = "none";
+    if (gameBoard) gameBoard.style.display = "none";
 }
 
 
@@ -492,9 +486,9 @@ function updateHomeButton(): void {
 
 updateCurrentPlayer();
 updateScores();
-//blueScore = 1;
-//orangeScore = 3;
-//showGameOver();
+ blueScore = 5;
+ orangeScore = 3;
+ showGameOver();
 setupCards();
 setupBoard();
 setupExitModal();
