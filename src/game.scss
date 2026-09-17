@@ -293,6 +293,9 @@ body {
     color: #F58E39;
 }
 
+.game__header.cards-36 {
+    padding-top: 4px;
+}
 // gaming-theme
 
 body.gaming-theme {
@@ -428,4 +431,8 @@ body.gaming-theme {
     border-radius: 10px;
     width: 105px;
     height: 120px;
+}
+
+.gaming-theme .game__header.cards-36 {
+   margin-top:  4px;
 }

@@ -482,7 +482,14 @@ function updateHomeButton(): void {
     }
 }
 
+function setupHeaderForCardCount(): void {
+  const cardCount = localStorage.getItem("cardCount");
+  const header = document.querySelector<HTMLElement>(".game__header");
 
+  if (!header || cardCount !== "36") return;
+
+  header.classList.add("cards-36");
+}
 
 updateCurrentPlayer();
 updateScores();
@@ -496,3 +503,4 @@ updateGamingThemeIcons();
 updateGamingThemeQuitButtons();
 updateGamingThemeFinalIcons();
 updateHomeButton();
+setupHeaderForCardCount();
