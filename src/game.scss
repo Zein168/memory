@@ -296,6 +296,20 @@ body {
     padding-top: 4px;
 }
 
+.game__next-screen.draw #winner-title {
+    position: relative;
+    top: 30px;
+}
+
+.game__next-screen.draw #winner-player-icon {
+    width: 240px;
+    height: 240px;
+}
+
+.game__next-screen.draw #winner-player {
+    margin: 0 0 -5px;
+}
+
 // gaming-theme
 
 body.gaming-theme {
@@ -390,7 +404,7 @@ body.gaming-theme {
 }
 
 .gaming-theme .game__next-screen.draw #winner-player {
-        margin: 0 0 -20px;
+    margin: 0 0 -20px;
 }
 
 .gaming-theme .game__next-screen #winner-player-icon {
@@ -453,4 +467,3 @@ body.gaming-theme {
 .gaming-theme .game__next-screen.draw #winner-player {
     font-size: 140px;
 }
-
