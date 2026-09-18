@@ -100,9 +100,11 @@ function getSelectedPlayer(): string | null {
 function startGame(): void {
   const cardCount = getSelectedCardCount();
   const player = getSelectedPlayer();
-  if (cardCount === null || player === null) return;
+  const theme = getSelectedTheme();
+  if (cardCount === null || player === null || theme === null) return;
   localStorage.setItem("cardCount", String(cardCount));
   localStorage.setItem("player", player);
+  localStorage.setItem("theme", theme);
   window.location.href = "./game.html";
 }
 
@@ -135,7 +137,13 @@ function updateSelectedValues(): void {
 
 }
 
+function getSelectedTheme(): string | null {
+    const option = document.querySelector<HTMLParagraphElement>(
+        ".settings__theme-option.active"
+    );
 
+    return option?.textContent?.trim() ?? null;
+}
 setupOptions();
 setupThemeOptions();
 setupStartButton();

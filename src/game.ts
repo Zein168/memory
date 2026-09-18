@@ -477,14 +477,9 @@ function updateGamingThemeFinalIcons(): void {
 }
 
 function updateHomeButton(): void {
-    const homeButton = document.querySelector<HTMLAnchorElement>(
-        ".game__back-to-start"
-    );
-
+    const homeButton = document.querySelector<HTMLAnchorElement>(".game__back-to-start");
     if (!homeButton) return;
-
     const isGamingTheme = document.body.classList.contains("gaming-theme");
-
     homeButton.textContent = isGamingTheme
         ? "Home"
         : "Back to start";
@@ -501,9 +496,6 @@ function setupHeaderForCardCount(): void {
 
 updateCurrentPlayer();
 updateScores();
-blueScore = 4;
-orangeScore = 4;
-showGameOver();
 setupCards();
 setupBoard();
 setupExitModal();
