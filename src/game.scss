@@ -446,7 +446,7 @@ body.gaming-theme {
 }
 
 .gaming-theme .game__next-screen.draw #winner-player {
-    color: #E71C4F;
+    color: #ED1B76;
     padding-bottom: 0;
 }
 
@@ -454,8 +454,3 @@ body.gaming-theme {
     font-size: 140px;
 }
 
-.gaming-theme .game__next-screen.draw #winner-player-icon {
-    filter: brightness(0) saturate(100%)
-        invert(19%) sepia(94%) saturate(3825%)
-        hue-rotate(337deg) brightness(92%);
-}

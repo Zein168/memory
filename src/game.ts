@@ -282,7 +282,7 @@ function setupBoard(): void {
     if (!board) return;
     const columns = getBoardColumns();
     board.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-   if (cardCount >= 24) {
+    if (cardCount >= 24) {
         board.style.gap = "6px";
     } else {
         board.style.gap = "10px";
@@ -304,7 +304,7 @@ function showGameOver(): void {
 
 
 function hideGameElements(): void {
-  const header = document.querySelector<HTMLElement>(".game__header");
+    const header = document.querySelector<HTMLElement>(".game__header");
     const gameBoard = document.querySelector<HTMLElement>(".game__board");
 
     if (header) header.style.display = "none";
@@ -363,7 +363,6 @@ function setWinner(player: Player): void {
     showConfetti();
 }
 
-
 function setDraw(): void {
     const nextScreen = document.querySelector<HTMLElement>(".game__next-screen");
 
@@ -371,9 +370,12 @@ function setDraw(): void {
     winnerTitle!.textContent = "It's a";
     winnerPlayerElement!.textContent = "Draw";
     winnerPlayerElement!.classList.remove("blue", "orange");
-    winnerPlayerIcon!.src = "./public/draw.svg";
-    winnerPlayerIcon!.alt = "Draw";
+    const isGamingTheme = document.body.classList.contains("gaming-theme");
+    winnerPlayerIcon!.src = isGamingTheme
+        ? "./public/draw_gaming_theme.svg"
+        : "./public/draw_code_vibes_theme.svg";
 
+    winnerPlayerIcon!.alt = "Draw";
     if (confettiImage) confettiImage.style.display = "none";
 }
 
@@ -483,18 +485,18 @@ function updateHomeButton(): void {
 }
 
 function setupHeaderForCardCount(): void {
-  const cardCount = localStorage.getItem("cardCount");
-  const header = document.querySelector<HTMLElement>(".game__header");
+    const cardCount = localStorage.getItem("cardCount");
+    const header = document.querySelector<HTMLElement>(".game__header");
 
-  if (!header || cardCount !== "36") return;
+    if (!header || cardCount !== "36") return;
 
-  header.classList.add("cards-36");
+    header.classList.add("cards-36");
 }
 
 updateCurrentPlayer();
 updateScores();
 blueScore = 4;
-orangeScore = 3;
+orangeScore = 4;
 showGameOver();
 setupCards();
 setupBoard();
