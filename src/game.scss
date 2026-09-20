@@ -310,163 +310,155 @@ body {
 }
 
 // gaming-theme
-
 body.gaming-theme {
     background-color: #294F60;
-}
 
-.gaming-theme .game__header {
-    background-color: #535D75;
-    margin-left: 70px;
-    margin-right: 70px;
-    padding: 15px 70px;
-    border-radius: 10px;
-    margin-top: 48px;
-}
+    .game__header {
+        background-color: #535D75;
+        margin: 48px 70px 0;
+        padding: 15px 70px;
+        border-radius: 10px;
 
-.gaming-theme .game__exit {
-    border: 2px solid #E71C4F;
-    background-color: transparent
-}
+        &.cards-36 {
+            margin-top: 4px;
+        }
 
-.gaming-theme .game__player img {
-    width: 30px;
-    height: 30px;
-    display: block;
-}
+        .game__players {
+            .game__player {
+                span:nth-child(2) {
+                    display: none;
+                }
+            }
+        }
+    }
 
-.gaming-theme .game__players {
-    background-color: white;
-    border-radius: 10px;
-    width: 160px;
-    height: 50px;
-}
+    .game__exit {
+        border: 2px solid #E71C4F;
+        background-color: transparent;
+    }
 
-.gaming-theme .game__players span {
-    font-size: 26px;
-}
+    .game__player {
+        img {
+            width: 30px;
+            height: 30px;
+            display: block;
+        }
+    }
 
-.gaming-theme .game__game-over .game__players {
-    width: 142px;
-    height: 29px;
-    justify-content: space-between;
-}
+    .game__players {
+        background-color: white;
+        border-radius: 10px;
+        width: 160px;
+        height: 50px;
 
-.gaming-theme .game__header .game__players .game__player span:nth-child(2) {
-    display: none;
-}
+        span {
+            font-size: 26px;
+        }
+    }
 
-.gaming-theme .game__card-back {
-    background-image: url(./public/gaming_theme_card.svg);
-    background-size: 100% 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 10px;
+    .game__game-over {
+        .game__players {
+            width: 142px;
+            height: 29px;
+            justify-content: space-between;
+        }
 
-}
+        .game__player {
+            span:nth-child(2) {
+                display: none;
+            }
+        }
 
-.gaming-theme .game__quit-back {
-    background-color: #ED1B76;
-    border: none;
-    text-decoration: none;
-    white-space: nowrap;
-    width: 160px;
-    border-radius: 10px;
-}
+        h1 {
+            color: #ED1B76;
+        }
+    }
 
-.gaming-theme .game__quit-confirm {
-    color: #ED1B76;
-    border: 2px solid #ED1B76;
-    white-space: nowrap;
-    width: 160px;
-    border-radius: 10px;
-}
+    .game__card-back {
+        background-image: url("./public/gaming_theme_card.svg");
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 105px;
+        height: 120px;
+    }
 
-.gaming-theme .game__current-player {
-    font-size: 30px;
-}
+    .game__quit-back {
+        background-color: #ED1B76;
+        border: none;
+        text-decoration: none;
+        white-space: nowrap;
+        width: 160px;
+        border-radius: 10px;
+    }
 
-.gaming-theme .game__game-over h1 {
-    color: #ED1B76;
-}
+    .game__quit-confirm {
+        color: #ED1B76;
+        border: 2px solid #ED1B76;
+        white-space: nowrap;
+        width: 160px;
+        border-radius: 10px;
+    }
 
-.gaming-theme .game__game-over .game__player span:nth-child(2) {
-    display: none;
-}
+    .game__current-player {
+        font-size: 30px;
+        align-items: flex-end;
+    }
 
-.gaming-theme .game__next-screen.show {
-    padding-top: 200px;
-}
+    .game__board {
+        margin-top: 48px;
+    }
 
-.gaming-theme .game__next-screen #winner-player {
-    padding-bottom: 46px;
-}
+    .game__card {
+        width: 105px;
+        height: 120px;
+    }
 
-.gaming-theme .game__next-screen.draw #winner-player {
-    margin: 0 0 -20px;
-}
+    .game__card-inner {
+        width: 105px;
+        height: 120px;
+    }
 
-.gaming-theme .game__next-screen #winner-player-icon {
-    width: 310px;
-    height: 310px;
+    .game__card-front {
+        border-radius: 10px;
+        width: 105px;
+        height: 120px;
+    }
 
-}
+    .game__next-screen {
+        &.show {
+            padding-top: 200px;
+        }
 
-.gaming-theme .game__next-screen .game__back-to-start {
-    background-color: #394B62;
-    border: 2px solid #E71C4F;
-}
+        #winner-player {
+            padding-bottom: 46px;
+        }
 
-.gaming-theme .game__quit-modal-content {
-    border-radius: 10px;
-}
+        #winner-player-icon {
+            width: 310px;
+            height: 310px;
+        }
 
+        .game__back-to-start {
+            background-color: #394B62;
+            border: 2px solid #E71C4F;
+            border-radius: 10px;
+        }
 
-.gaming-theme .game__card-back {
-    width: 105px;
-    height: 120px;
-    box-sizing: border-box;
-    background-color: transparent;
-}
+        &.draw {
+            #winner-player {
+                color: #ED1B76;
+                padding-bottom: 0;
+                margin: 0 0 -20px;
+                font-size: 140px;
+            }
+        }
+    }
 
-.gaming-theme .game__board {
-    margin-top: 48px;
-}
-
-.gaming-theme .game__card {
-    width: 105px;
-    height: 120px;
-}
-
-.gaming-theme .game__card-inner {
-    width: 105px;
-    height: 120px;
-}
-
-.gaming-theme .game__card-front,
-.gaming-theme .game__card-back {
-    border-radius: 10px;
-    width: 105px;
-    height: 120px;
-}
-
-.gaming-theme .game__header.cards-36 {
-    margin-top: 4px;
-}
-
-.gaming-theme .game__current-player {
-    align-items: flex-end;
-}
-
-.gaming-theme .game__next-screen.draw #winner-player {
-    color: #ED1B76;
-    padding-bottom: 0;
-}
-
-.gaming-theme .game__next-screen.draw #winner-player {
-    font-size: 140px;
-}
-
-.gaming-theme .game__next-screen .game__back-to-start {
-    border-radius: 10px;
+    .game__quit-modal-content {
+        border-radius: 10px;
+    }
 }
