@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Settings</title>
-        <link
+    <link
       rel="icon"
       type="image/png"
       href="./public/memory_game_card_icon.png"
@@ -12,12 +12,12 @@
   </head>
 
   <body>
-    <section class="settings">
-      <div class="settings__header">
+    <main class="settings">
+      <header class="settings__header">
         <h1>Settings</h1>
-      </div>
+      </header>
 
-      <div class="settings__group">
+      <section class="settings__group">
         <div class="settings__title">
           <div class="settings__title-left">
             <img src="./public/palette.svg" alt="" />
@@ -25,56 +25,56 @@
           </div>
         </div>
 
-        <p class="settings__option settings__theme-option active">
+        <button class="settings__option settings__theme-option active" type="button">
           <span class="settings__radio"></span>
           <span class="settings__theme-text">Code vibes theme</span>
-        </p>
+        </button>
 
-        <p class="settings__option settings__theme-option">
+        <button class="settings__option settings__theme-option" type="button">
           <span class="settings__radio"></span>
           <span class="settings__theme-text">Gaming theme</span>
-        </p>
-      </div>
+        </button>
+      </section>
 
-      <div class="settings__group settings__player-choice">
+      <section class="settings__group settings__player-choice">
         <div class="settings__title">
           <img src="./public/figur.svg" alt="" />
           <h2>Choose player</h2>
         </div>
 
-        <p class="settings__option">
+        <button class="settings__option" type="button">
           <span class="settings__radio"></span>
           Blue
-        </p>
+        </button>
 
-        <p class="settings__option">
+        <button class="settings__option" type="button">
           <span class="settings__radio"></span>
           Orange
-        </p>
-      </div>
+        </button>
+      </section>
 
-      <div class="settings__group settings__board-size">
+      <section class="settings__group settings__board-size">
         <div class="settings__title">
           <img src="./public/board.svg" alt="" />
           <h2>Board size</h2>
         </div>
 
-        <p class="settings__option">
+        <button class="settings__option" type="button">
           <span class="settings__radio"></span>
           16 cards
-        </p>
+        </button>
 
-        <p class="settings__option">
+        <button class="settings__option" type="button">
           <span class="settings__radio"></span>
           24 cards
-        </p>
+        </button>
 
-        <p class="settings__option">
+        <button class="settings__option" type="button">
           <span class="settings__radio"></span>
           36 cards
-        </p>
-      </div>
-      <div class="settings__theme-preview">
+        </button>
+      </section>
+      <section class="settings__theme-preview">
         <img
           class="settings__theme-image"
           src="./public/Theme _Visual_1.png"
@@ -96,8 +96,8 @@
             <span>Start</span>
           </button>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <script type="module" src="/src/settings.ts"></script>
   </body>
