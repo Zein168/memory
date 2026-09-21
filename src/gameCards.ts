@@ -1,5 +1,5 @@
 import * as game from "./game";
-console.log("gameCards.ts geladen");
+
 
 function createCardInner(image: string): HTMLDivElement {
     const inner = document.createElement("div");
@@ -28,10 +28,7 @@ function createCardFront(image: string): HTMLDivElement {
 }
 
 export function setupCards(): void {
-    console.log("setupCards läuft");
     const cards = createCardList();
-      console.log("Karten:", cards);
-
     cards.forEach((image) => {
         const card = createCard(image);
         game.board?.appendChild(card);
@@ -100,11 +97,10 @@ function markCardsAsMatched(
 
 
 function createCardList(): string[] {
-     console.log("cardCount:", game.cardCount);
-    console.log("cardImages:", game.cardImages);
     const selected = game.cardImages.slice(0, game.cardCount / 2);
     const pairs = selected.flatMap((image) => [image, image]);
     return pairs.sort(() => Math.random() - 0.5);
+
 }
 
 function createCard(image: string): HTMLDivElement {
@@ -135,6 +131,3 @@ function resetSelection(): void {
 
 setupCards();
 
-console.log("vor setupCards");
-setupCards();
-console.log("nach setupCards");

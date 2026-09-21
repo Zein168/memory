@@ -287,13 +287,11 @@ function openQuitModal(): void {
     }
 }
 
-
 function closeQuitModal(): void {
     if (quitModal) {
         quitModal.style.display = "none";
     }
 }
-
 
 function exitGame(): void {
     window.location.href = "./settings.html";
@@ -371,14 +369,12 @@ function setupHeaderForCardCount(): void {
 updateCurrentPlayer();
 updateScores();
 setupBoard();
+blueScore = 7;
+orangeScore = 5;
+showGameOver();
 setupExitModal();
 updateGamingThemeIcons();
 updateGamingThemeQuitButtons();
 updateGamingThemeFinalIcons();
 updateHomeButton();
 setupHeaderForCardCount();
-
-console.log("game.ts geladen");
-console.log("board:", board);
-console.log("cardCount:", cardCount);
-console.log("cardImages:", cardImages);
