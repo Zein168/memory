@@ -156,18 +156,6 @@ body {
     .game__players {
         background-color: #415652;
         padding: 14px 16px;
-
-        .game__player:nth-child(1) {
-            span {
-                color: #2BB1FF;
-            }
-        }
-
-        .game__player:nth-child(2) {
-            span {
-                color: #F58E39;
-            }
-        }
     }
 }
 
@@ -337,14 +325,6 @@ body.gaming-theme {
         background-color: transparent;
     }
 
-    .game__player {
-        img {
-            width: 30px;
-            height: 30px;
-            display: block;
-        }
-    }
-
     .game__players {
         background-color: white;
         border-radius: 10px;
@@ -417,15 +397,8 @@ body.gaming-theme {
         height: 120px;
     }
 
-    .game__card-inner {
-        width: 105px;
-        height: 120px;
-    }
-
     .game__card-front {
         border-radius: 10px;
-        width: 105px;
-        height: 120px;
     }
 
     .game__next-screen {
