@@ -1,6 +1,6 @@
 
-import './game.scss'
-import './global.scss'
+import "./game.scss"
+import "./global.scss"
 
 type Player = "Blue" | "Orange";
 
@@ -8,7 +8,6 @@ const EXIT_BUTTON: HTMLButtonElement | null = document.querySelector<HTMLButtonE
 const QUIT_MODAL: HTMLDivElement | null = document.querySelector<HTMLDivElement>(".game__quit-modal");
 const BACK_BUTTON: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(".game__quit-back");
 const CONFIRM_EXIT_BUTTON: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(".game__quit-confirm");
-
 const FINAL_BLUE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#final-blue-score");
 const FINAL_ORANGE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#final-orange-score");
 const WINNER_PLAYER_ELEMENT: HTMLParagraphElement | null = document.querySelector<HTMLParagraphElement>("#winner-player");
@@ -18,6 +17,14 @@ const CURRENT_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTML
 const BLUE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#blue-score");
 const ORANGE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#orange-score");
 const CONFETTI_IMAGE: HTMLImageElement | null = document.querySelector<HTMLImageElement>(".game__confetti");
+const MATCHED_CARDS_INCREMENT: number = 2;
+const LARGE_CARD_COUNT: number = 24;
+const LARGE_BOARD_GAP: string = "6px";
+const DEFAULT_BOARD_GAP: string = "10px";
+const SMALL_CARD_COUNT: number = 16;
+const SMALL_BOARD_COLUMNS: number = 4;
+const DEFAULT_BOARD_COLUMNS: number = 6;
+const NEXT_SCREEN_DELAY: number = 4000;
 
 export const CARD_COUNT: number = Number(localStorage.getItem("cardCount"));
 const SAVED_PLAYER: string | null = localStorage.getItem("player");
@@ -36,7 +43,7 @@ let orangeScore: number = 0;
 export let matchedCards: number = 0;
 
 export function increaseMatchedCards(): void {
-    matchedCards += 2;
+    matchedCards += MATCHED_CARDS_INCREMENT;
 }
 
 const CODE_VIBES_IMAGES: string[] = [
@@ -144,19 +151,19 @@ export function switchPlayer(): void {
 
 function setupBoard(): void {
     if (!BOARD) return;
-    const columns = getBoardColumns();
+    const columns: number = getBoardColumns();
     BOARD.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-    if (CARD_COUNT >= 24) {
-        BOARD.style.gap = "6px";
+    if (CARD_COUNT >= LARGE_CARD_COUNT) {
+        BOARD.style.gap = LARGE_BOARD_GAP;
     } else {
-        BOARD.style.gap = "10px";
+        BOARD.style.gap = DEFAULT_BOARD_GAP;
     }
 }
 
 
 function getBoardColumns(): number {
-    if (CARD_COUNT === 16) return 4;
-    return 6;
+    if (CARD_COUNT === SMALL_CARD_COUNT) return SMALL_BOARD_COLUMNS;
+    return DEFAULT_BOARD_COLUMNS;
 }
 
 export function showGameOver(): void {
@@ -261,7 +268,7 @@ function showNextScreen(): void {
     setTimeout(() => {
         if (gameOver) gameOver.style.display = "none";
         nextScreen?.classList.add("show");
-    }, 4000);
+    }, NEXT_SCREEN_DELAY);
 }
 
 function setupExitModal(): void {

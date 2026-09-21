@@ -1,5 +1,9 @@
 import * as game from "./game";
 
+const CARDS_PER_TURN: number = 2;
+const MISMATCH_DELAY: number = 800;
+const CARD_PAIR_DIVISOR: number = 2;
+
 
 function createCardInner(image: string): HTMLDivElement {
     const inner: HTMLDivElement = document.createElement("div");
@@ -43,7 +47,7 @@ function handleCardClick(card: HTMLDivElement): void {
     card.classList.add("flipped");
     game.selectedCards.push(card);
 
-    if (game.selectedCards.length === 2) {
+    if (game.selectedCards.length === CARDS_PER_TURN) {
         checkSelectedCards();
     }
 }
@@ -54,7 +58,7 @@ function isCardBlocked(card: HTMLDivElement): boolean {
         game.isChecking ||
         card.classList.contains("flipped") ||
         card.classList.contains("matched") ||
-        game.selectedCards.length === 2
+        game.selectedCards.length === CARDS_PER_TURN
     );
 }
 
@@ -97,8 +101,8 @@ function markCardsAsMatched(
 
 
 function createCardList(): string[] {
-    const selected: string[] = game.cardImages.slice(0, game.CARD_COUNT / 2);
-    const pairs: string[] = selected.flatMap((image) => [image, image]);
+    const selected: string[] = game.cardImages.slice(0, CARD_PAIR_DIVISOR);
+    const pairs: string[] = selected.flatMap((image: string) => [image, image]);
     return pairs.sort(() => Math.random() - 0.5);
 
 }
@@ -121,7 +125,7 @@ function handleMismatch(
         second.classList.remove("flipped");
         resetSelection();
         game.switchPlayer();
-    }, 800);
+    }, MISMATCH_DELAY);
 }
 
 function resetSelection(): void {
