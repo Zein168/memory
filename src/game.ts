@@ -4,39 +4,39 @@ import './global.scss'
 
 type Player = "Blue" | "Orange";
 
-const exitButton = document.querySelector<HTMLButtonElement>(".game__exit");
-const quitModal = document.querySelector<HTMLDivElement>(".game__quit-modal");
-const backButton = document.querySelector<HTMLButtonElement>(".game__quit-back");
-const confirmExitButton = document.querySelector<HTMLButtonElement>(".game__quit-confirm");
+const EXIT_BUTTON = document.querySelector<HTMLButtonElement>(".game__exit");
+const QUIT_MODAL = document.querySelector<HTMLDivElement>(".game__quit-modal");
+const BACK_BUTTON = document.querySelector<HTMLButtonElement>(".game__quit-back");
+const CONFIRM_EXIT_BUTTON = document.querySelector<HTMLButtonElement>(".game__quit-confirm");
 
-const finalBlueScoreElement =
+const FINAL_BLUE_SCORE_ELEMENT =
     document.querySelector<HTMLSpanElement>("#final-blue-score");
-const finalOrangeScoreElement =
+const FINAL_ORANGE_SCORE_ELEMENT =
     document.querySelector<HTMLSpanElement>("#final-orange-score");
-const winnerPlayerElement =
+const WINNER_PLAYER_ELEMENT =
     document.querySelector<HTMLParagraphElement>("#winner-player");
-const winnerPlayerIcon =
+const WINNER_PLAYER_ICON =
     document.querySelector<HTMLImageElement>("#winner-player-icon");
-const winnerTitle =
+const WINNER_TITLE =
     document.querySelector<HTMLHeadingElement>("#winner-title");
-const currentPlayerIcon =
+const CURRENT_PLAYER_ICON =
     document.querySelector<HTMLImageElement>("#current-player-icon");
-const blueScoreElement =
+const BLUE_SCORE_ELEMENT =
     document.querySelector<HTMLSpanElement>("#blue-score");
-const orangeScoreElement =
+const ORANGE_SCORE_ELEMENT =
     document.querySelector<HTMLSpanElement>("#orange-score");
-const confettiImage =
+const CONFETTI_IMAGE =
     document.querySelector<HTMLImageElement>(".game__confetti");
 
-export const cardCount = Number(localStorage.getItem("cardCount"));
-const savedPlayer = localStorage.getItem("player");
-const selectedTheme = localStorage.getItem("theme");
-if (selectedTheme === "Gaming theme") {
+export const CARD_COUNT = Number(localStorage.getItem("cardCount"));
+const SAVED_PLAYER = localStorage.getItem("player");
+const SELECTED_THEME = localStorage.getItem("theme");
+if (SELECTED_THEME === "Gaming theme") {
     document.body.classList.add("gaming-theme");
 }
 
 let currentPlayer: Player =
-    savedPlayer === "Orange" ? "Orange" : "Blue";
+    SAVED_PLAYER === "Orange" ? "Orange" : "Blue";
 
 export let selectedCards: HTMLDivElement[] = [];
 export let isChecking = false;
@@ -47,7 +47,7 @@ export function increaseMatchedCards(): void {
     matchedCards += 2;
 }
 
-const codeVibesImages: string[] = [
+const CODE_VIBES_IMAGES: string[] = [
     "./public/typescript.svg",
     "./public/javascript.svg",
     "./public/html5.svg",
@@ -68,7 +68,7 @@ const codeVibesImages: string[] = [
     "./public/nextdotjs.svg",
 ];
 
-const gamingThemeImages: string[] = [
+const GAMING_THEME_IMAGES: string[] = [
     "./public/gaming_theme_cards/ace.svg",
     "./public/gaming_theme_cards/circle.svg",
     "./public/gaming_theme_cards/coin.svg",
@@ -91,16 +91,16 @@ const gamingThemeImages: string[] = [
 
 
 
-export const board = document.querySelector<HTMLDivElement>(".game__board");
+export const BOARD = document.querySelector<HTMLDivElement>(".game__board");
 
-if (!board) {
+if (!BOARD) {
     throw new Error("Game board not found");
 }
 
-const gamingThemeBluePlayerIcon =
+const GAMING_THEME_BLUE_PLAYER_ICON =
     document.querySelector<HTMLImageElement>("#gaming-theme-blue-player-icon");
 
-const gamingThemeOrangePlayerIcon =
+const GAMING_THEME_ORANGE_PLAYER_ICON =
     document.querySelector<HTMLImageElement>("#gaming-theme-orange-player-icon");
 
 export function setIsChecking(value: boolean): void {
@@ -118,9 +118,9 @@ export function updatePlayerScore(): void {
 }
 
 function updateCurrentPlayer(): void {
-    if (!currentPlayerIcon) return;
-    if (selectedTheme === "Gaming theme") {
-        currentPlayerIcon.src =
+    if (!CURRENT_PLAYER_ICON) return;
+    if (SELECTED_THEME === "Gaming theme") {
+        CURRENT_PLAYER_ICON.src =
             currentPlayer === "Blue"
                 ? "./public/chess_pawn_blue_with_background.svg"
                 : "./public/chess_pawn_orange_with_background .svg";
@@ -128,7 +128,7 @@ function updateCurrentPlayer(): void {
         return;
     }
 
-    currentPlayerIcon.src =
+    CURRENT_PLAYER_ICON.src =
         currentPlayer === "Blue"
             ? "./public/frame_blue.svg"
             : "./public/frame_orange.svg";
@@ -136,12 +136,12 @@ function updateCurrentPlayer(): void {
 
 
 function updateScores(): void {
-    if (blueScoreElement) {
-        blueScoreElement.textContent = String(blueScore);
+    if (BLUE_SCORE_ELEMENT) {
+        BLUE_SCORE_ELEMENT.textContent = String(blueScore);
     }
 
-    if (orangeScoreElement) {
-        orangeScoreElement.textContent = String(orangeScore);
+    if (ORANGE_SCORE_ELEMENT) {
+        ORANGE_SCORE_ELEMENT.textContent = String(orangeScore);
     }
 }
 
@@ -153,19 +153,19 @@ export function switchPlayer(): void {
 
 
 function setupBoard(): void {
-    if (!board) return;
+    if (!BOARD) return;
     const columns = getBoardColumns();
-    board.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-    if (cardCount >= 24) {
-        board.style.gap = "6px";
+    BOARD.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+    if (CARD_COUNT >= 24) {
+        BOARD.style.gap = "6px";
     } else {
-        board.style.gap = "10px";
+        BOARD.style.gap = "10px";
     }
 }
 
 
 function getBoardColumns(): number {
-    if (cardCount === 16) return 4;
+    if (CARD_COUNT === 16) return 4;
     return 6;
 }
 
@@ -187,12 +187,12 @@ function hideGameElements(): void {
 
 
 function updateFinalScores(): void {
-    if (finalBlueScoreElement) {
-        finalBlueScoreElement.textContent = String(blueScore);
+    if (FINAL_BLUE_SCORE_ELEMENT) {
+        FINAL_BLUE_SCORE_ELEMENT.textContent = String(blueScore);
     }
 
-    if (finalOrangeScoreElement) {
-        finalOrangeScoreElement.textContent = String(orangeScore);
+    if (FINAL_ORANGE_SCORE_ELEMENT) {
+        FINAL_ORANGE_SCORE_ELEMENT.textContent = String(orangeScore);
     }
 }
 
@@ -219,19 +219,19 @@ function setWinnerContent(): void {
 
 
 function setWinner(player: Player): void {
-    if (!winnerTitle || !winnerPlayerElement || !winnerPlayerIcon) return;
+    if (!WINNER_TITLE || !WINNER_PLAYER_ELEMENT || !WINNER_PLAYER_ICON) return;
 
-    winnerTitle.textContent = "The winner is";
-    winnerPlayerElement.textContent = `${player} player`;
-    winnerPlayerElement.classList.remove("blue", "orange");
-    winnerPlayerElement.classList.add(player.toLowerCase());
+    WINNER_TITLE.textContent = "The winner is";
+    WINNER_PLAYER_ELEMENT.textContent = `${player} player`;
+    WINNER_PLAYER_ELEMENT.classList.remove("blue", "orange");
+    WINNER_PLAYER_ELEMENT.classList.add(player.toLowerCase());
 
-    if (selectedTheme === "Gaming theme") {
-        winnerPlayerIcon.src = "./public/pockal.svg";
-        winnerPlayerIcon.alt = "Trophy";
+    if (SELECTED_THEME === "Gaming theme") {
+        WINNER_PLAYER_ICON.src = "./public/pockal.svg";
+        WINNER_PLAYER_ICON.alt = "Trophy";
     } else {
-        winnerPlayerIcon.src = `./public/chess_pawn_${player.toLowerCase()}.svg`;
-        winnerPlayerIcon.alt = `${player} player`;
+        WINNER_PLAYER_ICON.src = `./public/chess_pawn_${player.toLowerCase()}.svg`;
+        WINNER_PLAYER_ICON.alt = `${player} player`;
     }
 
     showConfetti();
@@ -241,26 +241,26 @@ function setDraw(): void {
     const nextScreen = document.querySelector<HTMLElement>(".game__next-screen");
 
     nextScreen?.classList.add("draw");
-    winnerTitle!.textContent = "It's a";
-    winnerPlayerElement!.textContent = "Draw";
-    winnerPlayerElement!.classList.remove("blue", "orange");
+    WINNER_TITLE!.textContent = "It's a";
+    WINNER_PLAYER_ELEMENT!.textContent = "Draw";
+    WINNER_PLAYER_ELEMENT!.classList.remove("blue", "orange");
     const isGamingTheme = document.body.classList.contains("gaming-theme");
-    winnerPlayerIcon!.src = isGamingTheme
+    WINNER_PLAYER_ICON!.src = isGamingTheme
         ? "./public/draw_gaming_theme.svg"
         : "./public/draw_code_vibes_theme.svg";
 
-    winnerPlayerIcon!.alt = "Draw";
-    if (confettiImage) confettiImage.style.display = "none";
+    WINNER_PLAYER_ICON!.alt = "Draw";
+    if (CONFETTI_IMAGE) CONFETTI_IMAGE.style.display = "none";
 }
 
 
 function showConfetti(): void {
-    if (!confettiImage) return;
-    if (selectedTheme === "Gaming theme") {
-        confettiImage.style.display = "none";
+    if (!CONFETTI_IMAGE) return;
+    if (SELECTED_THEME === "Gaming theme") {
+        CONFETTI_IMAGE.style.display = "none";
         return;
     }
-    confettiImage.style.display = "block";
+    CONFETTI_IMAGE.style.display = "block";
 }
 
 
@@ -275,21 +275,21 @@ function showNextScreen(): void {
 }
 
 function setupExitModal(): void {
-    exitButton?.addEventListener("click", openQuitModal);
-    backButton?.addEventListener("click", closeQuitModal);
-    confirmExitButton?.addEventListener("click", exitGame);
+    EXIT_BUTTON?.addEventListener("click", openQuitModal);
+    BACK_BUTTON?.addEventListener("click", closeQuitModal);
+    CONFIRM_EXIT_BUTTON?.addEventListener("click", exitGame);
 }
 
 
 function openQuitModal(): void {
-    if (quitModal) {
-        quitModal.style.display = "flex";
+    if (QUIT_MODAL) {
+        QUIT_MODAL.style.display = "flex";
     }
 }
 
 function closeQuitModal(): void {
-    if (quitModal) {
-        quitModal.style.display = "none";
+    if (QUIT_MODAL) {
+        QUIT_MODAL.style.display = "none";
     }
 }
 
@@ -298,46 +298,46 @@ function exitGame(): void {
 }
 
 function updateGamingThemeIcons(): void {
-    if (selectedTheme !== "Gaming theme") return;
+    if (SELECTED_THEME !== "Gaming theme") return;
 
-    gamingThemeBluePlayerIcon?.setAttribute(
+    GAMING_THEME_BLUE_PLAYER_ICON?.setAttribute(
         "src",
         "./public/chess_pawn_blue.svg"
     );
 
-    gamingThemeOrangePlayerIcon?.setAttribute(
+    GAMING_THEME_ORANGE_PLAYER_ICON?.setAttribute(
         "src",
         "./public/chess_pawn_orange.svg"
     );
 }
 
 function getCardImages(): string[] {
-    if (selectedTheme === "Gaming theme") {
-        return gamingThemeImages;
+    if (SELECTED_THEME === "Gaming theme") {
+        return GAMING_THEME_IMAGES;
     }
 
-    return codeVibesImages;
+    return CODE_VIBES_IMAGES;
 }
 export const cardImages = getCardImages();
 
 
 
 function updateGamingThemeQuitButtons(): void {
-    if (selectedTheme !== "Gaming theme") return;
+    if (SELECTED_THEME !== "Gaming theme") return;
 
-    if (backButton) {
-        backButton.textContent = "no, back to game";
+    if (BACK_BUTTON) {
+        BACK_BUTTON.textContent = "no, back to game";
     }
 
-    if (confirmExitButton) {
-        confirmExitButton.textContent = "yes, quit game";
+    if (CONFIRM_EXIT_BUTTON) {
+        CONFIRM_EXIT_BUTTON.textContent = "yes, quit game";
     }
 }
 
 const finalPlayerIcons = document.querySelectorAll<HTMLImageElement>(".game__game-over .game__player img");
 
 function updateGamingThemeFinalIcons(): void {
-    if (selectedTheme !== "Gaming theme") return;
+    if (SELECTED_THEME !== "Gaming theme") return;
 
     if (finalPlayerIcons[0]) {
         finalPlayerIcons[0].src = "./public/chess_pawn_blue.svg";
@@ -369,9 +369,6 @@ function setupHeaderForCardCount(): void {
 updateCurrentPlayer();
 updateScores();
 setupBoard();
-blueScore = 7;
-orangeScore = 5;
-showGameOver();
 setupExitModal();
 updateGamingThemeIcons();
 updateGamingThemeQuitButtons();

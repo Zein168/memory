@@ -31,7 +31,7 @@ export function setupCards(): void {
     const cards = createCardList();
     cards.forEach((image) => {
         const card = createCard(image);
-        game.board?.appendChild(card);
+        game.BOARD?.appendChild(card);
         card.addEventListener("click", () => handleCardClick(card));
     });
 }
@@ -81,7 +81,7 @@ function handleMatch(
     resetSelection();
     game.switchPlayer();
 
-    if (game.matchedCards === game.cardCount) {
+    if (game.matchedCards === game.CARD_COUNT) {
         game.showGameOver();
     }
 }
@@ -97,7 +97,7 @@ function markCardsAsMatched(
 
 
 function createCardList(): string[] {
-    const selected = game.cardImages.slice(0, game.cardCount / 2);
+    const selected = game.cardImages.slice(0, game.CARD_COUNT / 2);
     const pairs = selected.flatMap((image) => [image, image]);
     return pairs.sort(() => Math.random() - 0.5);
 
