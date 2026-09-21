@@ -4,33 +4,24 @@ import './global.scss'
 
 type Player = "Blue" | "Orange";
 
-const EXIT_BUTTON = document.querySelector<HTMLButtonElement>(".game__exit");
-const QUIT_MODAL = document.querySelector<HTMLDivElement>(".game__quit-modal");
-const BACK_BUTTON = document.querySelector<HTMLButtonElement>(".game__quit-back");
-const CONFIRM_EXIT_BUTTON = document.querySelector<HTMLButtonElement>(".game__quit-confirm");
+const EXIT_BUTTON: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(".game__exit");
+const QUIT_MODAL: HTMLDivElement | null = document.querySelector<HTMLDivElement>(".game__quit-modal");
+const BACK_BUTTON: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(".game__quit-back");
+const CONFIRM_EXIT_BUTTON: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(".game__quit-confirm");
 
-const FINAL_BLUE_SCORE_ELEMENT =
-    document.querySelector<HTMLSpanElement>("#final-blue-score");
-const FINAL_ORANGE_SCORE_ELEMENT =
-    document.querySelector<HTMLSpanElement>("#final-orange-score");
-const WINNER_PLAYER_ELEMENT =
-    document.querySelector<HTMLParagraphElement>("#winner-player");
-const WINNER_PLAYER_ICON =
-    document.querySelector<HTMLImageElement>("#winner-player-icon");
-const WINNER_TITLE =
-    document.querySelector<HTMLHeadingElement>("#winner-title");
-const CURRENT_PLAYER_ICON =
-    document.querySelector<HTMLImageElement>("#current-player-icon");
-const BLUE_SCORE_ELEMENT =
-    document.querySelector<HTMLSpanElement>("#blue-score");
-const ORANGE_SCORE_ELEMENT =
-    document.querySelector<HTMLSpanElement>("#orange-score");
-const CONFETTI_IMAGE =
-    document.querySelector<HTMLImageElement>(".game__confetti");
+const FINAL_BLUE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#final-blue-score");
+const FINAL_ORANGE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#final-orange-score");
+const WINNER_PLAYER_ELEMENT: HTMLParagraphElement | null = document.querySelector<HTMLParagraphElement>("#winner-player");
+const WINNER_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#winner-player-icon");
+const WINNER_TITLE: HTMLHeadingElement | null = document.querySelector<HTMLHeadingElement>("#winner-title");
+const CURRENT_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#current-player-icon");
+const BLUE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#blue-score");
+const ORANGE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#orange-score");
+const CONFETTI_IMAGE: HTMLImageElement | null = document.querySelector<HTMLImageElement>(".game__confetti");
 
-export const CARD_COUNT = Number(localStorage.getItem("cardCount"));
-const SAVED_PLAYER = localStorage.getItem("player");
-const SELECTED_THEME = localStorage.getItem("theme");
+export const CARD_COUNT: number = Number(localStorage.getItem("cardCount"));
+const SAVED_PLAYER: string | null = localStorage.getItem("player");
+const SELECTED_THEME: string | null = localStorage.getItem("theme");
 if (SELECTED_THEME === "Gaming theme") {
     document.body.classList.add("gaming-theme");
 }
@@ -39,10 +30,11 @@ let currentPlayer: Player =
     SAVED_PLAYER === "Orange" ? "Orange" : "Blue";
 
 export let selectedCards: HTMLDivElement[] = [];
-export let isChecking = false;
-let blueScore = 0;
-let orangeScore = 0;
-export let matchedCards = 0;
+export let isChecking: boolean = false;
+let blueScore: number = 0;
+let orangeScore: number = 0;
+export let matchedCards: number = 0;
+
 export function increaseMatchedCards(): void {
     matchedCards += 2;
 }
@@ -97,11 +89,9 @@ if (!BOARD) {
     throw new Error("Game board not found");
 }
 
-const GAMING_THEME_BLUE_PLAYER_ICON =
-    document.querySelector<HTMLImageElement>("#gaming-theme-blue-player-icon");
+const GAMING_THEME_BLUE_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#gaming-theme-blue-player-icon");
 
-const GAMING_THEME_ORANGE_PLAYER_ICON =
-    document.querySelector<HTMLImageElement>("#gaming-theme-orange-player-icon");
+const GAMING_THEME_ORANGE_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#gaming-theme-orange-player-icon");
 
 export function setIsChecking(value: boolean): void {
     isChecking = value;
@@ -178,8 +168,8 @@ export function showGameOver(): void {
 
 
 function hideGameElements(): void {
-    const header = document.querySelector<HTMLElement>(".game__header");
-    const gameBoard = document.querySelector<HTMLElement>(".game__board");
+    const header: HTMLElement | null = document.querySelector<HTMLElement>(".game__header");
+    const gameBoard: HTMLElement | null = document.querySelector<HTMLElement>(".game__board");
 
     if (header) header.style.display = "none";
     if (gameBoard) gameBoard.style.display = "none";
@@ -198,7 +188,7 @@ function updateFinalScores(): void {
 
 
 function showWinner(): void {
-    const gameOver = document.querySelector<HTMLElement>(".game__game-over");
+    const gameOver: HTMLElement | null = document.querySelector<HTMLElement>(".game__game-over");
 
     if (!gameOver) return;
 
@@ -238,13 +228,13 @@ function setWinner(player: Player): void {
 }
 
 function setDraw(): void {
-    const nextScreen = document.querySelector<HTMLElement>(".game__next-screen");
+    const nextScreen: HTMLElement | null = document.querySelector<HTMLElement>(".game__next-screen");
 
     nextScreen?.classList.add("draw");
     WINNER_TITLE!.textContent = "It's a";
     WINNER_PLAYER_ELEMENT!.textContent = "Draw";
     WINNER_PLAYER_ELEMENT!.classList.remove("blue", "orange");
-    const isGamingTheme = document.body.classList.contains("gaming-theme");
+    const isGamingTheme: boolean = document.body.classList.contains("gaming-theme");
     WINNER_PLAYER_ICON!.src = isGamingTheme
         ? "./public/draw_gaming_theme.svg"
         : "./public/draw_code_vibes_theme.svg";
@@ -265,8 +255,8 @@ function showConfetti(): void {
 
 
 function showNextScreen(): void {
-    const gameOver = document.querySelector<HTMLElement>(".game__game-over");
-    const nextScreen = document.querySelector<HTMLElement>(".game__next-screen");
+    const gameOver: HTMLElement | null = document.querySelector<HTMLElement>(".game__game-over");
+    const nextScreen: HTMLElement | null = document.querySelector<HTMLElement>(".game__next-screen");
 
     setTimeout(() => {
         if (gameOver) gameOver.style.display = "none";
@@ -318,7 +308,7 @@ function getCardImages(): string[] {
 
     return CODE_VIBES_IMAGES;
 }
-export const cardImages = getCardImages();
+export const cardImages: string[] = getCardImages();
 
 
 
@@ -334,7 +324,7 @@ function updateGamingThemeQuitButtons(): void {
     }
 }
 
-const finalPlayerIcons = document.querySelectorAll<HTMLImageElement>(".game__game-over .game__player img");
+const finalPlayerIcons: NodeListOf<HTMLImageElement> = document.querySelectorAll<HTMLImageElement>(".game__game-over .game__player img");
 
 function updateGamingThemeFinalIcons(): void {
     if (SELECTED_THEME !== "Gaming theme") return;
@@ -349,17 +339,17 @@ function updateGamingThemeFinalIcons(): void {
 }
 
 function updateHomeButton(): void {
-    const homeButton = document.querySelector<HTMLAnchorElement>(".game__back-to-start");
+    const homeButton: HTMLAnchorElement | null = document.querySelector<HTMLAnchorElement>(".game__back-to-start");
     if (!homeButton) return;
-    const isGamingTheme = document.body.classList.contains("gaming-theme");
+    const isGamingTheme: boolean = document.body.classList.contains("gaming-theme");
     homeButton.textContent = isGamingTheme
         ? "Home"
         : "Back to start";
 }
 
 function setupHeaderForCardCount(): void {
-    const cardCount = localStorage.getItem("cardCount");
-    const header = document.querySelector<HTMLElement>(".game__header");
+    const cardCount: string | null = localStorage.getItem("cardCount");
+    const header: HTMLElement | null = document.querySelector<HTMLElement>(".game__header");
 
     if (!header || cardCount !== "36") return;
 
