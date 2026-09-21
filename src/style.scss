@@ -6,6 +6,11 @@ section {
     position: relative;
 }
 
+section img {
+    width: 500px;
+    height: 500px;
+}
+
 h1 {
     font-size: 48px;
     color: white;
@@ -19,7 +24,7 @@ h1 {
 }
 
 .header-title {
-    transform: translateY(233px);
+    transform: translateY(361px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,7 +34,7 @@ h1 {
 
 .controller-icon {
     position: absolute;
-    top: -112px;
+    top: -36px
 }
 
 .start_button {
@@ -42,7 +47,7 @@ h1 {
     width: 254px;
     text-decoration: none;
     background-color: #F0EA6E;
-    margin: 302px auto 0;
+    margin: 470px auto 0;
     transition:
         width 0.3s ease,
         transform 0.2s ease;
@@ -72,3 +77,4 @@ h1 {
         transform: scale(1.2);
     }
 }
+
