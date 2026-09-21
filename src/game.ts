@@ -28,7 +28,7 @@ const orangeScoreElement =
 const confettiImage =
     document.querySelector<HTMLImageElement>(".game__confetti");
 
-const cardCount = Number(localStorage.getItem("cardCount"));
+export const cardCount = Number(localStorage.getItem("cardCount"));
 const savedPlayer = localStorage.getItem("player");
 const selectedTheme = localStorage.getItem("theme");
 if (selectedTheme === "Gaming theme") {
@@ -38,11 +38,14 @@ if (selectedTheme === "Gaming theme") {
 let currentPlayer: Player =
     savedPlayer === "Orange" ? "Orange" : "Blue";
 
-let selectedCards: HTMLDivElement[] = [];
-let isChecking = false;
+export let selectedCards: HTMLDivElement[] = [];
+export let isChecking = false;
 let blueScore = 0;
 let orangeScore = 0;
-let matchedCards = 0;
+export let matchedCards = 0;
+export function increaseMatchedCards(): void {
+    matchedCards += 2;
+}
 
 const codeVibesImages: string[] = [
     "./public/typescript.svg",
@@ -88,7 +91,7 @@ const gamingThemeImages: string[] = [
 
 
 
-const board = document.querySelector<HTMLDivElement>(".game__board");
+export const board = document.querySelector<HTMLDivElement>(".game__board");
 
 if (!board) {
     throw new Error("Game board not found");
@@ -100,121 +103,11 @@ const gamingThemeBluePlayerIcon =
 const gamingThemeOrangePlayerIcon =
     document.querySelector<HTMLImageElement>("#gaming-theme-orange-player-icon");
 
-function createCardList(): string[] {
-    const selected = cardImages.slice(0, cardCount / 2);
-    const pairs = selected.flatMap((image) => [image, image]);
-
-    return pairs.sort(() => Math.random() - 0.5);
+export function setIsChecking(value: boolean): void {
+    isChecking = value;
 }
 
-
-function createCard(image: string): HTMLDivElement {
-    const card = document.createElement("div");
-    card.classList.add("game__card");
-    card.dataset.image = image;
-
-    const inner = createCardInner(image);
-    card.appendChild(inner);
-
-    return card;
-}
-
-
-function createCardInner(image: string): HTMLDivElement {
-    const inner = document.createElement("div");
-    inner.classList.add("game__card-inner");
-
-    const front = createCardFront(image);
-    const back = document.createElement("div");
-
-    back.classList.add("game__card-back");
-    inner.append(front, back);
-
-    return inner;
-}
-
-
-function createCardFront(image: string): HTMLDivElement {
-    const front = document.createElement("div");
-    const img = document.createElement("img");
-
-    front.classList.add("game__card-front");
-    img.src = image;
-    img.alt = "Tech icon";
-
-    front.appendChild(img);
-    return front;
-}
-
-function setupCards(): void {
-    cards.forEach((image) => {
-        const card = createCard(image);
-        board?.appendChild(card);
-        card.addEventListener("click", () => handleCardClick(card));
-    });
-}
-
-
-function handleCardClick(card: HTMLDivElement): void {
-    if (isCardBlocked(card)) return;
-
-    card.classList.add("flipped");
-    selectedCards.push(card);
-
-    if (selectedCards.length === 2) {
-        checkSelectedCards();
-    }
-}
-
-
-function isCardBlocked(card: HTMLDivElement): boolean {
-    return (
-        isChecking ||
-        card.classList.contains("flipped") ||
-        card.classList.contains("matched") ||
-        selectedCards.length === 2
-    );
-}
-
-function checkSelectedCards(): void {
-    isChecking = true;
-
-    const [first, second] = selectedCards;
-
-    if (first.dataset.image === second.dataset.image) {
-        handleMatch(first, second);
-    } else {
-        handleMismatch(first, second);
-    }
-}
-
-
-function handleMatch(
-    first: HTMLDivElement,
-    second: HTMLDivElement
-): void {
-    markCardsAsMatched(first, second);
-    updatePlayerScore();
-    matchedCards += 2;
-    resetSelection();
-    switchPlayer();
-
-    if (matchedCards === cardCount) {
-        showGameOver();
-    }
-}
-
-
-function markCardsAsMatched(
-    first: HTMLDivElement,
-    second: HTMLDivElement
-): void {
-    first.classList.add("matched");
-    second.classList.add("matched");
-}
-
-
-function updatePlayerScore(): void {
+export function updatePlayerScore(): void {
     if (currentPlayer === "Blue") {
         blueScore++;
     } else {
@@ -222,25 +115,6 @@ function updatePlayerScore(): void {
     }
 
     updateScores();
-}
-
-
-function handleMismatch(
-    first: HTMLDivElement,
-    second: HTMLDivElement
-): void {
-    setTimeout(() => {
-        first.classList.remove("flipped");
-        second.classList.remove("flipped");
-        resetSelection();
-        switchPlayer();
-    }, 800);
-}
-
-
-function resetSelection(): void {
-    selectedCards = [];
-    isChecking = false;
 }
 
 function updateCurrentPlayer(): void {
@@ -272,7 +146,7 @@ function updateScores(): void {
 }
 
 
-function switchPlayer(): void {
+export function switchPlayer(): void {
     currentPlayer = currentPlayer === "Blue" ? "Orange" : "Blue";
     updateCurrentPlayer();
 }
@@ -295,7 +169,7 @@ function getBoardColumns(): number {
     return 6;
 }
 
-function showGameOver(): void {
+export function showGameOver(): void {
     hideGameElements();
     updateFinalScores();
     showWinner();
@@ -446,8 +320,8 @@ function getCardImages(): string[] {
 
     return codeVibesImages;
 }
-const cardImages = getCardImages();
-const cards = createCardList();
+export const cardImages = getCardImages();
+
 
 
 function updateGamingThemeQuitButtons(): void {
@@ -496,7 +370,6 @@ function setupHeaderForCardCount(): void {
 
 updateCurrentPlayer();
 updateScores();
-setupCards();
 setupBoard();
 setupExitModal();
 updateGamingThemeIcons();
@@ -504,3 +377,8 @@ updateGamingThemeQuitButtons();
 updateGamingThemeFinalIcons();
 updateHomeButton();
 setupHeaderForCardCount();
+
+console.log("game.ts geladen");
+console.log("board:", board);
+console.log("cardCount:", cardCount);
+console.log("cardImages:", cardImages);
