@@ -2,11 +2,11 @@ import * as game from "./game";
 
 
 function createCardInner(image: string): HTMLDivElement {
-    const inner = document.createElement("div");
+    const inner: HTMLDivElement = document.createElement("div");
     inner.classList.add("game__card-inner");
 
-    const front = createCardFront(image);
-    const back = document.createElement("div");
+    const front: HTMLDivElement = createCardFront(image);
+    const back: HTMLDivElement = document.createElement("div");
 
     back.classList.add("game__card-back");
     inner.append(front, back);
@@ -16,8 +16,8 @@ function createCardInner(image: string): HTMLDivElement {
 
 
 function createCardFront(image: string): HTMLDivElement {
-    const front = document.createElement("div");
-    const img = document.createElement("img");
+    const front: HTMLDivElement = document.createElement("div");
+    const img: HTMLImageElement = document.createElement("img");
 
     front.classList.add("game__card-front");
     img.src = image;
@@ -28,9 +28,9 @@ function createCardFront(image: string): HTMLDivElement {
 }
 
 export function setupCards(): void {
-    const cards = createCardList();
-    cards.forEach((image) => {
-        const card = createCard(image);
+    const cards: string[] = createCardList();
+    cards.forEach((image: string) => {
+        const card: HTMLDivElement = createCard(image);
         game.BOARD?.appendChild(card);
         card.addEventListener("click", () => handleCardClick(card));
     });
@@ -61,7 +61,7 @@ function isCardBlocked(card: HTMLDivElement): boolean {
 function checkSelectedCards(): void {
     game.setIsChecking(true);
 
-    const [first, second] = game.selectedCards;
+    const [first, second]: HTMLDivElement[] = game.selectedCards;
 
     if (first.dataset.image === second.dataset.image) {
         handleMatch(first, second);
@@ -97,17 +97,17 @@ function markCardsAsMatched(
 
 
 function createCardList(): string[] {
-    const selected = game.cardImages.slice(0, game.CARD_COUNT / 2);
-    const pairs = selected.flatMap((image) => [image, image]);
+    const selected: string[] = game.cardImages.slice(0, game.CARD_COUNT / 2);
+    const pairs: string[] = selected.flatMap((image) => [image, image]);
     return pairs.sort(() => Math.random() - 0.5);
 
 }
 
 function createCard(image: string): HTMLDivElement {
-    const card = document.createElement("div");
+    const card: HTMLDivElement = document.createElement("div");
     card.classList.add("game__card");
     card.dataset.image = image;
-    const inner = createCardInner(image);
+    const inner: HTMLDivElement = createCardInner(image);
     card.appendChild(inner);
     return card;
 }
