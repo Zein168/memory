@@ -7,8 +7,8 @@ section {
 }
 
 section img {
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
 }
 
 h1 {
@@ -24,7 +24,7 @@ h1 {
 }
 
 .header-title {
-    transform: translateY(361px);
+    transform: translateY(250px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,7 +34,7 @@ h1 {
 
 .controller-icon {
     position: absolute;
-    top: -36px
+    top: -45px
 }
 
 .start_button {
@@ -47,7 +47,7 @@ h1 {
     width: 254px;
     text-decoration: none;
     background-color: #F0EA6E;
-    margin: 470px auto 0;
+    margin: 340px auto 0;
     transition:
         width 0.3s ease,
         transform 0.2s ease;

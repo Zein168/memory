@@ -497,9 +497,6 @@ function setupHeaderForCardCount(): void {
 updateCurrentPlayer();
 updateScores();
 setupCards();
-blueScore = 3;
-orangeScore = 4;
-showGameOver();
 setupBoard();
 setupExitModal();
 updateGamingThemeIcons();
