@@ -231,15 +231,3 @@
         }
     }
 }
-
-@media (min-width: 1440px) {
-    .settings {
-        width: 916px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .settings__theme-preview {
-        left: calc(50% + 42px);
-    }
-}
