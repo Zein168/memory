@@ -437,3 +437,10 @@ body.gaming-theme {
         border-radius: 10px;
     }
 }
+
+@media (min-width: $widescreen) {
+    .game {
+        width: 1200px;
+        margin-inline: auto;
+    }
+}

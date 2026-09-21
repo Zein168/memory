@@ -6,11 +6,6 @@ section {
     position: relative;
 }
 
-section img {
-    width: 400px;
-    height: 400px;
-}
-
 h1 {
     font-size: 48px;
     color: white;
@@ -34,7 +29,7 @@ h1 {
 
 .controller-icon {
     position: absolute;
-    top: -45px
+    top: -45px;
 }
 
 .start_button {
@@ -67,7 +62,6 @@ h1 {
         color: black;
         font-size: 40px;
     }
-
 
     &:hover img:first-child {
         transform: rotate(-30deg);
