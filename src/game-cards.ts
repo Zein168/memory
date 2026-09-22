@@ -5,6 +5,12 @@ const MISMATCH_DELAY: number = 800;
 const CARD_PAIR_DIVISOR: number = 2;
 
 
+/**
+ * Creates the inner container of a game card.
+ *
+ * @param image - The image displayed on the front of the card.
+ * @returns The inner card element containing the front and back.
+ */
 function createCardInner(image: string): HTMLDivElement {
     const inner: HTMLDivElement = document.createElement("div");
     inner.classList.add("game__card-inner");
@@ -18,7 +24,12 @@ function createCardInner(image: string): HTMLDivElement {
     return inner;
 }
 
-
+/**
+ * Creates the front side of a game card.
+ *
+ * @param image - The image displayed on the card.
+ * @returns The card front containing the image.
+ */
 function createCardFront(image: string): HTMLDivElement {
     const front: HTMLDivElement = document.createElement("div");
     const img: HTMLImageElement = document.createElement("img");
@@ -31,6 +42,11 @@ function createCardFront(image: string): HTMLDivElement {
     return front;
 }
 
+/**
+ * Creates all game cards and adds click events to them.
+ *
+ * @returns Nothing.
+ */
 export function setupCards(): void {
     const cards: string[] = createCardList();
     cards.forEach((image: string) => {
@@ -40,7 +56,12 @@ export function setupCards(): void {
     });
 }
 
-
+/**
+ * Handles a card click and checks whether two cards are selected.
+ *
+ * @param card - The card that was clicked.
+ * @returns Nothing.
+ */
 function handleCardClick(card: HTMLDivElement): void {
     if (isCardBlocked(card)) return;
 
@@ -52,7 +73,12 @@ function handleCardClick(card: HTMLDivElement): void {
     }
 }
 
-
+/**
+ * Checks whether a card can be selected.
+ *
+ * @param card - The card that should be checked.
+ * @returns True when the card cannot be selected.
+ */
 function isCardBlocked(card: HTMLDivElement): boolean {
     return (
         game.isChecking ||
@@ -62,6 +88,11 @@ function isCardBlocked(card: HTMLDivElement): boolean {
     );
 }
 
+/**
+ * Checks whether the two selected cards match.
+ *
+ * @returns Nothing.
+ */
 function checkSelectedCards(): void {
     game.setIsChecking(true);
 
@@ -74,7 +105,13 @@ function checkSelectedCards(): void {
     }
 }
 
-
+/**
+ * Handles a matching pair and updates the game state.
+ *
+ * @param first - The first matching card.
+ * @param second - The second matching card.
+ * @returns Nothing.
+ */
 function handleMatch(
     first: HTMLDivElement,
     second: HTMLDivElement
@@ -90,7 +127,13 @@ function handleMatch(
     }
 }
 
-
+/**
+ * Marks both matching cards as matched.
+ *
+ * @param first - The first matching card.
+ * @param second - The second matching card.
+ * @returns Nothing.
+ */
 function markCardsAsMatched(
     first: HTMLDivElement,
     second: HTMLDivElement
@@ -99,7 +142,11 @@ function markCardsAsMatched(
     second.classList.add("matched");
 }
 
-
+/**
+ * Creates a shuffled list containing pairs of card images.
+ *
+ * @returns A shuffled list of card image paths.
+ */
 function createCardList(): string[] {
     const selected: string[] = game.cardImages.slice(
         0,
@@ -110,6 +157,12 @@ function createCardList(): string[] {
 
 }
 
+/**
+ * Creates a game card with its image and inner elements.
+ *
+ * @param image - The image displayed on the card.
+ * @returns The created game card element.
+ */
 function createCard(image: string): HTMLDivElement {
     const card: HTMLDivElement = document.createElement("div");
     card.classList.add("game__card");
@@ -119,6 +172,13 @@ function createCard(image: string): HTMLDivElement {
     return card;
 }
 
+/**
+ * Handles two cards that do not match.
+ *
+ * @param first - The first selected card.
+ * @param second - The second selected card.
+ * @returns Nothing.
+ */
 function handleMismatch(
     first: HTMLDivElement,
     second: HTMLDivElement
@@ -131,6 +191,11 @@ function handleMismatch(
     }, MISMATCH_DELAY);
 }
 
+/**
+ * Resets the currently selected cards and checking state.
+ *
+ * @returns Nothing.
+ */
 function resetSelection(): void {
     game.selectedCards.length = 0;
     game.setIsChecking(false);
