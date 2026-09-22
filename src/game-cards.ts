@@ -101,7 +101,10 @@ function markCardsAsMatched(
 
 
 function createCardList(): string[] {
-    const selected: string[] = game.cardImages.slice(0, CARD_PAIR_DIVISOR);
+    const selected: string[] = game.cardImages.slice(
+        0,
+        game.CARD_COUNT / CARD_PAIR_DIVISOR
+    );
     const pairs: string[] = selected.flatMap((image: string) => [image, image]);
     return pairs.sort(() => Math.random() - 0.5);
 

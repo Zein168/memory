@@ -27,6 +27,7 @@ const DEFAULT_BOARD_COLUMNS: number = 6;
 const NEXT_SCREEN_DELAY: number = 4000;
 
 export const CARD_COUNT: number = Number(localStorage.getItem("cardCount"));
+console.log("CARD_COUNT:", CARD_COUNT);
 const SAVED_PLAYER: string | null = localStorage.getItem("player");
 const SELECTED_THEME: string | null = localStorage.getItem("theme");
 if (SELECTED_THEME === "Gaming theme") {
