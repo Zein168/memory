@@ -1,13 +1,9 @@
-@font-face {
-    font-family: "Fredoka";
-    src: url("./fonts/Fredoka-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
+body {
+  background-color: #303131;
 }
 
-body {
-    font-family: "Fredoka", sans-serif;
-    background-color: #2F3131;
+section {
+    position: relative;
 }
 
 h1 {
@@ -16,14 +12,14 @@ h1 {
     margin: 0;
 }
 
-h2 {
+.subtitle {
     font-size: 140px;
     color: white;
     margin: 0;
 }
 
 .header-title {
-    transform: translateY(233px);
+    transform: translateY(250px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,21 +27,9 @@ h2 {
     margin: 0 auto;
 }
 
-.header-title button {
-    align-self: center;
-    margin-top: 2rem;
-}
-
-button {
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
-}
-
-.controller_icon {
-    position: relative;
-    top: 100px;
+.controller-icon {
+    position: absolute;
+    top: -45px;
 }
 
 .start_button {
@@ -56,11 +40,9 @@ button {
     gap: 14px;
     height: 90px;
     width: 254px;
-    margin: 0 auto;
     text-decoration: none;
     background-color: #F0EA6E;
-    margin-top: 62px;
-    transition: padding 0.2s ease;
+    margin: 340px auto 0;
     transition:
         width 0.3s ease,
         transform 0.2s ease;
@@ -81,7 +63,6 @@ button {
         font-size: 40px;
     }
 
-
     &:hover img:first-child {
         transform: rotate(-30deg);
     }
@@ -90,3 +71,4 @@ button {
         transform: scale(1.2);
     }
 }
+

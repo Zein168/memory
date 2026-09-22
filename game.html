@@ -4,19 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="./public/memory_game_card_icon.png"
+    />
   </head>
   <body>
-    <section class="game">
+    <main class="game">
       <header class="game__header">
         <div class="game__players">
           <div class="game__player">
-            <img src="./public/frame_blue.svg" alt="" />
+            <img
+              id="gaming-theme-blue-player-icon"
+              src="./public/frame_blue.svg"
+              alt="Blue player"
+            />
             <span>Blue</span>
             <span id="blue-score">0</span>
           </div>
 
           <div class="game__player">
-            <img src="./public/frame_orange.svg" alt="" />
+            <img
+              id="gaming-theme-orange-player-icon"
+              src="./public/frame_orange.svg"
+              alt="Orange player"
+            />
             <span>Orange</span>
             <span id="orange-score">0</span>
           </div>
@@ -27,13 +40,13 @@
           <img id="current-player-icon" src="./public/frame_blue.svg" alt="" />
         </div>
 
-        <a class="game__exit">
+        <button class="game__exit">
           <img src="./public/move_item.svg" alt="" />
           <span>Exit game</span>
-        </a>
+        </button>
       </header>
       <div class="game__board"></div>
-      <div class="game__game-over">
+      <section class="game__game-over">
         <h1>Game Over</h1>
 
         <h2>Final Score</h2>
@@ -51,7 +64,7 @@
             <span id="final-orange-score">0</span>
           </div>
         </div>
-      </div>
+      </section>
       <div class="game__quit-modal">
         <div class="game__quit-modal-content">
           <h2>Are you sure you want to quit the game?</h2>
@@ -63,24 +76,20 @@
           </div>
         </div>
       </div>
-      <div class="game__next-screen">
+      <section class="game__next-screen">
         <img src="./public/confetti.png" alt="" class="game__confetti" />
         <h2 id="winner-title">The winner is</h2>
 
         <p id="winner-player" class="orange">Orange player</p>
 
-        <img
-          id="winner-player-icon"
-          src=""
-          alt=""
-        />
+        <img id="winner-player-icon" src="" alt="" />
 
         <a href="./settings.html" class="game__back-to-start">
           Back to start
         </a>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <script type="module" src="/src/game.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

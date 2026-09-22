@@ -1,46 +1,56 @@
 
-import './game.scss'
-import './global.scss'
+import "./game.scss"
+import "./global.scss"
 
 type Player = "Blue" | "Orange";
 
-const exitButton = document.querySelector<HTMLButtonElement>(".game__exit");
-const quitModal = document.querySelector<HTMLDivElement>(".game__quit-modal");
-const backButton = document.querySelector<HTMLButtonElement>(".game__quit-back");
-const confirmExitButton = document.querySelector<HTMLButtonElement>(".game__quit-confirm");
-
-const finalBlueScoreElement =
-    document.querySelector<HTMLSpanElement>("#final-blue-score");
-const finalOrangeScoreElement =
-    document.querySelector<HTMLSpanElement>("#final-orange-score");
-const winnerPlayerElement =
-    document.querySelector<HTMLParagraphElement>("#winner-player");
-const winnerPlayerIcon =
-    document.querySelector<HTMLImageElement>("#winner-player-icon");
-const winnerTitle =
-    document.querySelector<HTMLHeadingElement>("#winner-title");
-const currentPlayerIcon =
-    document.querySelector<HTMLImageElement>("#current-player-icon");
-const blueScoreElement =
-    document.querySelector<HTMLSpanElement>("#blue-score");
-const orangeScoreElement =
-    document.querySelector<HTMLSpanElement>("#orange-score");
-const confettiImage =
-    document.querySelector<HTMLImageElement>(".game__confetti");
-
-const cardCount = Number(localStorage.getItem("cardCount"));
-const savedPlayer = localStorage.getItem("player");
+const EXIT_BUTTON: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(".game__exit");
+const QUIT_MODAL: HTMLDivElement | null = document.querySelector<HTMLDivElement>(".game__quit-modal");
+const BACK_BUTTON: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(".game__quit-back");
+const CONFIRM_EXIT_BUTTON: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(".game__quit-confirm");
+const FINAL_BLUE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#final-blue-score");
+const FINAL_ORANGE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#final-orange-score");
+const WINNER_PLAYER_ELEMENT: HTMLParagraphElement | null = document.querySelector<HTMLParagraphElement>("#winner-player");
+const WINNER_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#winner-player-icon");
+const WINNER_TITLE: HTMLHeadingElement | null = document.querySelector<HTMLHeadingElement>("#winner-title");
+const CURRENT_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#current-player-icon");
+const BLUE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#blue-score");
+const ORANGE_SCORE_ELEMENT: HTMLSpanElement | null = document.querySelector<HTMLSpanElement>("#orange-score");
+const CONFETTI_IMAGE: HTMLImageElement | null = document.querySelector<HTMLImageElement>(".game__confetti");
+const MATCHED_CARDS_INCREMENT: number = 2;
+const LARGE_CARD_COUNT: number = 24;
+const LARGE_BOARD_GAP: string = "6px";
+const DEFAULT_BOARD_GAP: string = "10px";
+const SMALL_CARD_COUNT: number = 16;
+const SMALL_BOARD_COLUMNS: number = 4;
+const DEFAULT_BOARD_COLUMNS: number = 6;
+const NEXT_SCREEN_DELAY: number = 4000;
+export const CARD_COUNT: number = Number(localStorage.getItem("cardCount"));
+const SAVED_PLAYER: string | null = localStorage.getItem("player");
+const SELECTED_THEME: string | null = localStorage.getItem("theme");
+if (SELECTED_THEME === "Gaming theme") {
+    document.body.classList.add("gaming-theme");
+}
 
 let currentPlayer: Player =
-    savedPlayer === "Orange" ? "Orange" : "Blue";
+    SAVED_PLAYER === "Orange" ? "Orange" : "Blue";
 
-let selectedCards: HTMLDivElement[] = [];
-let isChecking = false;
-let blueScore = 0;
-let orangeScore = 0;
-let matchedCards = 0;
+export let selectedCards: HTMLDivElement[] = [];
+export let isChecking: boolean = false;
+let blueScore: number = 0;
+let orangeScore: number = 0;
+export let matchedCards: number = 0;
 
-const cardImages: string[] = [
+/**
+ * Increases the number of matched cards.
+ *
+ * @returns Nothing.
+ */
+export function increaseMatchedCards(): void {
+    matchedCards += MATCHED_CARDS_INCREMENT;
+}
+
+const CODE_VIBES_IMAGES: string[] = [
     "./public/typescript.svg",
     "./public/javascript.svg",
     "./public/html5.svg",
@@ -61,129 +71,50 @@ const cardImages: string[] = [
     "./public/nextdotjs.svg",
 ];
 
-const cards = createCardList();
+const GAMING_THEME_IMAGES: string[] = [
+    "./public/gaming_theme_cards/ace.svg",
+    "./public/gaming_theme_cards/circle.svg",
+    "./public/gaming_theme_cards/coin.svg",
+    "./public/gaming_theme_cards/cool_banana.svg",
+    "./public/gaming_theme_cards/gameboy.svg",
+    "./public/gaming_theme_cards/gamepad.svg",
+    "./public/gaming_theme_cards/greeper_face.svg",
+    "./public/gaming_theme_cards/level_up.svg",
+    "./public/gaming_theme_cards/maze.svg",
+    "./public/gaming_theme_cards/pac.svg",
+    "./public/gaming_theme_cards/pac_man.svg",
+    "./public/gaming_theme_cards/play button@2x 1.svg",
+    "./public/gaming_theme_cards/playing_dice.svg",
+    "./public/gaming_theme_cards/puzzle.svg",
+    "./public/gaming_theme_cards/snake.svg",
+    "./public/gaming_theme_cards/square.svg",
+    "./public/gaming_theme_cards/super_mushroom.svg",
+    "./public/gaming_theme_cards/triangle.svg",
+];
 
-const board = document.querySelector<HTMLDivElement>(".game__board");
 
-if (!board) {
-    throw new Error("Game board not found");
+
+export const BOARD = document.querySelector<HTMLDivElement>(".game__board");
+
+const GAMING_THEME_BLUE_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#gaming-theme-blue-player-icon");
+const GAMING_THEME_ORANGE_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#gaming-theme-orange-player-icon");
+
+/**
+ * Updates the checking state of the game.
+ *
+ * @param value - The new checking state.
+ * @returns Nothing.
+ */
+export function setIsChecking(value: boolean): void {
+    isChecking = value;
 }
 
-function createCardList(): string[] {
-    const selected = cardImages.slice(0, cardCount / 2);
-    const pairs = selected.flatMap((image) => [image, image]);
-
-    return pairs.sort(() => Math.random() - 0.5);
-}
-
-
-function createCard(image: string): HTMLDivElement {
-    const card = document.createElement("div");
-    card.classList.add("game__card");
-    card.dataset.image = image;
-
-    const inner = createCardInner(image);
-    card.appendChild(inner);
-
-    return card;
-}
-
-
-function createCardInner(image: string): HTMLDivElement {
-    const inner = document.createElement("div");
-    inner.classList.add("game__card-inner");
-
-    const front = createCardFront(image);
-    const back = document.createElement("div");
-
-    back.classList.add("game__card-back");
-    inner.append(front, back);
-
-    return inner;
-}
-
-
-function createCardFront(image: string): HTMLDivElement {
-    const front = document.createElement("div");
-    const img = document.createElement("img");
-
-    front.classList.add("game__card-front");
-    img.src = image;
-    img.alt = "Tech icon";
-
-    front.appendChild(img);
-    return front;
-}
-
-function setupCards(): void {
-    cards.forEach((image) => {
-        const card = createCard(image);
-        board?.appendChild(card);
-        card.addEventListener("click", () => handleCardClick(card));
-    });
-}
-
-
-function handleCardClick(card: HTMLDivElement): void {
-    if (isCardBlocked(card)) return;
-
-    card.classList.add("flipped");
-    selectedCards.push(card);
-
-    if (selectedCards.length === 2) {
-        checkSelectedCards();
-    }
-}
-
-
-function isCardBlocked(card: HTMLDivElement): boolean {
-    return (
-        isChecking ||
-        card.classList.contains("flipped") ||
-        card.classList.contains("matched") ||
-        selectedCards.length === 2
-    );
-}
-
-function checkSelectedCards(): void {
-    isChecking = true;
-
-    const [first, second] = selectedCards;
-
-    if (first.dataset.image === second.dataset.image) {
-        handleMatch(first, second);
-    } else {
-        handleMismatch(first, second);
-    }
-}
-
-
-function handleMatch(
-    first: HTMLDivElement,
-    second: HTMLDivElement
-): void {
-    markCardsAsMatched(first, second);
-    updatePlayerScore();
-    matchedCards += 2;
-    resetSelection();
-    switchPlayer();
-
-    if (matchedCards === cardCount) {
-        showGameOver();
-    }
-}
-
-
-function markCardsAsMatched(
-    first: HTMLDivElement,
-    second: HTMLDivElement
-): void {
-    first.classList.add("matched");
-    second.classList.add("matched");
-}
-
-
-function updatePlayerScore(): void {
+/**
+ * Adds one point to the current player's score.
+ *
+ * @returns Nothing.
+ */
+export function updatePlayerScore(): void {
     if (currentPlayer === "Blue") {
         blueScore++;
     } else {
@@ -193,95 +124,126 @@ function updatePlayerScore(): void {
     updateScores();
 }
 
-
-function handleMismatch(
-    first: HTMLDivElement,
-    second: HTMLDivElement
-): void {
-    setTimeout(() => {
-        first.classList.remove("flipped");
-        second.classList.remove("flipped");
-        resetSelection();
-        switchPlayer();
-    }, 800);
-}
-
-
-function resetSelection(): void {
-    selectedCards = [];
-    isChecking = false;
-}
-
+/**
+ * Updates the icon showing the current player.
+ *
+ * @returns Nothing.
+ */
 function updateCurrentPlayer(): void {
-    if (!currentPlayerIcon) return;
+    if (!CURRENT_PLAYER_ICON) return;
+    if (SELECTED_THEME === "Gaming theme") {
+        CURRENT_PLAYER_ICON.src =
+            currentPlayer === "Blue"
+                ? "./public/chess_pawn_blue_with_background.svg"
+                : "./public/chess_pawn_orange_with_background .svg";
 
-    currentPlayerIcon.src =
+        return;
+    }
+
+    CURRENT_PLAYER_ICON.src =
         currentPlayer === "Blue"
             ? "./public/frame_blue.svg"
             : "./public/frame_orange.svg";
 }
 
-
+/**
+ * Updates the displayed scores of both players.
+ *
+ * @returns Nothing.
+ */
 function updateScores(): void {
-    if (blueScoreElement) {
-        blueScoreElement.textContent = String(blueScore);
+    if (BLUE_SCORE_ELEMENT) {
+        BLUE_SCORE_ELEMENT.textContent = String(blueScore);
     }
 
-    if (orangeScoreElement) {
-        orangeScoreElement.textContent = String(orangeScore);
+    if (ORANGE_SCORE_ELEMENT) {
+        ORANGE_SCORE_ELEMENT.textContent = String(orangeScore);
     }
 }
 
-
-function switchPlayer(): void {
+/**
+ * Switches the current player and updates the player icon.
+ *
+ * @returns Nothing.
+ */
+export function switchPlayer(): void {
     currentPlayer = currentPlayer === "Blue" ? "Orange" : "Blue";
     updateCurrentPlayer();
 }
 
-
+/**
+ * Sets up the game board based on the selected card count.
+ *
+ * @returns Nothing.
+ */
 function setupBoard(): void {
-    if (!board) return;
-
-    const columns = getBoardColumns();
-    board.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+    if (!BOARD) return;
+    const columns: number = getBoardColumns();
+    BOARD.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+    if (CARD_COUNT >= LARGE_CARD_COUNT) {
+        BOARD.style.gap = LARGE_BOARD_GAP;
+    } else {
+        BOARD.style.gap = DEFAULT_BOARD_GAP;
+    }
 }
 
-
+/**
+ * Determines the number of columns for the game board.
+ *
+ * @returns The number of board columns.
+ */
 function getBoardColumns(): number {
-    if (cardCount === 16) return 4;
-    return 6;
+    if (CARD_COUNT === SMALL_CARD_COUNT) return SMALL_BOARD_COLUMNS;
+    return DEFAULT_BOARD_COLUMNS;
 }
 
-function showGameOver(): void {
+/**
+ * Displays the game-over screen and prepares the final results.
+ *
+ * @returns Nothing.
+ */
+export function showGameOver(): void {
     hideGameElements();
     updateFinalScores();
     showWinner();
     showNextScreen();
 }
 
-
+/**
+ * Hides the game header and game board.
+ *
+ * @returns Nothing.
+ */
 function hideGameElements(): void {
-    const header = document.querySelector<HTMLElement>(".game__header");
-    const gameBoard = document.querySelector<HTMLElement>(".game__board");
+    const header: HTMLElement | null = document.querySelector<HTMLElement>(".game__header");
+    const gameBoard: HTMLElement | null = document.querySelector<HTMLElement>(".game__board");
 
     if (header) header.style.display = "none";
     if (gameBoard) gameBoard.style.display = "none";
 }
 
-
+/**
+ * Updates the final scores shown on the game-over screen.
+ *
+ * @returns Nothing.
+ */
 function updateFinalScores(): void {
-    if (finalBlueScoreElement) {
-        finalBlueScoreElement.textContent = String(blueScore);
+    if (FINAL_BLUE_SCORE_ELEMENT) {
+        FINAL_BLUE_SCORE_ELEMENT.textContent = String(blueScore);
     }
 
-    if (finalOrangeScoreElement) {
-        finalOrangeScoreElement.textContent = String(orangeScore);
+    if (FINAL_ORANGE_SCORE_ELEMENT) {
+        FINAL_ORANGE_SCORE_ELEMENT.textContent = String(orangeScore);
     }
 }
 
-
+/**
+ * Displays the game-over container and sets the winner content.
+ *
+ * @returns Nothing.
+ */
 function showWinner(): void {
-    const gameOver = document.querySelector<HTMLElement>(".game__game-over");
+    const gameOver: HTMLElement | null = document.querySelector<HTMLElement>(".game__game-over");
 
     if (!gameOver) return;
 
@@ -289,7 +251,11 @@ function showWinner(): void {
     setWinnerContent();
 }
 
-
+/**
+ * Determines whether the game ends in a win or a draw.
+ *
+ * @returns Nothing.
+ */
 function setWinnerContent(): void {
     if (blueScore === orangeScore) {
         setDraw();
@@ -300,82 +266,228 @@ function setWinnerContent(): void {
     }
 }
 
-
+/**
+ * Displays the winner and applies the correct theme-specific icon.
+ *
+ * @param player - The player who won the game.
+ * @returns Nothing.
+ */
 function setWinner(player: Player): void {
-    if (!winnerTitle || !winnerPlayerElement || !winnerPlayerIcon) return;
+    if (!WINNER_TITLE || !WINNER_PLAYER_ELEMENT || !WINNER_PLAYER_ICON) return;
 
-    winnerTitle.textContent = "The winner is";
-    winnerPlayerElement.textContent = `${player} player`;
-    winnerPlayerElement.classList.add(player.toLowerCase());
-    winnerPlayerIcon.src = `./public/chess_pawn_${player.toLowerCase()}.svg`;
-    winnerPlayerIcon.alt = `${player} player`;
+    WINNER_TITLE.textContent = "The winner is";
+    WINNER_PLAYER_ELEMENT.textContent = `${player} player`;
+    WINNER_PLAYER_ELEMENT.classList.remove("blue", "orange");
+    WINNER_PLAYER_ELEMENT.classList.add(player.toLowerCase());
+
+    if (SELECTED_THEME === "Gaming theme") {
+        WINNER_PLAYER_ICON.src = "./public/pockal.svg";
+        WINNER_PLAYER_ICON.alt = "Trophy";
+    } else {
+        WINNER_PLAYER_ICON.src = `./public/chess_pawn_${player.toLowerCase()}.svg`;
+        WINNER_PLAYER_ICON.alt = `${player} player`;
+    }
 
     showConfetti();
 }
 
-
+/**
+ * Displays the draw result and the corresponding theme icon.
+ *
+ * @returns Nothing.
+ */
 function setDraw(): void {
-    const nextScreen = document.querySelector<HTMLElement>(".game__next-screen");
+    const nextScreen: HTMLElement | null = document.querySelector<HTMLElement>(".game__next-screen");
 
     nextScreen?.classList.add("draw");
-    winnerTitle!.textContent = "It's a";
-    winnerPlayerElement!.textContent = "Draw";
-    winnerPlayerElement!.classList.remove("blue", "orange");
-    winnerPlayerIcon!.src = "./public/draw.svg";
-    winnerPlayerIcon!.alt = "Draw";
+    WINNER_TITLE!.textContent = "It's a";
+    WINNER_PLAYER_ELEMENT!.textContent = "Draw";
+    WINNER_PLAYER_ELEMENT!.classList.remove("blue", "orange");
+    const isGamingTheme: boolean = document.body.classList.contains("gaming-theme");
+    WINNER_PLAYER_ICON!.src = isGamingTheme
+        ? "./public/draw_gaming_theme.svg"
+        : "./public/draw_code_vibes_theme.svg";
 
-    if (confettiImage) confettiImage.style.display = "none";
+    WINNER_PLAYER_ICON!.alt = "Draw";
+    if (CONFETTI_IMAGE) CONFETTI_IMAGE.style.display = "none";
 }
 
-
+/**
+ * Displays or hides the confetti based on the selected theme.
+ *
+ * @returns Nothing.
+ */
 function showConfetti(): void {
-    if (confettiImage) {
-        confettiImage.style.display = "block";
+    if (!CONFETTI_IMAGE) return;
+    if (SELECTED_THEME === "Gaming theme") {
+        CONFETTI_IMAGE.style.display = "none";
+        return;
     }
+    CONFETTI_IMAGE.style.display = "block";
 }
 
-
+/**
+ * Shows the next screen after the configured delay.
+ *
+ * @returns Nothing.
+ */
 function showNextScreen(): void {
-    const gameOver = document.querySelector<HTMLElement>(".game__game-over");
-    const nextScreen = document.querySelector<HTMLElement>(".game__next-screen");
+    const gameOver: HTMLElement | null = document.querySelector<HTMLElement>(".game__game-over");
+    const nextScreen: HTMLElement | null = document.querySelector<HTMLElement>(".game__next-screen");
 
     setTimeout(() => {
         if (gameOver) gameOver.style.display = "none";
         nextScreen?.classList.add("show");
-    }, 4000);
+    }, NEXT_SCREEN_DELAY);
 }
 
+/**
+ * Adds event listeners to the game exit buttons.
+ *
+ * @returns Nothing.
+ */
 function setupExitModal(): void {
-    exitButton?.addEventListener("click", openQuitModal);
-    backButton?.addEventListener("click", closeQuitModal);
-    confirmExitButton?.addEventListener("click", exitGame);
+    EXIT_BUTTON?.addEventListener("click", openQuitModal);
+    BACK_BUTTON?.addEventListener("click", closeQuitModal);
+    CONFIRM_EXIT_BUTTON?.addEventListener("click", exitGame);
 }
 
-
+/**
+ * Opens the quit-game modal.
+ *
+ * @returns Nothing.
+ */
 function openQuitModal(): void {
-    if (quitModal) {
-        quitModal.style.display = "flex";
+    if (QUIT_MODAL) {
+        QUIT_MODAL.style.display = "flex";
     }
 }
 
-
+/**
+ * Closes the quit-game modal.
+ *
+ * @returns Nothing.
+ */
 function closeQuitModal(): void {
-    if (quitModal) {
-        quitModal.style.display = "none";
+    if (QUIT_MODAL) {
+        QUIT_MODAL.style.display = "none";
     }
 }
 
-
+/**
+ * Redirects the player to the settings page.
+ *
+ * @returns Nothing.
+ */
 function exitGame(): void {
     window.location.href = "./settings.html";
 }
 
+/**
+ * Updates the player icons for the gaming theme.
+ *
+ * @returns Nothing.
+ */
+function updateGamingThemeIcons(): void {
+    if (SELECTED_THEME !== "Gaming theme") return;
+
+    GAMING_THEME_BLUE_PLAYER_ICON?.setAttribute(
+        "src",
+        "./public/chess_pawn_blue.svg"
+    );
+
+    GAMING_THEME_ORANGE_PLAYER_ICON?.setAttribute(
+        "src",
+        "./public/chess_pawn_orange.svg"
+    );
+}
+
+/**
+ * Returns the card images for the selected theme.
+ *
+ * @returns An array containing the card image paths.
+ */
+function getCardImages(): string[] {
+    if (SELECTED_THEME === "Gaming theme") {
+        return GAMING_THEME_IMAGES;
+    }
+
+    return CODE_VIBES_IMAGES;
+}
+
+export const cardImages: string[] = getCardImages();
 
 
+/**
+ * Updates the quit button texts for the gaming theme.
+ *
+ * @returns Nothing.
+ */
+function updateGamingThemeQuitButtons(): void {
+    if (SELECTED_THEME !== "Gaming theme") return;
+
+    if (BACK_BUTTON) {
+        BACK_BUTTON.textContent = "no, back to game";
+    }
+
+    if (CONFIRM_EXIT_BUTTON) {
+        CONFIRM_EXIT_BUTTON.textContent = "yes, quit game";
+    }
+}
+
+const finalPlayerIcons: NodeListOf<HTMLImageElement> = document.querySelectorAll<HTMLImageElement>(".game__game-over .game__player img");
+
+/**
+ * Updates the final player icons for the gaming theme.
+ *
+ * @returns Nothing.
+ */
+function updateGamingThemeFinalIcons(): void {
+    if (SELECTED_THEME !== "Gaming theme") return;
+
+    if (finalPlayerIcons[0]) {
+        finalPlayerIcons[0].src = "./public/chess_pawn_blue.svg";
+    }
+
+    if (finalPlayerIcons[1]) {
+        finalPlayerIcons[1].src = "./public/chess_pawn_orange.svg";
+    }
+}
+
+/**
+ * Updates the text of the home button based on the selected theme.
+ *
+ * @returns Nothing.
+ */
+function updateHomeButton(): void {
+    const homeButton: HTMLAnchorElement | null = document.querySelector<HTMLAnchorElement>(".game__back-to-start");
+    if (!homeButton) return;
+    const isGamingTheme: boolean = document.body.classList.contains("gaming-theme");
+    homeButton.textContent = isGamingTheme
+        ? "Home"
+        : "Back to start";
+}
+
+/**
+ * Adds a special class to the header when 36 cards are selected.
+ *
+ * @returns Nothing.
+ */
+function setupHeaderForCardCount(): void {
+    const cardCount: string | null = localStorage.getItem("cardCount");
+    const header: HTMLElement | null = document.querySelector<HTMLElement>(".game__header");
+
+    if (!header || cardCount !== "36") return;
+
+    header.classList.add("cards-36");
+}
 
 updateCurrentPlayer();
 updateScores();
-setupCards();
 setupBoard();
 setupExitModal();
-
+updateGamingThemeIcons();
+updateGamingThemeQuitButtons();
+updateGamingThemeFinalIcons();
+updateHomeButton();
+setupHeaderForCardCount();

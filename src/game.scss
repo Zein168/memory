@@ -1,10 +1,11 @@
+@use "global" as *;
 body {
     background-color: #303131;
 }
 
 .game {
     h1 {
-        color: #4DD5BC;
+        color: $turquoise;
         padding-top: 229px;
         padding-bottom: 33px;
         font-size: 140px;
@@ -12,11 +13,11 @@ body {
     }
 
     h2 {
-        color: white;
+        color: $white;
     }
 
     span {
-        color: white;
+        color: $white;
     }
 
     &__header {
@@ -30,7 +31,7 @@ body {
     &__players {
         display: flex;
         gap: 30px;
-        background-color: #415652;
+        background-color: $player-bg;
         width: 256px;
         height: 45px;
         align-items: center;
@@ -66,27 +67,28 @@ body {
 .game__players {
     .game__player:nth-child(1) {
         span {
-            color: #2BB1FF;
+            color: $blue;
         }
     }
 
     .game__player:nth-child(2) {
         span {
-            color: #F58E39;
+            color: $orange;
         }
     }
 }
+
 .game__board {
     display: grid;
     gap: 10px;
     width: 420px;
-    margin: 110px auto 0;
+    margin: 15px auto 0;
     justify-content: center;
 }
 
 .game__card {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 }
 
 .game__exit {
@@ -96,11 +98,10 @@ body {
     gap: 8px;
     background-color: transparent;
     border: none;
-    font-family: 'Fredoka', sans-serif;
     cursor: pointer;
     text-decoration: none;
-    background-color: #415652;
-    border: 2px solid #4DD5BC;
+    background-color: $player-bg;
+    border: 2px solid $turquoise;
     width: 140px;
     height: 45px;
 }
@@ -123,7 +124,7 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background-color: white;
+    background-color: $white;
     cursor: pointer;
 }
 
@@ -154,20 +155,8 @@ body {
     align-items: center;
 
     .game__players {
-        background-color: #415652;
+        background-color: $player-bg;
         padding: 14px 16px;
-
-        .game__player:nth-child(1) {
-            span {
-                color: #2BB1FF;
-            }
-        }
-
-        .game__player:nth-child(2) {
-            span {
-                color: #F58E39;
-            }
-        }
     }
 }
 
@@ -185,9 +174,10 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: white;
-    width: 343px;
+    background-color: $white;
+    width: 387px;
     height: 175px;
+    padding: 16px 16px;
 
     h2 {
         color: black;
@@ -202,20 +192,20 @@ body {
 .game__quit-back,
 .game__quit-confirm {
     cursor: pointer;
-    border: 2px solid #4DD5BC;
+    border: 2px solid $turquoise;
     width: 120px;
     height: 40px;
     font-size: 16px;
-
+    white-space: nowrap;
 }
 
 .game__quit-confirm {
-    color: #4DD5BC;
+    color: $turquoise;
 }
 
 .game__quit-back {
-    background-color: #4DD5BC;
-    color: white;
+    background-color: $turquoise;
+    color: $white;
 }
 
 .game__next-screen {
@@ -233,12 +223,12 @@ body {
     }
 
     h2 {
-        color: white;
+        color: $white;
         margin: 20px 0 10px;
     }
 
     #winner-player {
-        color: #4DD5BC;
+        color: $turquoise;
         font-size: 90px;
         margin: 0 0 15px;
     }
@@ -254,12 +244,10 @@ body {
         align-items: center;
         justify-content: center;
         padding: 12px 24px;
-        color: white;
+        color: $white;
         text-decoration: none;
-        background-color: #415652;
-        border: 2px solid #4DD5BC;
-        font-family: 'Fredoka', sans-serif;
-        border-radius: 8px;
+        background-color: $player-bg;
+        border: 2px solid $turquoise;
     }
 }
 
@@ -270,7 +258,6 @@ body {
 
 .game__next-screen.draw {
     padding-top: 200px;
-    
 }
 
 @keyframes slideDown {
@@ -286,10 +273,174 @@ body {
 }
 
 .game__next-screen #winner-player.blue {
-    color: #2BB1FF;
+    color: $blue;
 }
 
 .game__next-screen #winner-player.orange {
-    color: #F58E39;
+    color: $orange;
 }
 
+.game__header.cards-36 {
+    padding-top: 4px;
+}
+
+.game__next-screen.draw #winner-title {
+    position: relative;
+    top: 30px;
+}
+
+.game__next-screen.draw #winner-player-icon {
+    width: 240px;
+    height: 240px;
+}
+
+.game__next-screen.draw #winner-player {
+    margin: 0 0 -5px;
+}
+
+// gaming-theme
+body.gaming-theme {
+    background-color: #294F60;
+
+    .game__header {
+        background-color: #535D75;
+        margin: 48px 70px 0;
+        padding: 15px 70px;
+        border-radius: 10px;
+
+        &.cards-36 {
+            margin-top: 4px;
+        }
+
+        .game__players {
+            .game__player {
+                span:nth-child(2) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .game__exit {
+        border: 2px solid #E71C4F;
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    .game__players {
+        background-color: $white;
+        border-radius: 10px;
+        width: 160px;
+        height: 50px;
+
+        span {
+            font-size: 26px;
+        }
+    }
+
+    .game__game-over {
+        .game__players {
+            width: 142px;
+            height: 29px;
+            justify-content: space-between;
+        }
+
+        .game__player {
+            span:nth-child(2) {
+                display: none;
+            }
+        }
+
+        h1 {
+            color: $pink;
+        }
+    }
+
+    .game__card-back {
+        background-image: url("./public/gaming_theme_card.svg");
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 105px;
+        height: 120px;
+    }
+
+    .game__quit-back {
+        background-color: $pink;
+        border: none;
+        text-decoration: none;
+        white-space: nowrap;
+        width: 160px;
+        border-radius: 10px;
+    }
+
+    .game__quit-confirm {
+        color: $pink;
+        border: 2px solid $pink;
+        white-space: nowrap;
+        width: 160px;
+        border-radius: 10px;
+    }
+
+    .game__current-player {
+        font-size: 30px;
+        align-items: flex-end;
+    }
+
+    .game__board {
+        margin-top: 48px;
+    }
+
+    .game__card {
+        width: 105px;
+        height: 120px;
+    }
+
+    .game__card-front {
+        border-radius: 10px;
+    }
+
+    .game__next-screen {
+        &.show {
+            padding-top: 200px;
+        }
+
+        #winner-player {
+            padding-bottom: 46px;
+        }
+
+        #winner-player-icon {
+            width: 310px;
+            height: 310px;
+        }
+
+        .game__back-to-start {
+            background-color: #394B62;
+            border: 2px solid $pink;
+            border-radius: 10px;
+        }
+
+        &.draw {
+            #winner-player {
+                color: $pink;
+                padding-bottom: 0;
+                margin: 0 0 -20px;
+                font-size: 140px;
+            }
+        }
+    }
+
+    .game__quit-modal-content {
+        border-radius: 10px;
+    }
+}
+
+@media (min-width: $widescreen) {
+    .game {
+        width: 1200px;
+        margin-inline: auto;
+    }
+}
