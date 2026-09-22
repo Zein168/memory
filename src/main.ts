@@ -1,5 +1,12 @@
 import './style.scss'
 import './global.scss'
-import "./game";
-import "./game-cards";
+
+
+const gameBoard: HTMLDivElement | null =
+  document.querySelector<HTMLDivElement>(".game__board");
+
+if (gameBoard) {
+  import("./game");
+  import("./game-cards");
+}
 
