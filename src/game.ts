@@ -41,6 +41,11 @@ let blueScore: number = 0;
 let orangeScore: number = 0;
 export let matchedCards: number = 0;
 
+/**
+ * Increases the number of matched cards.
+ *
+ * @returns Nothing.
+ */
 export function increaseMatchedCards(): void {
     matchedCards += MATCHED_CARDS_INCREMENT;
 }
@@ -92,13 +97,23 @@ const GAMING_THEME_IMAGES: string[] = [
 export const BOARD = document.querySelector<HTMLDivElement>(".game__board");
 
 const GAMING_THEME_BLUE_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#gaming-theme-blue-player-icon");
-
 const GAMING_THEME_ORANGE_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#gaming-theme-orange-player-icon");
 
+/**
+ * Updates the checking state of the game.
+ *
+ * @param value - The new checking state.
+ * @returns Nothing.
+ */
 export function setIsChecking(value: boolean): void {
     isChecking = value;
 }
 
+/**
+ * Adds one point to the current player's score.
+ *
+ * @returns Nothing.
+ */
 export function updatePlayerScore(): void {
     if (currentPlayer === "Blue") {
         blueScore++;
@@ -109,6 +124,11 @@ export function updatePlayerScore(): void {
     updateScores();
 }
 
+/**
+ * Updates the icon showing the current player.
+ *
+ * @returns Nothing.
+ */
 function updateCurrentPlayer(): void {
     if (!CURRENT_PLAYER_ICON) return;
     if (SELECTED_THEME === "Gaming theme") {
@@ -126,7 +146,11 @@ function updateCurrentPlayer(): void {
             : "./public/frame_orange.svg";
 }
 
-
+/**
+ * Updates the displayed scores of both players.
+ *
+ * @returns Nothing.
+ */
 function updateScores(): void {
     if (BLUE_SCORE_ELEMENT) {
         BLUE_SCORE_ELEMENT.textContent = String(blueScore);
@@ -137,13 +161,21 @@ function updateScores(): void {
     }
 }
 
-
+/**
+ * Switches the current player and updates the player icon.
+ *
+ * @returns Nothing.
+ */
 export function switchPlayer(): void {
     currentPlayer = currentPlayer === "Blue" ? "Orange" : "Blue";
     updateCurrentPlayer();
 }
 
-
+/**
+ * Sets up the game board based on the selected card count.
+ *
+ * @returns Nothing.
+ */
 function setupBoard(): void {
     if (!BOARD) return;
     const columns: number = getBoardColumns();
@@ -155,12 +187,21 @@ function setupBoard(): void {
     }
 }
 
-
+/**
+ * Determines the number of columns for the game board.
+ *
+ * @returns The number of board columns.
+ */
 function getBoardColumns(): number {
     if (CARD_COUNT === SMALL_CARD_COUNT) return SMALL_BOARD_COLUMNS;
     return DEFAULT_BOARD_COLUMNS;
 }
 
+/**
+ * Displays the game-over screen and prepares the final results.
+ *
+ * @returns Nothing.
+ */
 export function showGameOver(): void {
     hideGameElements();
     updateFinalScores();
@@ -168,7 +209,11 @@ export function showGameOver(): void {
     showNextScreen();
 }
 
-
+/**
+ * Hides the game header and game board.
+ *
+ * @returns Nothing.
+ */
 function hideGameElements(): void {
     const header: HTMLElement | null = document.querySelector<HTMLElement>(".game__header");
     const gameBoard: HTMLElement | null = document.querySelector<HTMLElement>(".game__board");
@@ -177,7 +222,11 @@ function hideGameElements(): void {
     if (gameBoard) gameBoard.style.display = "none";
 }
 
-
+/**
+ * Updates the final scores shown on the game-over screen.
+ *
+ * @returns Nothing.
+ */
 function updateFinalScores(): void {
     if (FINAL_BLUE_SCORE_ELEMENT) {
         FINAL_BLUE_SCORE_ELEMENT.textContent = String(blueScore);
@@ -188,7 +237,11 @@ function updateFinalScores(): void {
     }
 }
 
-
+/**
+ * Displays the game-over container and sets the winner content.
+ *
+ * @returns Nothing.
+ */
 function showWinner(): void {
     const gameOver: HTMLElement | null = document.querySelector<HTMLElement>(".game__game-over");
 
@@ -198,7 +251,11 @@ function showWinner(): void {
     setWinnerContent();
 }
 
-
+/**
+ * Determines whether the game ends in a win or a draw.
+ *
+ * @returns Nothing.
+ */
 function setWinnerContent(): void {
     if (blueScore === orangeScore) {
         setDraw();
@@ -209,7 +266,12 @@ function setWinnerContent(): void {
     }
 }
 
-
+/**
+ * Displays the winner and applies the correct theme-specific icon.
+ *
+ * @param player - The player who won the game.
+ * @returns Nothing.
+ */
 function setWinner(player: Player): void {
     if (!WINNER_TITLE || !WINNER_PLAYER_ELEMENT || !WINNER_PLAYER_ICON) return;
 
@@ -229,6 +291,11 @@ function setWinner(player: Player): void {
     showConfetti();
 }
 
+/**
+ * Displays the draw result and the corresponding theme icon.
+ *
+ * @returns Nothing.
+ */
 function setDraw(): void {
     const nextScreen: HTMLElement | null = document.querySelector<HTMLElement>(".game__next-screen");
 
@@ -245,7 +312,11 @@ function setDraw(): void {
     if (CONFETTI_IMAGE) CONFETTI_IMAGE.style.display = "none";
 }
 
-
+/**
+ * Displays or hides the confetti based on the selected theme.
+ *
+ * @returns Nothing.
+ */
 function showConfetti(): void {
     if (!CONFETTI_IMAGE) return;
     if (SELECTED_THEME === "Gaming theme") {
@@ -255,7 +326,11 @@ function showConfetti(): void {
     CONFETTI_IMAGE.style.display = "block";
 }
 
-
+/**
+ * Shows the next screen after the configured delay.
+ *
+ * @returns Nothing.
+ */
 function showNextScreen(): void {
     const gameOver: HTMLElement | null = document.querySelector<HTMLElement>(".game__game-over");
     const nextScreen: HTMLElement | null = document.querySelector<HTMLElement>(".game__next-screen");
@@ -266,29 +341,53 @@ function showNextScreen(): void {
     }, NEXT_SCREEN_DELAY);
 }
 
+/**
+ * Adds event listeners to the game exit buttons.
+ *
+ * @returns Nothing.
+ */
 function setupExitModal(): void {
     EXIT_BUTTON?.addEventListener("click", openQuitModal);
     BACK_BUTTON?.addEventListener("click", closeQuitModal);
     CONFIRM_EXIT_BUTTON?.addEventListener("click", exitGame);
 }
 
-
+/**
+ * Opens the quit-game modal.
+ *
+ * @returns Nothing.
+ */
 function openQuitModal(): void {
     if (QUIT_MODAL) {
         QUIT_MODAL.style.display = "flex";
     }
 }
 
+/**
+ * Closes the quit-game modal.
+ *
+ * @returns Nothing.
+ */
 function closeQuitModal(): void {
     if (QUIT_MODAL) {
         QUIT_MODAL.style.display = "none";
     }
 }
 
+/**
+ * Redirects the player to the settings page.
+ *
+ * @returns Nothing.
+ */
 function exitGame(): void {
     window.location.href = "./settings.html";
 }
 
+/**
+ * Updates the player icons for the gaming theme.
+ *
+ * @returns Nothing.
+ */
 function updateGamingThemeIcons(): void {
     if (SELECTED_THEME !== "Gaming theme") return;
 
@@ -303,6 +402,11 @@ function updateGamingThemeIcons(): void {
     );
 }
 
+/**
+ * Returns the card images for the selected theme.
+ *
+ * @returns An array containing the card image paths.
+ */
 function getCardImages(): string[] {
     if (SELECTED_THEME === "Gaming theme") {
         return GAMING_THEME_IMAGES;
@@ -310,10 +414,15 @@ function getCardImages(): string[] {
 
     return CODE_VIBES_IMAGES;
 }
+
 export const cardImages: string[] = getCardImages();
 
 
-
+/**
+ * Updates the quit button texts for the gaming theme.
+ *
+ * @returns Nothing.
+ */
 function updateGamingThemeQuitButtons(): void {
     if (SELECTED_THEME !== "Gaming theme") return;
 
@@ -328,6 +437,11 @@ function updateGamingThemeQuitButtons(): void {
 
 const finalPlayerIcons: NodeListOf<HTMLImageElement> = document.querySelectorAll<HTMLImageElement>(".game__game-over .game__player img");
 
+/**
+ * Updates the final player icons for the gaming theme.
+ *
+ * @returns Nothing.
+ */
 function updateGamingThemeFinalIcons(): void {
     if (SELECTED_THEME !== "Gaming theme") return;
 
@@ -340,6 +454,11 @@ function updateGamingThemeFinalIcons(): void {
     }
 }
 
+/**
+ * Updates the text of the home button based on the selected theme.
+ *
+ * @returns Nothing.
+ */
 function updateHomeButton(): void {
     const homeButton: HTMLAnchorElement | null = document.querySelector<HTMLAnchorElement>(".game__back-to-start");
     if (!homeButton) return;
@@ -349,6 +468,11 @@ function updateHomeButton(): void {
         : "Back to start";
 }
 
+/**
+ * Adds a special class to the header when 36 cards are selected.
+ *
+ * @returns Nothing.
+ */
 function setupHeaderForCardCount(): void {
     const cardCount: string | null = localStorage.getItem("cardCount");
     const header: HTMLElement | null = document.querySelector<HTMLElement>(".game__header");
