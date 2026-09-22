@@ -25,9 +25,7 @@ const SMALL_CARD_COUNT: number = 16;
 const SMALL_BOARD_COLUMNS: number = 4;
 const DEFAULT_BOARD_COLUMNS: number = 6;
 const NEXT_SCREEN_DELAY: number = 4000;
-
 export const CARD_COUNT: number = Number(localStorage.getItem("cardCount"));
-console.log("CARD_COUNT:", CARD_COUNT);
 const SAVED_PLAYER: string | null = localStorage.getItem("player");
 const SELECTED_THEME: string | null = localStorage.getItem("theme");
 if (SELECTED_THEME === "Gaming theme") {
@@ -92,10 +90,6 @@ const GAMING_THEME_IMAGES: string[] = [
 
 
 export const BOARD = document.querySelector<HTMLDivElement>(".game__board");
-
-if (!BOARD) {
-    throw new Error("Game board not found");
-}
 
 const GAMING_THEME_BLUE_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#gaming-theme-blue-player-icon");
 
