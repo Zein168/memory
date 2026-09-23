@@ -15,10 +15,6 @@ const themeOptions: NodeListOf<HTMLParagraphElement> = document.querySelectorAll
   ".settings__theme-option"
 );
 
-const selectedTheme: HTMLParagraphElement | null = document.querySelector<HTMLParagraphElement>(
-  ".settings__selected-theme"
-);
-
 const selectedPlayer: HTMLParagraphElement | null = document.querySelector<HTMLParagraphElement>(
   ".settings__selected-player"
 );
