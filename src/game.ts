@@ -51,45 +51,45 @@ export function increaseMatchedCards(): void {
 }
 
 const CODE_VIBES_IMAGES: string[] = [
-    "./public/typescript.svg",
-    "./public/javascript.svg",
-    "./public/html5.svg",
-    "./public/css.svg",
-    "./public/angular.svg",
-    "./public/nodedotjs.svg",
-    "./public/docker.svg",
-    "./public/figma.svg",
-    "./public/firebase.svg",
-    "./public/github.svg",
-    "./public/mongodb.svg",
-    "./public/php.svg",
-    "./public/postgresql.svg",
-    "./public/python.svg",
-    "./public/react.svg",
-    "./public/tailwindcss.svg",
-    "./public/vuedotjs.svg",
-    "./public/nextdotjs.svg",
+    "./typescript.svg",
+    "./javascript.svg",
+    "./html5.svg",
+    "./css.svg",
+    "./angular.svg",
+    "./nodedotjs.svg",
+    "./docker.svg",
+    "./figma.svg",
+    "./firebase.svg",
+    "./github.svg",
+    "./mongodb.svg",
+    "./php.svg",
+    "./postgresql.svg",
+    "./python.svg",
+    "./react.svg",
+    "./tailwindcss.svg",
+    "./vuedotjs.svg",
+    "./nextdotjs.svg",
 ];
 
 const GAMING_THEME_IMAGES: string[] = [
-    "./public/gaming_theme_cards/ace.svg",
-    "./public/gaming_theme_cards/circle.svg",
-    "./public/gaming_theme_cards/coin.svg",
-    "./public/gaming_theme_cards/cool_banana.svg",
-    "./public/gaming_theme_cards/gameboy.svg",
-    "./public/gaming_theme_cards/gamepad.svg",
-    "./public/gaming_theme_cards/greeper_face.svg",
-    "./public/gaming_theme_cards/level_up.svg",
-    "./public/gaming_theme_cards/maze.svg",
-    "./public/gaming_theme_cards/pac.svg",
-    "./public/gaming_theme_cards/pac_man.svg",
-    "./public/gaming_theme_cards/play button@2x 1.svg",
-    "./public/gaming_theme_cards/playing_dice.svg",
-    "./public/gaming_theme_cards/puzzle.svg",
-    "./public/gaming_theme_cards/snake.svg",
-    "./public/gaming_theme_cards/square.svg",
-    "./public/gaming_theme_cards/super_mushroom.svg",
-    "./public/gaming_theme_cards/triangle.svg",
+    "./gaming_theme_cards/ace.svg",
+    "./gaming_theme_cards/circle.svg",
+    "./gaming_theme_cards/coin.svg",
+    "./gaming_theme_cards/cool_banana.svg",
+    "./gaming_theme_cards/gameboy.svg",
+    "./gaming_theme_cards/gamepad.svg",
+    "./gaming_theme_cards/greeper_face.svg",
+    "./gaming_theme_cards/level_up.svg",
+    "./gaming_theme_cards/maze.svg",
+    "./gaming_theme_cards/pac.svg",
+    "./gaming_theme_cards/pac_man.svg",
+    "./gaming_theme_cards/play button@2x 1.svg",
+    "./gaming_theme_cards/playing_dice.svg",
+    "./gaming_theme_cards/puzzle.svg",
+    "./gaming_theme_cards/snake.svg",
+    "./gaming_theme_cards/square.svg",
+    "./gaming_theme_cards/super_mushroom.svg",
+    "./gaming_theme_cards/triangle.svg",
 ];
 
 
@@ -134,16 +134,16 @@ function updateCurrentPlayer(): void {
     if (SELECTED_THEME === "Gaming theme") {
         CURRENT_PLAYER_ICON.src =
             currentPlayer === "Blue"
-                ? "./public/chess_pawn_blue_with_background.svg"
-                : "./public/chess_pawn_orange_with_background .svg";
+                ? "./chess_pawn_blue_with_background.svg"
+                : "./chess_pawn_orange_with_background .svg";
 
         return;
     }
 
     CURRENT_PLAYER_ICON.src =
         currentPlayer === "Blue"
-            ? "./public/frame_blue.svg"
-            : "./public/frame_orange.svg";
+            ? "./frame_blue.svg"
+            : "./frame_orange.svg";
 }
 
 /**
@@ -281,10 +281,10 @@ function setWinner(player: Player): void {
     WINNER_PLAYER_ELEMENT.classList.add(player.toLowerCase());
 
     if (SELECTED_THEME === "Gaming theme") {
-        WINNER_PLAYER_ICON.src = "./public/pockal.svg";
+        WINNER_PLAYER_ICON.src = "./pockal.svg";
         WINNER_PLAYER_ICON.alt = "Trophy";
     } else {
-        WINNER_PLAYER_ICON.src = `./public/chess_pawn_${player.toLowerCase()}.svg`;
+        WINNER_PLAYER_ICON.src = `./chess_pawn_${player.toLowerCase()}.svg`;
         WINNER_PLAYER_ICON.alt = `${player} player`;
     }
 
@@ -305,8 +305,8 @@ function setDraw(): void {
     WINNER_PLAYER_ELEMENT!.classList.remove("blue", "orange");
     const isGamingTheme: boolean = document.body.classList.contains("gaming-theme");
     WINNER_PLAYER_ICON!.src = isGamingTheme
-        ? "./public/draw_gaming_theme.svg"
-        : "./public/draw_code_vibes_theme.svg";
+        ? "./draw_gaming_theme.svg"
+        : "./draw_code_vibes_theme.svg";
 
     WINNER_PLAYER_ICON!.alt = "Draw";
     if (CONFETTI_IMAGE) CONFETTI_IMAGE.style.display = "none";
@@ -393,12 +393,12 @@ function updateGamingThemeIcons(): void {
 
     GAMING_THEME_BLUE_PLAYER_ICON?.setAttribute(
         "src",
-        "./public/chess_pawn_blue.svg"
+        "./chess_pawn_blue.svg"
     );
 
     GAMING_THEME_ORANGE_PLAYER_ICON?.setAttribute(
         "src",
-        "./public/chess_pawn_orange.svg"
+        "./chess_pawn_orange.svg"
     );
 }
 
@@ -446,11 +446,11 @@ function updateGamingThemeFinalIcons(): void {
     if (SELECTED_THEME !== "Gaming theme") return;
 
     if (finalPlayerIcons[0]) {
-        finalPlayerIcons[0].src = "./public/chess_pawn_blue.svg";
+        finalPlayerIcons[0].src = "./chess_pawn_blue.svg";
     }
 
     if (finalPlayerIcons[1]) {
-        finalPlayerIcons[1].src = "./public/chess_pawn_orange.svg";
+        finalPlayerIcons[1].src = "./chess_pawn_orange.svg";
     }
 }
 
