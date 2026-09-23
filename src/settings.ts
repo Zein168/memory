@@ -67,10 +67,10 @@ function updateThemeImage(option: HTMLParagraphElement): void {
   if (!themeImage) return;
   const selectedTheme: string = option.textContent?.trim() ?? "";
   if (selectedTheme === "Gaming theme") {
-    themeImage.src = "./public/Theme_Visual_2.png";
+    themeImage.src = "./Theme_Visual_2.png";
   }
   if (selectedTheme === "Code vibes theme") {
-    themeImage.src = "./public/Theme _Visual_1.png";
+    themeImage.src = "./Theme_Visual_1.png";
   }
 }
 
