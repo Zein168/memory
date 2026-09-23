@@ -170,7 +170,7 @@
             margin-right: -64px;
 
             .start-button {
-                animation: moveButton 1.2s ease-in-out infinite;
+                animation: moveButton 1.2s ease-in-out;
             }
 
             .settings__divider {
@@ -187,6 +187,18 @@
                     transform: translateX(-50%) rotate(45deg);
                 }
 
+            }
+
+            @keyframes moveButton {
+
+                0%,
+                100% {
+                    transform: translateX(0);
+                }
+
+                50% {
+                    transform: translateX(20px);
+                }
             }
 
         }
@@ -241,6 +253,7 @@
         margin-left: auto;
         margin-right: auto;
     }
+
     .settings__theme-preview {
         left: calc(50% + 42px);
     }
