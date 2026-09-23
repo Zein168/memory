@@ -142,7 +142,7 @@ body {
 }
 
 .game__card-back {
-    background-image: url("./card.svg");
+    background-image: url("./assets/card.svg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -357,7 +357,7 @@ body.gaming-theme {
     }
 
     .game__card-back {
-        background-image: url("./gaming_theme_card.svg");
+        background-image: url("./assets/gaming_theme_card.svg");
         background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat;
