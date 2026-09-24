@@ -1,6 +1,12 @@
 @use "global" as *;
 
+body {
+    font-family: "Almarai", sans-serif;
+}
 
+h2 {
+    font-family: "RedRose", sans-serif;
+}
 .settings {
     display: flex;
     justify-content: space-around;
