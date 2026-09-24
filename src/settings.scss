@@ -3,17 +3,14 @@
 
 .settings {
     display: flex;
-    align-items: flex-start;
-    margin-left: 262px;
-    margin-top: 185px;
-
-    &__controls {
-        flex: 1;
-    }
+    justify-content: space-around;
+    margin-top: 200px;
 
     &__preview {
         padding-top: 100px;
-        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
     }
 
     &__header {
@@ -50,8 +47,6 @@
 
     }
 
-    &__theme-preview {}
-
     &__group {
         margin-bottom: 30px;
     }
@@ -66,17 +61,6 @@
         h2 {
             margin: 0;
             font-size: 20px;
-        }
-    }
-
-    &__title-left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        img {
-            width: 30px;
-            height: 30px;
         }
     }
 
@@ -246,17 +230,5 @@
         span {
             font-family: inherit;
         }
-    }
-}
-
-@media (min-width: $widescreen) {
-    .settings {
-        width: 916px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .settings__theme-preview {
-        left: calc(50% + 42px);
     }
 }
