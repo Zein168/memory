@@ -4,99 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Settings</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="./gaming_theme_cards/puzzle.svg"
-    />
+    <link rel="icon" type="image/png" href="./gaming_theme_cards/puzzle.svg" />
   </head>
 
   <body>
     <main class="settings">
-      <header class="settings__header">
-        <h1>Settings</h1>
-      </header>
+      <div class="settings__controls">
+        <header class="settings__header">
+          <h1>Settings</h1>
+        </header>
 
-      <section class="settings__group">
-        <div class="settings__title">
-          <div class="settings__title-left">
-            <img src="./palette.svg" alt="" />
-            <h2>Game themes</h2>
+        <section class="settings__group">
+          <div class="settings__title">
+            <div class="settings__title-left">
+              <img src="./palette.svg" alt="" />
+              <h2>Game themes</h2>
+            </div>
           </div>
-        </div>
 
-        <button class="settings__option settings__theme-option active" type="button">
-          <span class="settings__radio"></span>
-          <span class="settings__theme-text">Code vibes theme</span>
-        </button>
-
-        <button class="settings__option settings__theme-option" type="button">
-          <span class="settings__radio"></span>
-          <span class="settings__theme-text">Gaming theme</span>
-        </button>
-      </section>
-
-      <section class="settings__group settings__player-choice">
-        <div class="settings__title">
-          <img src="./figur.svg" alt="" />
-          <h2>Choose player</h2>
-        </div>
-
-        <button class="settings__option" type="button">
-          <span class="settings__radio"></span>
-          Blue
-        </button>
-
-        <button class="settings__option" type="button">
-          <span class="settings__radio"></span>
-          Orange
-        </button>
-      </section>
-
-      <section class="settings__group settings__board-size">
-        <div class="settings__title">
-          <img src="./board.svg" alt="" />
-          <h2>Board size</h2>
-        </div>
-
-        <button class="settings__option" type="button">
-          <span class="settings__radio"></span>
-          16 cards
-        </button>
-
-        <button class="settings__option" type="button">
-          <span class="settings__radio"></span>
-          24 cards
-        </button>
-
-        <button class="settings__option" type="button">
-          <span class="settings__radio"></span>
-          36 cards
-        </button>
-      </section>
-      <section class="settings__theme-preview">
-        <img
-          class="settings__theme-image"
-          src="./Theme_Visual_1.png"
-          alt=""
-        />
-
-        <div class="settings__theme-options">
-          <p class="settings__selected-theme">Game theme</p>
-
-          <span class="settings__divider"></span>
-
-          <p class="settings__selected-player">Player</p>
-
-          <span class="settings__divider"></span>
-
-          <p class="settings__selected-board-size">Board size</p>
-          <button class="start-button">
-            <img src="./smart_display.svg" alt="" />
-            <span>Start</span>
+          <button
+            class="settings__option settings__theme-option active"
+            type="button"
+          >
+            <span class="settings__radio"></span>
+            <span class="settings__theme-text">Code vibes theme</span>
           </button>
-        </div>
-      </section>
+
+          <button class="settings__option settings__theme-option" type="button">
+            <span class="settings__radio"></span>
+            <span class="settings__theme-text">Gaming theme</span>
+          </button>
+        </section>
+
+        <section class="settings__group settings__player-choice">
+          <div class="settings__title">
+            <img src="./figur.svg" alt="" />
+            <h2>Choose player</h2>
+          </div>
+
+          <button class="settings__option" type="button">
+            <span class="settings__radio"></span>
+            Blue
+          </button>
+
+          <button class="settings__option" type="button">
+            <span class="settings__radio"></span>
+            Orange
+          </button>
+        </section>
+
+        <section class="settings__group settings__board-size">
+          <div class="settings__title">
+            <img src="./board.svg" alt="" />
+            <h2>Board size</h2>
+          </div>
+
+          <button class="settings__option" type="button">
+            <span class="settings__radio"></span>
+            16 cards
+          </button>
+
+          <button class="settings__option" type="button">
+            <span class="settings__radio"></span>
+            24 cards
+          </button>
+
+          <button class="settings__option" type="button">
+            <span class="settings__radio"></span>
+            36 cards
+          </button>
+        </section>
+      </div>
+      <div class="settings__preview">
+        <section class="settings__theme-preview">
+          <img
+            class="settings__theme-image"
+            src="./Theme_Visual_1.png"
+            alt=""
+          />
+
+          <div class="settings__theme-options">
+            <p class="settings__selected-theme">Game theme</p>
+
+            <span class="settings__divider"></span>
+
+            <p class="settings__selected-player">Player</p>
+
+            <span class="settings__divider"></span>
+
+            <p class="settings__selected-board-size">Board size</p>
+            <button class="start-button">
+              <img src="./smart_display.svg" alt="" />
+              <span>Start</span>
+            </button>
+          </div>
+        </section>
+      </div>
     </main>
 
     <script type="module" src="/src/settings.ts"></script>
