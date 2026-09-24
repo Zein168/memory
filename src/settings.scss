@@ -87,7 +87,6 @@ h2 {
         margin: 0;
         padding: 6px 16px;
         position: relative;
-        width: fit-content;
         border: none;
         background: none;
         font: inherit;
@@ -96,11 +95,6 @@ h2 {
 
 
         &.active {
-            .settings__radio {
-                border-width: 1px;
-                font-size: 20px;
-            }
-
             &::after {
                 content: "";
                 position: absolute;
