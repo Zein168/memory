@@ -154,10 +154,6 @@ h2 {
         transition: width 0.3s ease;
 
         &.ready {
-            width: 530px;
-            justify-content: space-around;
-            gap: 28px;
-            margin-right: -64px;
 
             .start-button {
                 animation: moveButton 1.2s ease-in-out;
@@ -213,7 +209,6 @@ h2 {
         height: 49px;
         border: none;
         font-size: 18px;
-        margin-right: 10px;
         cursor: pointer;
         transition: transform 0.25s ease;
 
@@ -255,5 +250,5 @@ h2 {
 }
 
 .settings__selected-board-size {
-    width: 90px;
+    width: 80px;
 }
