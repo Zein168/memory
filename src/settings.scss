@@ -19,7 +19,7 @@ h2 {
         padding-top: 100px;
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
         gap: 30px;
     }
 
@@ -78,6 +78,7 @@ h2 {
     &__theme-image {
         width: 400px;
         height: auto;
+        margin-left: 75px;
     }
 
 
@@ -148,13 +149,14 @@ h2 {
         isolation: isolate;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         gap: 14px;
+        align-self: center; 
         background-color: #F6F6F6;
         width: 480px;
-        height: 72px;
-         transform-origin: center;
-  transition: width 0.5s ease;
+        padding: 10px 10px;
+        transform-origin: center;
+        transition: width 0.5s ease;
         box-sizing: border-box;
 
         &::after {
@@ -175,8 +177,13 @@ h2 {
         }
 
         &.ready {
-            transform: scaleX(1.25);
             width: 600px;
+            left:20px;
+
+            &::after {
+
+            }
+
             .start-button {
                 animation: moveButton 1.2s ease-in-out;
 
