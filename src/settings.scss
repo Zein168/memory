@@ -143,6 +143,8 @@ h2 {
     }
 
     &__theme-options {
+        position: relative;
+        isolation: isolate;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -151,12 +153,35 @@ h2 {
         width: 480px;
         height: 72px;
         box-sizing: border-box;
-        transition: width 0.3s ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -10px;
+            width: 10px;
+            height: 100%;
+            background-color: #F6F6F6;
+
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+
+            z-index: -1;
+            pointer-events: none;
+        }
 
         &.ready {
-
             .start-button {
                 animation: moveButton 1.2s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.08) translateY(-3px);
+
+                    img {
+                        transform: rotate(-5deg);
+                    }
+                }
             }
 
             .settings__divider {
@@ -173,6 +198,10 @@ h2 {
                     transform: translateX(-50%) rotate(45deg);
                 }
 
+            }
+
+            &:has(.start-button:hover)::after {
+                transform: scaleX(1);
             }
 
             @keyframes moveButton {
@@ -212,18 +241,10 @@ h2 {
         cursor: pointer;
         transition: transform 0.25s ease;
 
-        &:hover {
-            transform: scale(1.08) translateY(-3px);
-        }
-
         img {
             width: 24px;
             height: 24px;
             transition: transform 0.2s ease;
-        }
-
-        &:hover img {
-            transform: rotate(-5deg);
         }
 
         span {
@@ -236,8 +257,6 @@ h2 {
             font-size: 20px;
         }
     }
-
-
 }
 
 .settings__selected-theme {
@@ -251,4 +270,5 @@ h2 {
 
 .settings__selected-board-size {
     width: 80px;
+    text-align: center;
 }
