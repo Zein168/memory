@@ -95,9 +95,21 @@ h2 {
         font: inherit;
         cursor: pointer;
 
+        .settings__radio {
+            width: 14px;
+            height: 14px;
+            border: 3px solid black;
+            border-radius: 50%;
+            display: block;
+            position: relative;
+        }
 
 
         &.active {
+            .settings__radio {
+                border-width: 2px;
+            }
+
             &::after {
                 content: "";
                 position: absolute;
@@ -151,7 +163,7 @@ h2 {
         align-items: center;
         justify-content: space-between;
         gap: 14px;
-        align-self: center; 
+        align-self: center;
         background-color: #F6F6F6;
         width: 480px;
         padding: 10px 10px;
@@ -177,12 +189,8 @@ h2 {
         }
 
         &.ready {
-            width: 600px;
-            left:20px;
-
-            &::after {
-
-            }
+            width: 550px;
+            left: 20px;
 
             .start-button {
                 animation: moveButton 1.2s ease-in-out;
