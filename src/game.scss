@@ -1,4 +1,5 @@
 @use "global" as *;
+
 body {
     background-color: #303131;
 }
@@ -18,6 +19,7 @@ body {
 
     span {
         color: $white;
+        font-family: "RedRose", sans-serif;
     }
 
     &__header {
@@ -42,6 +44,11 @@ body {
         display: flex;
         align-items: center;
         gap: 8px;
+
+        span {
+            font-family: "RedRose", sans-serif;
+        }
+
 
         img {
             width: 30px;
