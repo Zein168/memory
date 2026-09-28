@@ -29,6 +29,7 @@ p {
     color: white;
     margin: 0;
     text-align: left;
+    font-weight: bold;
 }
 
 .header-title {
@@ -45,6 +46,7 @@ p {
     background-color: #F0EA6E;
     padding: 20px 20px;
     margin-top: 80px;
+    width: 220px;
     transition:
         width 0.3s ease,
         transform 0.2s ease;
@@ -64,6 +66,7 @@ p {
         color: black;
         font-size: 40px;
         font-family: 'RedRose';
+        font-weight: bold;
     }
 
     &:hover img:first-child {
