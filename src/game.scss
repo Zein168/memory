@@ -103,14 +103,20 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background-color: transparent;
-    border: none;
     cursor: pointer;
     text-decoration: none;
     background-color: $player-bg;
     border: 2px solid $turquoise;
-    width: 140px;
-    height: 45px;
+    padding: 10px 22px;
+    font-weight: bold;
+
+    span {
+        font-size: 16px;
+    }
+    img {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 .game__card-inner {
@@ -188,23 +194,28 @@ body {
 
     h2 {
         color: black;
+        font-family: "RedRose", sans-serif;
     }
 }
 
 .game__quit-modal-buttons {
     display: flex;
     gap: 20px;
+    font-family: "RedRose", sans-serif;
+
+
+    button {
+        flex: 1;
+        padding: 10px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        white-space: nowrap;
+        cursor: pointer;
+        border: 2px solid $turquoise;
+    }
 }
 
-.game__quit-back,
-.game__quit-confirm {
-    cursor: pointer;
-    border: 2px solid $turquoise;
-    width: 120px;
-    height: 40px;
-    font-size: 16px;
-    white-space: nowrap;
-}
+
 
 .game__quit-confirm {
     color: $turquoise;
