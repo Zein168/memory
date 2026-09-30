@@ -99,6 +99,8 @@ export const BOARD = document.querySelector<HTMLDivElement>(".game__board");
 
 const GAMING_THEME_BLUE_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#gaming-theme-blue-player-icon");
 const GAMING_THEME_ORANGE_PLAYER_ICON: HTMLImageElement | null = document.querySelector<HTMLImageElement>("#gaming-theme-orange-player-icon");
+const EXIT_ICON: HTMLImageElement | null =
+    document.querySelector<HTMLImageElement>(".game__exit-icon");
 
 /**
  * Updates the checking state of the game.
@@ -483,12 +485,33 @@ function setupHeaderForCardCount(): void {
     header.classList.add("cards-36");
 }
 
+function setupExitIconHover(): void {
+    if (!EXIT_BUTTON || !EXIT_ICON) return;
+
+    const defaultIcon: string = "./move_item.svg";
+    const pinkIcon: string = "./move_item_pink.svg";
+
+    new Image().src = pinkIcon;
+
+    if (SELECTED_THEME !== "Gaming theme") return;
+
+    EXIT_BUTTON.addEventListener("mouseenter", () => {
+        EXIT_ICON.src = pinkIcon;
+    });
+
+    EXIT_BUTTON.addEventListener("mouseleave", () => {
+        EXIT_ICON.src = defaultIcon;
+    });
+}
+
 updateCurrentPlayer();
 updateScores();
 setupBoard();
 setupExitModal();
+setupExitIconHover();
 updateGamingThemeIcons();
 updateGamingThemeQuitButtons();
 updateGamingThemeFinalIcons();
 updateHomeButton();
 setupHeaderForCardCount();
+
