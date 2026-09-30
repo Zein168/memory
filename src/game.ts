@@ -276,7 +276,7 @@ function setWinner(player: Player): void {
     if (!WINNER_TITLE || !WINNER_PLAYER_ELEMENT || !WINNER_PLAYER_ICON) return;
 
     WINNER_TITLE.textContent = "The winner is";
-    WINNER_PLAYER_ELEMENT.textContent = `${player} player`;
+    WINNER_PLAYER_ELEMENT.textContent = `${player.toUpperCase()} PLAYER`;
     WINNER_PLAYER_ELEMENT.classList.remove("blue", "orange");
     WINNER_PLAYER_ELEMENT.classList.add(player.toLowerCase());
 
@@ -485,7 +485,7 @@ function setupHeaderForCardCount(): void {
 updateCurrentPlayer();
 updateScores();
 setupBoard();
-blueScore = 1;
+blueScore = 6;
 orangeScore = 5;
 
 showGameOver();

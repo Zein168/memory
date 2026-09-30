@@ -14,7 +14,7 @@ body {
         font-family: "RedRose", sans-serif;
     }
 
-    h2 {
+    p {
         color: $white;
     }
 
@@ -246,6 +246,7 @@ body {
     p {
         color: $white;
         margin: 20px 0 10px;
+        font-size: 46px;
     }
 
     #winner-player {
@@ -269,6 +270,7 @@ body {
         text-decoration: none;
         background-color: $player-bg;
         border: 2px solid $turquoise;
+        font-family: "RedRose", sans-serif;
     }
 }
 
