@@ -33,12 +33,11 @@ body {
 
     &__players {
         display: flex;
-        gap: 30px;
+        gap: 12px;
         background-color: $player-bg;
-        width: 256px;
-        height: 45px;
         align-items: center;
         justify-content: center;
+        padding: 10px 10px;
     }
 
     &__player {
@@ -108,12 +107,13 @@ body {
     text-decoration: none;
     background-color: $player-bg;
     border: 2px solid $turquoise;
-    padding: 10px 22px;
+    padding: 10px 16px;
     font-weight: bold;
 
     span {
         font-size: 16px;
     }
+
     img {
         width: 20px;
         height: 20px;
@@ -192,11 +192,14 @@ body {
     width: 387px;
     height: 175px;
     padding: 16px 16px;
+    gap: 16px;
 
     p {
         color: black;
         font-family: "RedRose", sans-serif;
-        font-size: 16px;
+        font-size: 26px;
+        font-weight: bold;
+        margin-top: -8px;
     }
 }
 
@@ -204,7 +207,7 @@ body {
     display: flex;
     gap: 20px;
     font-family: "RedRose", sans-serif;
-    
+
 
 
     button {
@@ -340,7 +343,19 @@ body.gaming-theme {
                 span:nth-child(2) {
                     display: none;
                 }
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
             }
+        }
+    }
+
+    .game {
+        span {
+            font-family: "Orbitron", sans-serif;
+
         }
     }
 
@@ -348,17 +363,28 @@ body.gaming-theme {
         border: 2px solid #E71C4F;
         background-color: transparent;
         border-radius: 10px;
+        padding: 8px 16px;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
     }
 
     .game__players {
         background-color: $white;
         border-radius: 10px;
-        width: 160px;
-        height: 50px;
+        padding: 8px 8px;
+        gap: 20px;
+
 
         span {
             font-size: 26px;
         }
+    }
+
+    .game__quit-modal-buttons {
+        font-family: "Orbitron", sans-serif;
     }
 
     .game__game-over {
@@ -372,6 +398,7 @@ body.gaming-theme {
             span:nth-child(2) {
                 display: none;
             }
+
         }
 
         h1 {
@@ -396,7 +423,6 @@ body.gaming-theme {
         border: none;
         text-decoration: none;
         white-space: nowrap;
-        width: 160px;
         border-radius: 10px;
     }
 
@@ -458,7 +484,13 @@ body.gaming-theme {
 
     .game__quit-modal-content {
         border-radius: 10px;
+
+        p {
+            font-family: "Orbitron", sans-serif;
+        }
     }
+
+
 }
 
 @media (min-width: $widescreen) {
