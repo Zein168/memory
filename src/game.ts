@@ -51,24 +51,25 @@ export function increaseMatchedCards(): void {
 }
 
 const CODE_VIBES_IMAGES: string[] = [
-    "./typescript.svg",
-    "./javascript.svg",
-    "./html5.svg",
-    "./css.svg",
-    "./angular.svg",
-    "./nodedotjs.svg",
-    "./docker.svg",
-    "./figma.svg",
-    "./firebase.svg",
-    "./github.svg",
-    "./mongodb.svg",
-    "./php.svg",
-    "./postgresql.svg",
-    "./python.svg",
-    "./react.svg",
-    "./tailwindcss.svg",
-    "./vuedotjs.svg",
-    "./nextdotjs.svg",
+
+    "./code_vibes_theme_cards/angular.svg",
+    "./code_vibes_theme_cards/bootstrap.svg",
+    "./code_vibes_theme_cards/cmd.svg",
+    "./code_vibes_theme_cards/css.svg",
+    "./code_vibes_theme_cards/database.svg",
+    "./code_vibes_theme_cards/firebase.svg",
+    "./code_vibes_theme_cards/git.svg",
+    "./code_vibes_theme_cards/github.svg",
+    "./code_vibes_theme_cards/dj.svg",
+    "./code_vibes_theme_cards/html5.svg",
+    "./code_vibes_theme_cards/javascript.svg",
+    "./code_vibes_theme_cards/node_js.svg",
+    "./code_vibes_theme_cards/python.svg",
+    "./code_vibes_theme_cards/react.svg",
+    "./code_vibes_theme_cards/sass.svg",
+    "./code_vibes_theme_cards/typescript.svg",
+    "./code_vibes_theme_cards/vsc.svg",
+    "./code_vibes_theme_cards/vue_js.svg"
 ];
 
 const GAMING_THEME_IMAGES: string[] = [
