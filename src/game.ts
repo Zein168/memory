@@ -326,7 +326,7 @@ function showConfetti(): void {
         CONFETTI_IMAGE.style.display = "none";
         return;
     }
-    CONFETTI_IMAGE.style.display = "block";
+    CONFETTI_IMAGE.style.display = "flex";
 }
 
 /**
@@ -504,9 +504,15 @@ function setupExitIconHover(): void {
     });
 }
 
+
+
 updateCurrentPlayer();
 updateScores();
 setupBoard();
+blueScore = 3;
+orangeScore = 5;
+
+showGameOver();
 setupExitModal();
 setupExitIconHover();
 updateGamingThemeIcons();

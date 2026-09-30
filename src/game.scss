@@ -326,6 +326,68 @@ body {
     margin: 0 0 -5px;
 }
 
+.game__confetti {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+
+    img {
+        width: 100px;
+        height: auto;
+        animation: confettiDrop 0.8s ease-out forwards;
+    }
+
+    img:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    img:nth-child(2) {
+        animation-delay: 0.05s;
+    }
+
+    img:nth-child(3) {
+        animation-delay: 0.1s;
+    }
+
+    img:nth-child(4) {
+        animation-delay: 0.15s;
+    }
+
+    img:nth-child(5) {
+        animation-delay: 0.2s;
+    }
+
+    img:nth-child(6) {
+        animation-delay: 0.25s;
+    }
+
+    img:nth-child(7) {
+        animation-delay: 0.3s;
+    }
+
+    img:nth-child(8) {
+        animation-delay: 0.35s;
+    }
+
+    img:nth-child(9) {
+        animation-delay: 0.4s;
+    }
+}
+
+@keyframes confettiDrop {
+    from {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 // gaming-theme
 body.gaming-theme {
     background-color: #294F60;
@@ -520,3 +582,4 @@ body.gaming-theme {
         margin-inline: auto;
     }
 }
+
