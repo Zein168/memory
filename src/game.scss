@@ -110,6 +110,12 @@ body {
     padding: 10px 16px;
     font-weight: bold;
 
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 0 8px rgba(77, 213, 188, 0.6);
+    }
+
     span {
         font-size: 16px;
     }
