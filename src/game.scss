@@ -357,6 +357,10 @@ body.gaming-theme {
             font-family: "Orbitron", sans-serif;
 
         }
+
+        p {
+            font-family: "Orbitron", sans-serif;
+        }
     }
 
     .game__exit {
@@ -403,6 +407,7 @@ body.gaming-theme {
 
         h1 {
             color: $pink;
+            font-family: "Orbitron", sans-serif;
         }
     }
 
@@ -470,6 +475,7 @@ body.gaming-theme {
             background-color: #394B62;
             border: 2px solid $pink;
             border-radius: 10px;
+            font-family: "Orbitron", sans-serif;
         }
 
         &.draw {
