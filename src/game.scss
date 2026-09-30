@@ -149,12 +149,6 @@ body {
     transform: rotateY(180deg);
 }
 
-.game__card-front img {
-    width: 60%;
-    height: 60%;
-    object-fit: contain;
-}
-
 .game__card-back {
     background-image: url("./assets/card.svg");
     background-size: cover;
