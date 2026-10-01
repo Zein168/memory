@@ -248,22 +248,27 @@ body {
         height: auto;
     }
 
+    .winner-title {
+        padding-top: 48px;
+    }
+
     p {
         color: $white;
-        margin: 20px 0 10px;
+        margin: 0;
         font-size: 46px;
+
     }
 
     #winner-player {
         color: $turquoise;
-        font-size: 90px;
-        margin: 0 0 15px;
+        font-size: 80px;
     }
 
     #winner-player-icon {
         width: 210px;
         height: 210px;
-        margin-bottom: 25px;
+        padding-top: 40px;
+        padding-bottom: 60px;
     }
 
     .game__back-to-start {
@@ -334,7 +339,7 @@ body {
     width: 100%;
 
     img {
-        width: 100px;
+        width: 120px;
         height: auto;
         animation: confettiDrop 0.8s ease-out forwards;
     }
@@ -447,7 +452,7 @@ body.gaming-theme {
                 0 0 10px rgba(231, 28, 79, 0.4);
 
             .game__exit-icon {
-                 filter: drop-shadow(4px 0 3px rgba(0, 0, 0, 0.1));
+                filter: drop-shadow(4px 0 3px rgba(0, 0, 0, 0.1));
             }
         }
     }
@@ -582,4 +587,3 @@ body.gaming-theme {
         margin-inline: auto;
     }
 }
-
