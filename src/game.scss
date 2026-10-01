@@ -341,7 +341,7 @@ body {
     img {
         width: 120px;
         height: auto;
-        animation: confettiDrop 0.8s ease-out forwards;
+        animation: confettiDrop 1.5s ease-out forwards;
     }
 
     img:nth-child(1) {
@@ -541,11 +541,12 @@ body.gaming-theme {
 
     .game__next-screen {
         &.show {
-            padding-top: 200px;
+            padding-top: 128px;
         }
 
         #winner-player {
             padding-bottom: 46px;
+            font-size: 56px;
         }
 
         #winner-player-icon {
