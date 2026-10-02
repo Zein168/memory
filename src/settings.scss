@@ -298,3 +298,14 @@ h2 {
     width: 80px;
     text-align: center;
 }
+
+.settings__theme-option.selected .settings__theme-text {
+    font-weight: normal;
+}
+
+.settings__theme-option:hover .settings__theme-text {
+    font-weight: bold;
+}
+.settings__option.selected span {
+    font-weight: bold;
+}
