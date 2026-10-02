@@ -303,14 +303,21 @@ h2 {
     text-align: center;
 }
 
+.settings__option.selected span {
+    font-weight: bold;
+}
+
+
 .settings__theme-option.selected .settings__theme-text {
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .settings__theme-option:hover .settings__theme-text {
     font-weight: bold;
 }
 
-.settings__option.selected span {
-    font-weight: bold;
-}
+.settings__group:has(.settings__theme-option:hover:not(.selected))
+    .settings__theme-option.selected
+    .settings__theme-text {
+    font-weight: normal;
+    }
