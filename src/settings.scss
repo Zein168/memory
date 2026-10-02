@@ -59,6 +59,8 @@ h2 {
 
     &__group {
         margin-bottom: 30px;
+        padding: 0;
+        border: 0;
     }
 
     &__title {
@@ -67,12 +69,8 @@ h2 {
         gap: 10px;
         margin-bottom: 5px;
         position: relative;
-
-        p {
-            margin: 0;
-            font-size: 24px;
-            font-weight: bold;
-        }
+        font-size: 24px;
+        font-weight: bold;
     }
 
     &__theme-image {
@@ -81,83 +79,61 @@ h2 {
         margin-left: 75px;
     }
 
-
-
     &__option {
         display: flex;
         align-items: center;
         gap: 12px;
         margin: 0;
+        margin-left: 28px;
         padding: 6px 16px;
         position: relative;
         border: none;
         background: none;
         font: inherit;
         cursor: pointer;
-        margin-left: 28px;
 
         .settings__radio {
+            appearance: none;
             width: 20px;
             height: 20px;
             border: 3px solid black;
             border-radius: 50%;
-            display: block;
-            position: relative;
-            box-sizing: border-box;
+            margin: 0;
             flex-shrink: 0;
-        }
+            box-sizing: border-box;
+            cursor: pointer;
 
-
-        &.active {
-            .settings__radio {
+            &:checked {
                 border-width: 2px;
+                background:
+                    radial-gradient(circle, black 0 3px, transparent 4px);
             }
+        }
 
-            &::after {
-                content: "";
-                position: absolute;
-                left: calc(100% + 12px);
-                top: 62%;
-                width: 50px;
-                height: 2px;
-                background-color: $yellow;
-                transform: translateY(-50%);
-            }
+        &:has(.settings__radio:checked)::after {
+            content: "";
+            position: absolute;
+            left: calc(100% + 12px);
+            top: 62%;
+            width: 50px;
+            height: 2px;
+            background-color: $yellow;
+            transform: translateY(-50%);
+        }
 
-            &::before {
-                content: "";
-                position: absolute;
-                left: calc(100% + 58px);
-                top: 48%;
-                width: 10px;
-                height: 10px;
-                background-color: $yellow;
-                transform: rotate(45deg);
-            }
-
-            .settings__radio::after {
-                content: "";
-                position: absolute;
-                width: 6px;
-                height: 6px;
-                background-color: black;
-                border-radius: 50%;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+        &:has(.settings__radio:checked)::before {
+            content: "";
+            position: absolute;
+            left: calc(100% + 58px);
+            top: 48%;
+            width: 10px;
+            height: 10px;
+            background-color: $yellow;
+            transform: rotate(45deg);
         }
     }
 
-    &__radio {
-        width: 10px;
-        height: 10px;
-        border: 2px solid black;
-        border-radius: 50%;
-        display: inline-block;
-        flex-shrink: 0;
-        position: relative;
-    }
+
 
     &__theme-options {
         position: relative;
@@ -183,11 +159,9 @@ h2 {
             width: 10px;
             height: 100%;
             background-color: #F6F6F6;
-
             transform: scaleX(0);
             transform-origin: center;
             transition: transform 0.3s ease;
-
             z-index: -1;
             pointer-events: none;
         }
@@ -303,21 +277,14 @@ h2 {
     text-align: center;
 }
 
-.settings__option.selected span {
+.settings__theme-option:has(.settings__radio:checked) {
     font-weight: bold;
 }
 
-
-.settings__theme-option.selected .settings__theme-text {
+.settings__theme-option:hover {
     font-weight: bold;
 }
 
-.settings__theme-option:hover .settings__theme-text {
-    font-weight: bold;
-}
-
-.settings__group:has(.settings__theme-option:hover:not(.selected))
-    .settings__theme-option.selected
-    .settings__theme-text {
+.settings__theme-group:has(.settings__theme-option:hover:not(:has(.settings__radio:checked))) .settings__theme-option:has(.settings__radio:checked) {
     font-weight: normal;
-    }
+}

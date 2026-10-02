@@ -13,65 +13,97 @@
         <header class="settings__header">
           <h2>Settings</h2>
         </header>
-
-        <section class="settings__group">
-          <div class="settings__title">
+        <fieldset class="settings__group settings__theme-group">
+          <legend class="settings__title">
             <img src="./palette.svg" alt="" />
-            <p>Game themes</p>
-          </div>
+            Game themes
+          </legend>
 
-          <button
-            class="settings__option settings__theme-option active selected"
-            type="button"
-          >
-            <span class="settings__radio"></span>
-            <span class="settings__theme-text">Code vibes theme</span>
-          </button>
+          <label class="settings__option settings__theme-option">
+            <input
+              class="settings__radio"
+              type="radio"
+              name="theme"
+              value="Code vibes theme"
+              checked
+            />
+            Code vibes theme
+          </label>
 
-          <button class="settings__option settings__theme-option" type="button">
-            <span class="settings__radio"></span>
-            <span class="settings__theme-text">Gaming theme</span>
-          </button>
-        </section>
+          <label class="settings__option settings__theme-option">
+            <input
+              class="settings__radio"
+              type="radio"
+              name="theme"
+              value="Gaming theme"
+            />
+            Gaming theme
+          </label>
+        </fieldset>
 
-        <section class="settings__group settings__player-choice">
-          <div class="settings__title">
+        <fieldset class="settings__group settings__player-choice">
+          <legend class="settings__title">
             <img src="./figur.svg" alt="" />
-            <p>Choose player</p>
-          </div>
+            Choose player
+          </legend>
 
-          <button class="settings__option" type="button">
-            <span class="settings__radio"></span>
-            <span>Blue</span>
-          </button>
+          <label class="settings__option">
+            <input
+              class="settings__radio"
+              type="radio"
+              name="player"
+              value="Blue"
+            />
+            Blue
+          </label>
 
-          <button class="settings__option" type="button">
-            <span class="settings__radio"></span>
-            <span>Orange</span>
-          </button>
-        </section>
+          <label class="settings__option">
+            <input
+              class="settings__radio"
+              type="radio"
+              name="player"
+              value="Orange"
+            />
+            Orange
+          </label>
+        </fieldset>
 
-        <section class="settings__group settings__board-size">
-          <div class="settings__title">
+        <fieldset class="settings__group settings__board-size">
+          <legend class="settings__title">
             <img src="./board.svg" alt="" />
-            <p>Board size</p>
-          </div>
+            Board size
+          </legend>
 
-          <button class="settings__option" type="button">
-            <span class="settings__radio"></span>
-            <span>16 cards</span>
-          </button>
+          <label class="settings__option">
+            <input
+              class="settings__radio"
+              type="radio"
+              name="board-size"
+              value="16"
+            />
+            16 cards
+          </label>
 
-          <button class="settings__option" type="button">
-            <span class="settings__radio"></span>
-            <span>24 cards</span>
-          </button>
+          <label class="settings__option">
+            <input
+              class="settings__radio"
+              type="radio"
+              name="board-size"
+              value="24"
+            />
+            24 cards
+          </label>
 
-          <button class="settings__option" type="button">
-            <span class="settings__radio"></span>
-            <span>36 cards</span>
-          </button>
-        </section>
+          <label class="settings__option">
+            <input
+              class="settings__radio"
+              type="radio"
+              name="board-size"
+              value="36"
+            />
+            36 cards
+          </label>
+        </fieldset>
       </div>
       <div class="settings__preview">
         <img class="settings__theme-image" src="./Theme_Visual_1.png" alt="" />
@@ -79,14 +111,14 @@
         <div class="settings__theme-options">
           <p class="settings__selected-theme">Game theme</p>
 
-          <span class="settings__divider"></span>
+          <div class="settings__divider"></div >
 
           <p class="settings__selected-player">Player</p>
 
-          <span class="settings__divider"></span>
+          <div class="settings__divider"></div>
 
           <p class="settings__selected-board-size">Board size</p>
-          <button class="start-button">
+          <button class="start-button" type="button">
             <img src="./smart_display.svg" alt="" />
             <span>Start</span>
           </button>
