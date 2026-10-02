@@ -279,7 +279,14 @@ function setWinner(player: Player): void {
     if (!WINNER_TITLE || !WINNER_PLAYER_ELEMENT || !WINNER_PLAYER_ICON) return;
 
     WINNER_TITLE.textContent = "The winner is";
-    WINNER_PLAYER_ELEMENT.textContent = `${player.toUpperCase()} PLAYER`;
+    if (SELECTED_THEME === "Gaming theme") {
+        WINNER_PLAYER_ELEMENT.textContent =
+            `${player.charAt(0).toUpperCase()}${player.slice(1).toLowerCase()} Player`;
+    } else {
+        WINNER_PLAYER_ELEMENT.textContent =
+            `${player.toUpperCase()} PLAYER`;
+    }
+    
     WINNER_PLAYER_ELEMENT.classList.remove("blue", "orange");
     WINNER_PLAYER_ELEMENT.classList.add(player.toLowerCase());
 
@@ -304,7 +311,7 @@ function setDraw(): void {
 
     nextScreen?.classList.add("draw");
     WINNER_TITLE!.textContent = "It's a";
-    WINNER_PLAYER_ELEMENT!.textContent = "Draw";
+    WINNER_PLAYER_ELEMENT!.textContent = "DRAW";
     WINNER_PLAYER_ELEMENT!.classList.remove("blue", "orange");
     const isGamingTheme: boolean = document.body.classList.contains("gaming-theme");
     WINNER_PLAYER_ICON!.src = isGamingTheme
@@ -509,8 +516,8 @@ function setupExitIconHover(): void {
 updateCurrentPlayer();
 updateScores();
 setupBoard();
-blueScore = 3;
-orangeScore = 5;
+blueScore = 5;
+orangeScore = 4;
 
 showGameOver();
 setupExitModal();

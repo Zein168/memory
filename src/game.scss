@@ -17,6 +17,7 @@ body {
 
     p {
         color: $white;
+
     }
 
     span {
@@ -73,6 +74,12 @@ body {
 }
 
 .game__players {
+    .game__player {
+        span {
+            font-weight: bold;
+        }
+    }
+
     .game__player:nth-child(1) {
         span {
             color: $blue;
@@ -173,6 +180,10 @@ body {
     .game__players {
         background-color: $player-bg;
         padding: 14px 16px;
+    }
+
+    h1 {
+        text-transform: uppercase;
     }
 }
 
@@ -328,7 +339,8 @@ body {
 }
 
 .game__next-screen.draw #winner-player {
-    margin: 0 0 -5px;
+    padding-top: 10px;
+    font-weight: bold;
 }
 
 .game__confetti {
@@ -490,6 +502,9 @@ body.gaming-theme {
         h1 {
             color: $pink;
             font-family: "Orbitron", sans-serif;
+            font-size: 120px;
+            padding-bottom: 60px;
+
         }
     }
 
