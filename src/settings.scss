@@ -257,7 +257,7 @@ h2 {
         align-items: center;
         justify-content: center;
         gap: 8px;
-        background-color: $yellow;
+        background-color: #F7F5B8;
         width: 110px;
         height: 49px;
         border: none;
@@ -266,6 +266,10 @@ h2 {
         transition: transform 0.25s ease;
         font-family: "RedRose", sans-serif;
         font-weight: bold;
+
+        &.ready {
+            background-color: $yellow;
+        }
 
         img {
             width: 24px;
@@ -306,6 +310,7 @@ h2 {
 .settings__theme-option:hover .settings__theme-text {
     font-weight: bold;
 }
+
 .settings__option.selected span {
     font-weight: bold;
 }

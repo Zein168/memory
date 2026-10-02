@@ -82,7 +82,7 @@ function updateThemeImage(option: HTMLButtonElement): void {
  */
 function setupThemeOptions(): void {
   themeOptions.forEach((option: HTMLButtonElement) => {
-     option.addEventListener("mouseenter", () => {
+    option.addEventListener("mouseenter", () => {
       previewTheme(option);
     });
 
@@ -109,23 +109,27 @@ function handleThemeClick(option: HTMLButtonElement): void {
 
   option.classList.add("selected");
   option.classList.add("active");
-   const theme: string = option.textContent?.trim() ?? "";
+  const theme: string = option.textContent?.trim() ?? "";
   localStorage.setItem("theme", theme);
 
   updateThemeOptions();
   updateThemeImage(option);
 }
 /**
- * Updates the theme options when all required settings are selected.
+ * Updates the theme options and start button when all required settings are selected.
  *
  * @returns Nothing.
  */
 function updateThemeOptions(): void {
   const groups: NodeListOf<HTMLElement> = document.querySelectorAll(".settings__group");
   const allSelected: boolean = Array.from(groups).every(
-    (group) => group.querySelector(".settings__option.selected")!== null
+    (group) => group.querySelector(".settings__option.selected") !== null
   );
   themeOptionsContainer?.classList.toggle("ready", allSelected);
+  const startButton: HTMLButtonElement | null =
+    document.querySelector<HTMLButtonElement>(".start-button");
+
+  startButton?.classList.toggle("ready", allSelected);
 }
 
 /**
@@ -134,7 +138,7 @@ function updateThemeOptions(): void {
  * @returns The selected card count or null if no option is selected.
  */
 function getSelectedCardCount(): number | null {
-  const option: HTMLButtonElement  | null = document.querySelector<HTMLButtonElement >(
+  const option: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(
     ".settings__board-size .settings__option.active"
   );
   if (!option) return null;
@@ -147,7 +151,7 @@ function getSelectedCardCount(): number | null {
  * @returns The selected player or null if no player is selected.
  */
 function getSelectedPlayer(): string | null {
-  const option: HTMLButtonElement  | null = document.querySelector<HTMLButtonElement >(
+  const option: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(
     ".settings__player-choice .settings__option.active"
   );
   return option?.textContent?.trim() ?? null;
@@ -186,11 +190,11 @@ function setupStartButton(): void {
  * @returns Nothing.
  */
 function updateSelectedValues(): void {
-  const player: HTMLButtonElement  | null = document.querySelector<HTMLButtonElement >(
+  const player: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(
     ".settings__player-choice .settings__option.active"
   );
 
-  const boardSize: HTMLButtonElement  | null = document.querySelector<HTMLButtonElement >(
+  const boardSize: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(
     ".settings__board-size .settings__option.active"
   );
 
@@ -209,11 +213,11 @@ function updateSelectedValues(): void {
  * @returns The selected theme or null if no theme is selected.
  */
 function getSelectedTheme(): string | null {
-    const option: HTMLButtonElement  | null = document.querySelector<HTMLButtonElement >(
-        ".settings__theme-option.selected"
-    );
+  const option: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(
+    ".settings__theme-option.selected"
+  );
 
-    return option?.textContent?.trim() ?? null;
+  return option?.textContent?.trim() ?? null;
 }
 
 function previewTheme(option: HTMLButtonElement): void {
