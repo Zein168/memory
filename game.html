@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="game-loading">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="./memory_game_card_icon.png"
-    />
+    <link rel="icon" type="image/png" href="./gaming_theme_cards/puzzle.svg" />
+    <style>
+      html.game-loading body {
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
     <main class="game">
@@ -41,7 +42,7 @@
         </div>
 
         <button class="game__exit">
-          <img src="./move_item.svg" alt="" />
+          <img class="game__exit-icon" src="./move_item.svg" alt="" />
           <span>Exit game</span>
         </button>
       </header>
@@ -49,7 +50,7 @@
       <section class="game__game-over">
         <h1>Game Over</h1>
 
-        <h2>Final Score</h2>
+        <p>Final score</p>
 
         <div class="game__players">
           <div class="game__player">
@@ -67,7 +68,7 @@
       </section>
       <div class="game__quit-modal">
         <div class="game__quit-modal-content">
-          <h2>Are you sure you want to quit the game?</h2>
+          <p>Are you sure you want to quit the game?</p>
 
           <div class="game__quit-modal-buttons">
             <button class="game__quit-back" type="button">Back to game</button>
@@ -77,8 +78,18 @@
         </div>
       </div>
       <section class="game__next-screen">
-        <img src="./confetti.png" alt="" class="game__confetti" />
-        <h2 id="winner-title">The winner is</h2>
+        <div class="game__confetti">
+          <img src="./confetti/1.png" alt="" />
+          <img src="./confetti/2.png" alt="" />
+          <img src="./confetti/3.png" alt="" />
+          <img src="./confetti/4.png" alt="" />
+          <img src="./confetti/5.png" alt="" />
+          <img src="./confetti/6.png" alt="" />
+          <img src="./confetti/7.png" alt="" />
+          <img src="./confetti/8.png" alt="" />
+          <img src="./confetti/9.png" alt="" />
+        </div>
+        <p id="winner-title" class="winner-title">The winner is</p>
 
         <p id="winner-player" class="orange">Orange player</p>
 

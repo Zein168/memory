@@ -1,0 +1,202 @@
+@use "global" as *;
+
+body.gaming-theme {
+    background-color: #294F60;
+
+    .game__header {
+        background-color: #535D75;
+        margin: 48px 70px 0;
+        padding: 15px 70px;
+        border-radius: 10px;
+
+        &.cards-36 {
+            margin-top: 4px;
+        }
+
+        .game__players {
+            .game__player {
+                span:nth-child(2) {
+                    display: none;
+                }
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+
+    .game {
+        span {
+            font-family: "Orbitron", sans-serif;
+
+        }
+
+        p {
+            font-family: "Orbitron", sans-serif;
+        }
+    }
+
+    .game__exit {
+        border: 2px solid #E71C4F;
+        background-color: transparent;
+        border-radius: 10px;
+        padding: 8px 12px;
+
+        img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        &:hover {
+            box-shadow:
+                0 0 10px rgba(231, 28, 79, 0.7),
+                0 0 10px rgba(231, 28, 79, 0.4);
+
+            .game__exit-icon {
+                filter: drop-shadow(4px 0 3px rgba(0, 0, 0, 0.1));
+            }
+        }
+    }
+
+    .game__players {
+        background-color: $white;
+        border-radius: 10px;
+        padding: 8px 8px;
+        gap: 20px;
+
+
+        span {
+            font-size: 26px;
+        }
+    }
+
+    .game__quit-modal-buttons {
+        font-family: "Orbitron", sans-serif;
+    }
+
+    .game__game-over {
+        .game__players {
+            width: 142px;
+            height: 29px;
+            justify-content: space-between;
+        }
+
+        .game__player {
+            span:nth-child(2) {
+                display: none;
+            }
+
+        }
+
+        h1 {
+            color: $pink;
+            font-family: "Orbitron", sans-serif;
+            font-size: 120px;
+            padding-bottom: 60px;
+
+        }
+    }
+
+    .game__card-back {
+        background-image: url("./assets/gaming_theme_card.svg");
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 105px;
+        height: 120px;
+    }
+
+    .game__quit-back {
+        background-color: $pink;
+        border: none;
+        text-decoration: none;
+        white-space: nowrap;
+        border-radius: 10px;
+    }
+
+    .game__quit-confirm {
+        color: $pink;
+        border: 2px solid $pink;
+        white-space: nowrap;
+        width: 160px;
+        border-radius: 10px;
+    }
+
+    .game__current-player {
+        font-size: 30px;
+        align-items: flex-end;
+    }
+
+    .game__board {
+        margin-top: 48px;
+    }
+
+    .game__card {
+        width: 105px;
+        height: 120px;
+    }
+
+    .game__card-front {
+        border-radius: 10px;
+    }
+
+    .game__next-screen {
+        &.show {
+            padding-top: 128px;
+        }
+
+        #winner-player {
+            padding-bottom: 46px;
+            font-size: 56px;
+        }
+
+        #winner-player-icon {
+            width: 310px;
+            height: 310px;
+        }
+
+        .game__back-to-start {
+            background-color: #394B62;
+            border: 2px solid $pink;
+            border-radius: 10px;
+            font-family: "Orbitron", sans-serif;
+        }
+
+        &.draw {
+            #winner-player {
+                color: $pink;
+                padding-bottom: 0;
+                margin: 0 0 -20px;
+                font-size: 140px;
+            }
+        }
+    }
+
+    .game__quit-modal-content {
+        border-radius: 10px;
+
+        p {
+            font-family: "Orbitron", sans-serif;
+        }
+    }
+
+    .game__next-screen {
+        .winner-title {
+            font-size: 28px;
+        }
+    }
+
+}
+
+@media (min-width: $widescreen) {
+    .game {
+        width: 1200px;
+        margin-inline: auto;
+    }
+}

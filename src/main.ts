@@ -9,7 +9,11 @@ const gameBoard: HTMLDivElement | null =
   document.querySelector<HTMLDivElement>(".game__board");
 
 if (gameBoard) {
-  import("./game");
-  import("./game-cards");
+  Promise.all([
+    import("./game"),
+    import("./game-cards"),
+  ]).then(() => {
+    document.documentElement.classList.remove("game-loading");
+  });
 }
 

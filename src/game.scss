@@ -1,4 +1,6 @@
 @use "global" as *;
+@use "./gaming";
+
 body {
     background-color: #303131;
 }
@@ -10,14 +12,16 @@ body {
         padding-bottom: 33px;
         font-size: 140px;
         margin: 0;
+        font-family: "RedRose", sans-serif;
     }
 
-    h2 {
+    p {
         color: $white;
     }
 
     span {
         color: $white;
+        font-family: "RedRose", sans-serif;
     }
 
     &__header {
@@ -30,18 +34,41 @@ body {
 
     &__players {
         display: flex;
-        gap: 30px;
+        gap: 12px;
         background-color: $player-bg;
-        width: 256px;
-        height: 45px;
         align-items: center;
         justify-content: center;
+        padding: 10px;
+
+        .game__player {
+            span {
+                font-weight: bold;
+            }
+
+            &:nth-child(1) span {
+                color: $blue;
+            }
+
+            &:nth-child(2) span {
+                color: $orange;
+            }
+
+            span:last-child {
+                width: 1ch;
+                text-align: right;
+                flex-shrink: 0;
+            }
+        }
     }
 
     &__player {
         display: flex;
         align-items: center;
         gap: 8px;
+
+        span {
+            font-family: "RedRose", sans-serif;
+        }
 
         img {
             width: 30px;
@@ -64,20 +91,6 @@ body {
     }
 }
 
-.game__players {
-    .game__player:nth-child(1) {
-        span {
-            color: $blue;
-        }
-    }
-
-    .game__player:nth-child(2) {
-        span {
-            color: $orange;
-        }
-    }
-}
-
 .game__board {
     display: grid;
     gap: 10px;
@@ -96,14 +109,27 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background-color: transparent;
-    border: none;
     cursor: pointer;
     text-decoration: none;
     background-color: $player-bg;
     border: 2px solid $turquoise;
-    width: 140px;
-    height: 45px;
+    padding: 10px 16px;
+    font-weight: bold;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 0 8px rgba(77, 213, 188, 0.6);
+    }
+
+    span {
+        font-size: 16px;
+    }
+
+    img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+    }
 }
 
 .game__card-inner {
@@ -135,12 +161,6 @@ body {
     transform: rotateY(180deg);
 }
 
-.game__card-front img {
-    width: 60%;
-    height: 60%;
-    object-fit: contain;
-}
-
 .game__card-back {
     background-image: url("./assets/card.svg");
     background-size: cover;
@@ -157,6 +177,10 @@ body {
     .game__players {
         background-color: $player-bg;
         padding: 14px 16px;
+    }
+
+    h1 {
+        text-transform: uppercase;
     }
 }
 
@@ -178,25 +202,31 @@ body {
     width: 387px;
     height: 175px;
     padding: 16px 16px;
+    gap: 16px;
 
-    h2 {
+    p {
         color: black;
+        font-family: "RedRose", sans-serif;
+        font-size: 26px;
+        font-weight: bold;
+        margin-top: -8px;
     }
 }
 
 .game__quit-modal-buttons {
     display: flex;
     gap: 20px;
-}
+    font-family: "RedRose", sans-serif;
 
-.game__quit-back,
-.game__quit-confirm {
-    cursor: pointer;
-    border: 2px solid $turquoise;
-    width: 120px;
-    height: 40px;
-    font-size: 16px;
-    white-space: nowrap;
+    button {
+        flex: 1;
+        padding: 10px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        white-space: nowrap;
+        cursor: pointer;
+        border: 2px solid $turquoise;
+    }
 }
 
 .game__quit-confirm {
@@ -222,21 +252,26 @@ body {
         height: auto;
     }
 
-    h2 {
+    .winner-title {
+        padding-top: 48px;
+    }
+
+    p {
         color: $white;
-        margin: 20px 0 10px;
+        margin: 0;
+        font-size: 46px;
     }
 
     #winner-player {
         color: $turquoise;
-        font-size: 90px;
-        margin: 0 0 15px;
+        font-size: 80px;
     }
 
     #winner-player-icon {
         width: 210px;
         height: 210px;
-        margin-bottom: 25px;
+        padding-top: 40px;
+        padding-bottom: 60px;
     }
 
     .game__back-to-start {
@@ -248,6 +283,7 @@ body {
         text-decoration: none;
         background-color: $player-bg;
         border: 2px solid $turquoise;
+        font-family: "RedRose", sans-serif;
     }
 }
 
@@ -295,152 +331,68 @@ body {
 }
 
 .game__next-screen.draw #winner-player {
-    margin: 0 0 -5px;
+    padding-top: 10px;
+    font-weight: bold;
 }
 
-// gaming-theme
-body.gaming-theme {
-    background-color: #294F60;
+.game__confetti {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
 
-    .game__header {
-        background-color: #535D75;
-        margin: 48px 70px 0;
-        padding: 15px 70px;
-        border-radius: 10px;
-
-        &.cards-36 {
-            margin-top: 4px;
-        }
-
-        .game__players {
-            .game__player {
-                span:nth-child(2) {
-                    display: none;
-                }
-            }
-        }
+    img {
+        width: 120px;
+        height: auto;
+        animation: confettiDrop 1.5s ease-out forwards;
     }
 
-    .game__exit {
-        border: 2px solid #E71C4F;
-        background-color: transparent;
-        border-radius: 10px;
+    img:nth-child(1) {
+        animation-delay: 0s;
     }
 
-    .game__players {
-        background-color: $white;
-        border-radius: 10px;
-        width: 160px;
-        height: 50px;
-
-        span {
-            font-size: 26px;
-        }
+    img:nth-child(2) {
+        animation-delay: 0.05s;
     }
 
-    .game__game-over {
-        .game__players {
-            width: 142px;
-            height: 29px;
-            justify-content: space-between;
-        }
-
-        .game__player {
-            span:nth-child(2) {
-                display: none;
-            }
-        }
-
-        h1 {
-            color: $pink;
-        }
+    img:nth-child(3) {
+        animation-delay: 0.1s;
     }
 
-    .game__card-back {
-        background-image: url("./assets/gaming_theme_card.svg");
-        background-size: 100% 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-color: transparent;
-        border-radius: 10px;
-        box-sizing: border-box;
-        width: 105px;
-        height: 120px;
+    img:nth-child(4) {
+        animation-delay: 0.15s;
     }
 
-    .game__quit-back {
-        background-color: $pink;
-        border: none;
-        text-decoration: none;
-        white-space: nowrap;
-        width: 160px;
-        border-radius: 10px;
+    img:nth-child(5) {
+        animation-delay: 0.2s;
     }
 
-    .game__quit-confirm {
-        color: $pink;
-        border: 2px solid $pink;
-        white-space: nowrap;
-        width: 160px;
-        border-radius: 10px;
+    img:nth-child(6) {
+        animation-delay: 0.25s;
     }
 
-    .game__current-player {
-        font-size: 30px;
-        align-items: flex-end;
+    img:nth-child(7) {
+        animation-delay: 0.3s;
     }
 
-    .game__board {
-        margin-top: 48px;
+    img:nth-child(8) {
+        animation-delay: 0.35s;
     }
 
-    .game__card {
-        width: 105px;
-        height: 120px;
-    }
-
-    .game__card-front {
-        border-radius: 10px;
-    }
-
-    .game__next-screen {
-        &.show {
-            padding-top: 200px;
-        }
-
-        #winner-player {
-            padding-bottom: 46px;
-        }
-
-        #winner-player-icon {
-            width: 310px;
-            height: 310px;
-        }
-
-        .game__back-to-start {
-            background-color: #394B62;
-            border: 2px solid $pink;
-            border-radius: 10px;
-        }
-
-        &.draw {
-            #winner-player {
-                color: $pink;
-                padding-bottom: 0;
-                margin: 0 0 -20px;
-                font-size: 140px;
-            }
-        }
-    }
-
-    .game__quit-modal-content {
-        border-radius: 10px;
+    img:nth-child(9) {
+        animation-delay: 0.4s;
     }
 }
 
-@media (min-width: $widescreen) {
-    .game {
-        width: 1200px;
-        margin-inline: auto;
+@keyframes confettiDrop {
+    from {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

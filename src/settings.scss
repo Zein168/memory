@@ -1,15 +1,33 @@
 @use "global" as *;
 
+body {
+    font-family: "Almarai", sans-serif;
+
+}
+
+h2 {
+    font-family: "RedRose", sans-serif;
+}
 
 .settings {
-    margin-left: 262px;
-    margin-top: 185px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 200px;
+
+    &__preview {
+        width: 600px;
+        padding-top: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
 
     &__header {
         margin-bottom: 40px;
         position: relative;
 
-        h1 {
+        h2 {
             margin: 0;
             font-size: 32px;
             position: relative;
@@ -39,19 +57,10 @@
 
     }
 
-    &__theme-preview {
-        display: flex;
-        position: fixed;
-        flex-direction: column;
-        align-items: flex-end;
-        top: 290px;
-        left: 762px;
-        width: 530px;
-        gap: 36px;
-    }
-
     &__group {
         margin-bottom: 30px;
+        padding: 0;
+        border: 0;
     }
 
     &__title {
@@ -60,117 +69,117 @@
         gap: 10px;
         margin-bottom: 5px;
         position: relative;
-
-        h2 {
-            margin: 0;
-            font-size: 20px;
-        }
-    }
-
-    &__title-left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        img {
-            width: 30px;
-            height: 30px;
-        }
+        font-size: 24px;
+        font-weight: bold;
     }
 
     &__theme-image {
         width: 400px;
         height: auto;
+        margin-left: 75px;
     }
-
-
 
     &__option {
         display: flex;
         align-items: center;
         gap: 12px;
         margin: 0;
+        margin-left: 28px;
         padding: 6px 16px;
         position: relative;
-        width: fit-content;
         border: none;
         background: none;
         font: inherit;
         cursor: pointer;
 
+        .settings__radio {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid black;
+            border-radius: 50%;
+            margin: 0;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            cursor: pointer;
 
-
-        &.active {
-            .settings__radio {
-                border-width: 1px;
-                font-size: 20px;
+            &:checked {
+                border-width: 2px;
+                background:
+                    radial-gradient(circle, black 0 3px, transparent 4px);
             }
+        }
 
-            &::after {
-                content: "";
-                position: absolute;
-                left: calc(100% + 12px);
-                top: 62%;
-                width: 50px;
-                height: 2px;
-                background-color: $yellow;
-                transform: translateY(-50%);
-            }
+        &:has(.settings__radio:checked)::after {
+            content: "";
+            position: absolute;
+            left: calc(100% + 12px);
+            top: 62%;
+            width: 50px;
+            height: 2px;
+            background-color: $yellow;
+            transform: translateY(-50%);
+        }
 
-            &::before {
-                content: "";
-                position: absolute;
-                left: calc(100% + 58px);
-                top: 48%;
-                width: 10px;
-                height: 10px;
-                background-color: $yellow;
-                transform: rotate(45deg);
-            }
-
-            .settings__radio::after {
-                content: "";
-                position: absolute;
-                width: 6px;
-                height: 6px;
-                background-color: black;
-                border-radius: 50%;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+        &:has(.settings__radio:checked)::before {
+            content: "";
+            position: absolute;
+            left: calc(100% + 58px);
+            top: 48%;
+            width: 10px;
+            height: 10px;
+            background-color: $yellow;
+            transform: rotate(45deg);
         }
     }
 
-    &__radio {
-        width: 10px;
-        height: 10px;
-        border: 2px solid black;
-        border-radius: 50%;
-        display: inline-block;
-        flex-shrink: 0;
-        position: relative;
-    }
+
 
     &__theme-options {
+        position: relative;
+        isolation: isolate;
         display: flex;
         align-items: center;
-        justify-content: end;
-        gap: 10px;
+        justify-content: space-between;
+        gap: 14px;
+        align-self: center;
         background-color: #F6F6F6;
-        width: 450px;
-        height: 72px;
+        width: 480px;
+        padding: 10px 10px;
+        transform-origin: center;
+        transition: width 0.5s ease;
         box-sizing: border-box;
-        transition: width 0.3s ease;
+
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -10px;
+            width: 10px;
+            height: 100%;
+            background-color: #F6F6F6;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+            z-index: -1;
+            pointer-events: none;
+        }
 
         &.ready {
-            width: 530px;
-            justify-content: space-around;
-            gap: 28px;
-            margin-right: -64px;
+            width: 550px;
+            left: 20px;
 
             .start-button {
                 animation: moveButton 1.2s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.08) translateY(-3px);
+
+                    img {
+                        transform: rotate(-5deg);
+                    }
+                }
             }
 
             .settings__divider {
@@ -187,6 +196,10 @@
                     transform: translateX(-50%) rotate(45deg);
                 }
 
+            }
+
+            &:has(.start-button:hover)::after {
+                transform: scaleX(1);
             }
 
             @keyframes moveButton {
@@ -206,8 +219,8 @@
     }
 
     &__divider {
-        width: 4px;
-        height: 30px;
+        width: 6px;
+        height: 46px;
         background-color: $yellow;
         transform: rotate(20deg);
         position: relative;
@@ -218,17 +231,18 @@
         align-items: center;
         justify-content: center;
         gap: 8px;
-        background-color: $yellow;
+        background-color: #F7F5B8;
         width: 110px;
         height: 49px;
         border: none;
         font-size: 18px;
-        margin-right: 10px;
         cursor: pointer;
         transition: transform 0.25s ease;
+        font-family: "RedRose", sans-serif;
+        font-weight: bold;
 
-        &:hover {
-            transform: scale(1.08) translateY(-3px);
+        &.ready {
+            background-color: $yellow;
         }
 
         img {
@@ -237,24 +251,56 @@
             transition: transform 0.2s ease;
         }
 
-        &:hover img {
-            transform: rotate(-5deg);
-        }
-
         span {
             font-family: inherit;
         }
     }
+
+    &__controls {
+        span {
+            font-size: 20px;
+        }
+    }
+}
+
+.settings__selected-theme {
+    width: 100px;
+}
+
+.settings__selected-player {
+    width: 70px;
+    text-align: center;
+}
+
+.settings__selected-board-size {
+    width: 80px;
+    text-align: center;
+}
+
+.settings__theme-option:has(.settings__radio:checked) {
+    font-weight: bold;
+}
+
+.settings__theme-option:hover {
+    font-weight: bold;
+}
+
+.settings__player-choice .settings__option:has(.settings__radio:checked),
+.settings__board-size .settings__option:has(.settings__radio:checked) {
+    font-weight: bold;
 }
 
 @media (min-width: $widescreen) {
     .settings {
-        width: 916px;
-        margin-left: auto;
-        margin-right: auto;
+        width: 1200px;
+        margin-inline: auto;
     }
+}
 
-    .settings__theme-preview {
-        left: calc(50% + 42px);
+.settings__player-choice,
+.settings__board-size {
+    .settings__option {
+        width: 150px;
+        box-sizing: border-box;
     }
 }
