@@ -516,10 +516,6 @@ function setupExitIconHover(): void {
 updateCurrentPlayer();
 updateScores();
 setupBoard();
-blueScore = 5;
-orangeScore = 4;
-
-showGameOver();
 setupExitModal();
 setupExitIconHover();
 updateGamingThemeIcons();
