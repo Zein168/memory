@@ -44,10 +44,33 @@ const SMALL_CARD_COUNT = 16;
 const SMALL_BOARD_COLUMNS = 4;
 const DEFAULT_BOARD_COLUMNS = 6;
 
+/**
+ * Returns the icon path for the current player based on the selected theme.
+ *
+ * @param currentPlayer - The player whose icon should be displayed.
+ * @param selectedTheme - The currently selected game theme.
+ * @returns The path to the player icon.
+ */
+function getPlayerIcon(
+    currentPlayer: Player,
+    selectedTheme: string | null
+): string {
+    if (selectedTheme === "Gaming theme") {
+        return currentPlayer === "Blue"
+            ? "./chess_pawn_blue_with_background.svg"
+            : "./chess_pawn_orange_with_background.svg";
+    }
+
+    return currentPlayer === "Blue"
+        ? "./frame_blue.svg"
+        : "./frame_orange.svg";
+}
 
 /**
  * Updates the icon showing the current player.
  *
+ * @param currentPlayer - The player whose icon should be displayed.
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 export function updateCurrentPlayer(
@@ -56,18 +79,10 @@ export function updateCurrentPlayer(
 ): void {
     if (!CURRENT_PLAYER_ICON) return;
 
-    if (selectedTheme === "Gaming theme") {
-        CURRENT_PLAYER_ICON.src =
-            currentPlayer === "Blue"
-                ? "./chess_pawn_blue_with_background.svg"
-                : "./chess_pawn_orange_with_background.svg";
-        return;
-    }
-
-    CURRENT_PLAYER_ICON.src =
-        currentPlayer === "Blue"
-            ? "./frame_blue.svg"
-            : "./frame_orange.svg";
+    CURRENT_PLAYER_ICON.src = getPlayerIcon(
+        currentPlayer,
+        selectedTheme
+    );
 }
 
 /**
