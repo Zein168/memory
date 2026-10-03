@@ -333,28 +333,66 @@ function setWinnerIcon(
 }
 
 /**
- * Displays the draw result and applies the corresponding theme-specific icon.
+ * Displays the draw result and applies the corresponding theme-specific content.
  *
  * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 function setDraw(selectedTheme: string | null): void {
-    const nextScreen: HTMLElement | null = document.querySelector<HTMLElement>(".game__next-screen");
+    setDrawState();
+    setDrawText();
+    setDrawIcon(selectedTheme);
+    hideConfetti();
+}
+
+/**
+ * Sets the draw state on the next screen.
+ *
+ * @returns Nothing.
+ */
+function setDrawState(): void {
+    const nextScreen: HTMLElement | null =
+        document.querySelector<HTMLElement>(".game__next-screen");
 
     nextScreen?.classList.add("draw");
+}
+
+/**
+ * Sets the draw title and removes the player color class.
+ *
+ * @returns Nothing.
+ */
+function setDrawText(): void {
     WINNER_TITLE!.textContent = "It's a";
     WINNER_PLAYER_ELEMENT!.textContent = "DRAW";
     WINNER_PLAYER_ELEMENT!.classList.remove("blue", "orange");
+}
 
-    const isGamingTheme: boolean  = selectedTheme === "Gaming theme";
+/**
+ * Sets the draw icon based on the selected theme.
+ *
+ * @param selectedTheme - The currently selected game theme.
+ * @returns Nothing.
+ */
+function setDrawIcon(selectedTheme: string | null): void {
+    const isGamingTheme: boolean = selectedTheme === "Gaming theme";
 
     WINNER_PLAYER_ICON!.src = isGamingTheme
         ? "./draw_gaming_theme.svg"
         : "./draw_code_vibes_theme.svg";
 
     WINNER_PLAYER_ICON!.alt = "Draw";
+}
 
-    if (CONFETTI_IMAGE) CONFETTI_IMAGE.style.display = "none";
+/**
+ * Hides the confetti on the draw screen.
+ *
+ * @returns Nothing.
+ */
+function hideConfetti(): void {
+    if (CONFETTI_IMAGE) {
+        CONFETTI_IMAGE.style.display = "none";
+    }
 }
 
 /**
