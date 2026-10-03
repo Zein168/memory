@@ -1,4 +1,3 @@
-
 import "./game.scss"
 import "./global.scss"
 import {
@@ -36,6 +35,12 @@ export let isChecking: boolean = false;
 let blueScore: number = 0;
 let orangeScore: number = 0;
 
+
+/**
+ * Returns the current scores of both players.
+ *
+ * @returns An object containing the current Blue and Orange scores.
+ */
 export function getScores(): {
     blueScore: number;
     orangeScore: number;
@@ -78,7 +83,6 @@ export function increaseMatchedCards(): void {
 }
 
 const CODE_VIBES_IMAGES: string[] = [
-
     "./code_vibes_theme_cards/angular.svg",
     "./code_vibes_theme_cards/bootstrap.svg",
     "./code_vibes_theme_cards/cmd.svg",
@@ -168,10 +172,12 @@ function getCardImages(): string[] {
     return CODE_VIBES_IMAGES;
 }
 
-
 /**
  * Displays the game-over screen and prepares the final results.
  *
+ * @param blueScore - The final score of the Blue player.
+ * @param orangeScore - The final score of the Orange player.
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 export function showGameOver(blueScore: number,
@@ -215,6 +221,9 @@ function updateFinalScores(blueScore: number,
 /**
  * Displays the game-over container and sets the winner content.
  *
+ * @param blueScore - The final score of the Blue player.
+ * @param orangeScore - The final score of the Orange player.
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 function showWinner(blueScore: number,
@@ -231,6 +240,9 @@ function showWinner(blueScore: number,
 /**
  * Determines whether the game ends in a win or a draw.
  *
+ * @param blueScore - The final score of the Blue player.
+ * @param orangeScore - The final score of the Orange player.
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 function setWinnerContent(blueScore: number,
@@ -246,40 +258,84 @@ function setWinnerContent(blueScore: number,
 }
 
 /**
- * Displays the winner and applies the correct theme-specific icon.
+ * Displays the winner and applies the corresponding content and icon.
  *
  * @param player - The player who won the game.
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
-function setWinner(player: Player, selectedTheme: string | null): void {
-    if (!WINNER_TITLE || !WINNER_PLAYER_ELEMENT || !WINNER_PLAYER_ICON) return;
-
-    WINNER_TITLE.textContent = "The winner is";
-    if (selectedTheme === "Gaming theme") {
-        WINNER_PLAYER_ELEMENT.textContent =
-            `${player.charAt(0).toUpperCase()}${player.slice(1).toLowerCase()} Player`;
-    } else {
-        WINNER_PLAYER_ELEMENT.textContent =
-            `${player.toUpperCase()} PLAYER`;
+function setWinner(
+    player: Player,
+    selectedTheme: string | null
+): void {
+    if (!WINNER_TITLE || !WINNER_PLAYER_ELEMENT || !WINNER_PLAYER_ICON) {
+        return;
     }
 
-    WINNER_PLAYER_ELEMENT.classList.remove("blue", "orange");
-    WINNER_PLAYER_ELEMENT.classList.add(player.toLowerCase());
-
-    if (selectedTheme === "Gaming theme") {
-        WINNER_PLAYER_ICON.src = "./pockal.svg";
-        WINNER_PLAYER_ICON.alt = "Trophy";
-    } else {
-        WINNER_PLAYER_ICON.src = `./chess_pawn_${player.toLowerCase()}.svg`;
-        WINNER_PLAYER_ICON.alt = `${player} player`;
-    }
-
+    setWinnerText(player, selectedTheme);
+    setWinnerPlayerClass(player);
+    setWinnerIcon(player, selectedTheme);
     showConfetti(selectedTheme);
 }
 
 /**
- * Displays the draw result and the corresponding theme icon.
+ * Sets the winner title and player text based on the selected theme.
  *
+ * @param player - The player who won the game.
+ * @param selectedTheme - The currently selected game theme.
+ * @returns Nothing.
+ */
+function setWinnerText(
+    player: Player,
+    selectedTheme: string | null
+): void {
+    WINNER_TITLE!.textContent = "The winner is";
+
+    if (selectedTheme === "Gaming theme") {
+        WINNER_PLAYER_ELEMENT!.textContent =
+            `${player.charAt(0).toUpperCase()}${player.slice(1).toLowerCase()} Player`;
+    } else {
+        WINNER_PLAYER_ELEMENT!.textContent =
+            `${player.toUpperCase()} PLAYER`;
+    }
+}
+
+/**
+ * Applies the CSS class for the winning player.
+ *
+ * @param player - The player who won the game.
+ * @returns Nothing.
+ */
+function setWinnerPlayerClass(player: Player): void {
+    WINNER_PLAYER_ELEMENT!.classList.remove("blue", "orange");
+    WINNER_PLAYER_ELEMENT!.classList.add(player.toLowerCase());
+}
+
+/**
+ * Sets the winner icon and alt text based on the selected theme.
+ *
+ * @param player - The player who won the game.
+ * @param selectedTheme - The currently selected game theme.
+ * @returns Nothing.
+ */
+function setWinnerIcon(
+    player: Player,
+    selectedTheme: string | null
+): void {
+    if (selectedTheme === "Gaming theme") {
+        WINNER_PLAYER_ICON!.src = "./pockal.svg";
+        WINNER_PLAYER_ICON!.alt = "Trophy";
+    } else {
+        WINNER_PLAYER_ICON!.src =
+            `./chess_pawn_${player.toLowerCase()}.svg`;
+        WINNER_PLAYER_ICON!.alt = `${player} player`;
+    }
+}
+
+/**
+ * Displays the draw result and applies the corresponding theme-specific icon.
+ *
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 function setDraw(selectedTheme: string | null): void {
@@ -304,6 +360,7 @@ function setDraw(selectedTheme: string | null): void {
 /**
  * Displays or hides the confetti based on the selected theme.
  *
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 function showConfetti(selectedTheme: string | null): void {
