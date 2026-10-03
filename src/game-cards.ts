@@ -1,4 +1,5 @@
 import * as game from "./game";
+import { BOARD, showGameOver } from "./game-helpers";
 
 const CARDS_PER_TURN: number = 2;
 const MISMATCH_DELAY: number = 800;
@@ -51,7 +52,7 @@ export function setupCards(): void {
     const cards: string[] = createCardList();
     cards.forEach((image: string) => {
         const card: HTMLDivElement = createCard(image);
-        game.BOARD?.appendChild(card);
+        BOARD?.appendChild(card);
         card.addEventListener("click", () => handleCardClick(card));
     });
 }
@@ -120,11 +121,20 @@ function handleMatch(
     game.updatePlayerScore();
     game.increaseMatchedCards();
     resetSelection();
-    game.switchPlayer();
 
     if (game.matchedCards === game.CARD_COUNT) {
-        game.showGameOver();
+        const { blueScore, orangeScore } = game.getScores();
+
+        showGameOver(
+            blueScore,
+            orangeScore,
+            game.SELECTED_THEME
+        );
+
+        return;
     }
+
+    game.switchPlayer();
 }
 
 /**
