@@ -5,7 +5,6 @@ const CARDS_PER_TURN: number = 2;
 const MISMATCH_DELAY: number = 800;
 const CARD_PAIR_DIVISOR: number = 2;
 
-
 /**
  * Creates the inner container of a game card.
  *
@@ -121,7 +120,15 @@ function handleMatch(
     game.updatePlayerScore();
     game.increaseMatchedCards();
     resetSelection();
+    handleMatchResult();
+}
 
+/**
+ * Continues the game or shows the game-over screen after a match.
+ *
+ * @returns Nothing.
+ */
+function handleMatchResult(): void {
     if (game.matchedCards === game.CARD_COUNT) {
         const { blueScore, orangeScore } = game.getScores();
 
