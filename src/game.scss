@@ -5,7 +5,7 @@ body {
     background-color: #303131;
 }
 
-.game {
+game {
     h1 {
         color: $turquoise;
         padding-top: 229px;
@@ -17,7 +17,6 @@ body {
 
     p {
         color: $white;
-
     }
 
     span {
@@ -39,7 +38,27 @@ body {
         background-color: $player-bg;
         align-items: center;
         justify-content: center;
-        padding: 10px 10px;
+        padding: 10px;
+
+        .game__player {
+            span {
+                font-weight: bold;
+            }
+
+            &:nth-child(1) span {
+                color: $blue;
+            }
+
+            &:nth-child(2) span {
+                color: $orange;
+            }
+
+            span:last-child {
+                width: 1ch;
+                text-align: right;
+                flex-shrink: 0;
+            }
+        }
     }
 
     &__player {
@@ -69,32 +88,6 @@ body {
             width: 30px;
             height: 30px;
         }
-    }
-}
-
-.game__players {
-    .game__player {
-        span {
-            font-weight: bold;
-        }
-    }
-
-    .game__player:nth-child(1) {
-        span {
-            color: $blue;
-        }
-    }
-
-    .game__player:nth-child(2) {
-        span {
-            color: $orange;
-        }
-    }
-
-    span:last-child {
-        width: 1ch;
-        text-align: right;
-        flex-shrink: 0;
     }
 }
 
