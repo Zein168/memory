@@ -288,3 +288,8 @@ h2 {
 .settings__theme-group:has(.settings__theme-option:hover:not(:has(.settings__radio:checked))) .settings__theme-option:has(.settings__radio:checked) {
     font-weight: normal;
 }
+
+.settings__player-choice .settings__option:has(.settings__radio:checked),
+.settings__board-size .settings__option:has(.settings__radio:checked) {
+    font-weight: bold;
+}
