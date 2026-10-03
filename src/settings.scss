@@ -296,3 +296,11 @@ h2 {
         margin-inline: auto;
     }
 }
+
+.settings__player-choice,
+.settings__board-size {
+    .settings__option {
+        width: 150px;
+        box-sizing: border-box;
+    }
+}
