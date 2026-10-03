@@ -289,3 +289,10 @@ h2 {
 .settings__board-size .settings__option:has(.settings__radio:checked) {
     font-weight: bold;
 }
+
+@media (min-width: $widescreen) {
+    .settings {
+        width: 1200px;
+        margin-inline: auto;
+    }
+}

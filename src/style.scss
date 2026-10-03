@@ -1,3 +1,5 @@
+@use "global" as *;
+
 body {
     background-color: #2F3131;
 }
@@ -80,4 +82,11 @@ p {
 
 .controller-icon {
     margin-top: -155px;
+}
+
+@media (min-width: $widescreen) {
+    .content {
+        width: 1200px;
+        margin-inline: auto;
+    }
 }
