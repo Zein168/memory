@@ -61,25 +61,25 @@ function updateThemeImageFromInput(option: HTMLInputElement): void {
 }
 
 /**
- * Sets up click events for the theme options.
+ * Sets up hover events for the theme options.
  *
  * @returns Nothing.
  */
 function setupThemeOptions(): void {
-    themeOptions.forEach((option: HTMLLabelElement) => {
-        option.addEventListener("mouseenter", () => {
-            const radio: HTMLInputElement | null =
-                option.querySelector<HTMLInputElement>(".settings__radio");
+  themeOptions.forEach((option: HTMLLabelElement) => {
+    option.addEventListener("mouseenter", () => {
+      const radio: HTMLInputElement | null =
+        option.querySelector<HTMLInputElement>(".settings__radio");
 
-            if (radio) {
-                updateThemeImageFromInput(radio);
-            }
-        });
-
-        option.addEventListener("mouseleave", () => {
-            restoreSelectedTheme();
-        });
+      if (radio) {
+        updateThemeImageFromInput(radio);
+      }
     });
+
+    option.addEventListener("mouseleave", () => {
+      restoreSelectedTheme();
+    });
+  });
 }
 
 /**
@@ -90,11 +90,11 @@ function setupThemeOptions(): void {
 function updateThemeOptions(): void {
   const groups: NodeListOf<HTMLElement> = document.querySelectorAll(".settings__group");
   const allSelected: boolean = Array.from(groups).every(
-        (group) =>
-            group.querySelector<HTMLInputElement>(
-                ".settings__radio:checked"
-            ) !== null
-    );
+    (group) =>
+      group.querySelector<HTMLInputElement>(
+        ".settings__radio:checked"
+      ) !== null
+  );
   themeOptionsContainer?.classList.toggle("ready", allSelected);
   const startButton: HTMLButtonElement | null =
     document.querySelector<HTMLButtonElement>(".start-button");
@@ -105,7 +105,7 @@ function updateThemeOptions(): void {
 /**
  * Gets the number of cards selected for the game.
  *
- * @returns The selected card count or null if no option is selected.
+ * @returns The selected card count or null if no board size is selected.
  */
 function getSelectedCardCount(): number | null {
   const option: HTMLInputElement | null = document.querySelector<HTMLInputElement>(
@@ -129,7 +129,8 @@ function getSelectedPlayer(): string | null {
 }
 
 /**
- * Starts the game with the selected settings.
+* Starts the game using the selected settings.
+ * Stores the settings in localStorage and navigates to the game page.
  *
  * @returns Nothing.
  */
@@ -161,7 +162,7 @@ function setupStartButton(): void {
  * @returns Nothing.
  */
 function updateSelectedValues(): void {
-  const player: HTMLInputElement  | null = document.querySelector<HTMLInputElement >(
+  const player: HTMLInputElement | null = document.querySelector<HTMLInputElement>(
     ".settings__player-choice .settings__radio:checked"
   );
 
@@ -174,7 +175,7 @@ function updateSelectedValues(): void {
   }
 
   if (boardSize && selectedBoardSize) {
-    selectedBoardSize.textContent =`${boardSize.value} cards`;
+    selectedBoardSize.textContent = `${boardSize.value} cards`;
   }
 }
 
@@ -191,15 +192,20 @@ function getSelectedTheme(): string | null {
   return option?.value ?? null;
 }
 
+/**
+ * Restores the theme preview image of the currently selected theme.
+ *
+ * @returns Nothing.
+ */
 function restoreSelectedTheme(): void {
-  const selectedTheme: HTMLInputElement  | null =
-    document.querySelector<HTMLInputElement >(
-      ".settings__theme-option.settings__radio:checked"
+  const selectedTheme: HTMLInputElement | null =
+    document.querySelector<HTMLInputElement>(
+      ".settings__theme-option .settings__radio:checked"
     );
 
   if (!selectedTheme) return;
 
-   updateThemeImageFromInput(selectedTheme);
+  updateThemeImageFromInput(selectedTheme);
 }
 
 setupOptions();
@@ -209,10 +215,10 @@ updateSelectedValues();
 updateThemeOptions();
 
 const initialTheme: HTMLInputElement | null =
-    document.querySelector<HTMLInputElement>(
-        ".settings__theme-option .settings__radio:checked"
-    );
+  document.querySelector<HTMLInputElement>(
+    ".settings__theme-option .settings__radio:checked"
+  );
 
 if (initialTheme) {
-    updateThemeImageFromInput(initialTheme);
+  updateThemeImageFromInput(initialTheme);
 }
