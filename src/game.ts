@@ -1,16 +1,17 @@
 import "./game.scss"
 import "./global.scss"
 import {
-  updateCurrentPlayer,
-  updateScores,
-  setupBoard,
-  setupExitModal,
-  setupExitIconHover,
-  updateGamingThemeIcons,
-  updateGamingThemeQuitButtons,
-  updateGamingThemeFinalIcons,
-  updateHomeButton,
-  setupHeaderForCardCount,
+    updateCurrentPlayer,
+    updateScores,
+    setupBoard,
+    setupExitModal,
+    setupExitIconHover,
+    updateGamingThemeIcons,
+    updateGamingThemeQuitButtons,
+    updateGamingThemeFinalIcons,
+    updateHomeButton,
+    setupHeaderForCardCount,
+    getCardImages,
 } from "./game-helpers";
 
 type Player = "Blue" | "Orange";
@@ -55,24 +56,24 @@ export let matchedCards: number = 0;
 
 
 const FINAL_BLUE_SCORE_ELEMENT =
-   document.querySelector<HTMLSpanElement>("#final-blue-score");
+    document.querySelector<HTMLSpanElement>("#final-blue-score");
 
 const FINAL_ORANGE_SCORE_ELEMENT =
     document.querySelector<HTMLSpanElement>("#final-orange-score");
-    
+
 const WINNER_PLAYER_ELEMENT =
     document.querySelector<HTMLParagraphElement>("#winner-player");
-    
+
 const WINNER_PLAYER_ICON =
     document.querySelector<HTMLImageElement>("#winner-player-icon");
-    
+
 const WINNER_TITLE =
     document.querySelector<HTMLParagraphElement>("#winner-title");
-    
+
 const CONFETTI_IMAGE =
     document.querySelector<HTMLDivElement>(".game__confetti");
-    
-const NEXT_SCREEN_DELAY = 4000;    
+
+const NEXT_SCREEN_DELAY = 4000;
 /**
  * Increases the number of matched cards.
  *
@@ -81,48 +82,6 @@ const NEXT_SCREEN_DELAY = 4000;
 export function increaseMatchedCards(): void {
     matchedCards += MATCHED_CARDS_INCREMENT;
 }
-
-const CODE_VIBES_IMAGES: string[] = [
-    "./code_vibes_theme_cards/angular.svg",
-    "./code_vibes_theme_cards/bootstrap.svg",
-    "./code_vibes_theme_cards/cmd.svg",
-    "./code_vibes_theme_cards/css.svg",
-    "./code_vibes_theme_cards/database.svg",
-    "./code_vibes_theme_cards/firebase.svg",
-    "./code_vibes_theme_cards/git.svg",
-    "./code_vibes_theme_cards/github.svg",
-    "./code_vibes_theme_cards/dj.svg",
-    "./code_vibes_theme_cards/html5.svg",
-    "./code_vibes_theme_cards/javascript.svg",
-    "./code_vibes_theme_cards/node_js.svg",
-    "./code_vibes_theme_cards/python.svg",
-    "./code_vibes_theme_cards/react.svg",
-    "./code_vibes_theme_cards/sass.svg",
-    "./code_vibes_theme_cards/typescript.svg",
-    "./code_vibes_theme_cards/vsc.svg",
-    "./code_vibes_theme_cards/vue_js.svg"
-];
-
-const GAMING_THEME_IMAGES: string[] = [
-    "./gaming_theme_cards/ace.svg",
-    "./gaming_theme_cards/circle.svg",
-    "./gaming_theme_cards/coin.svg",
-    "./gaming_theme_cards/cool_banana.svg",
-    "./gaming_theme_cards/gameboy.svg",
-    "./gaming_theme_cards/gamepad.svg",
-    "./gaming_theme_cards/greeper_face.svg",
-    "./gaming_theme_cards/level_up.svg",
-    "./gaming_theme_cards/maze.svg",
-    "./gaming_theme_cards/pac.svg",
-    "./gaming_theme_cards/pac_man.svg",
-    "./gaming_theme_cards/play button@2x 1.svg",
-    "./gaming_theme_cards/playing_dice.svg",
-    "./gaming_theme_cards/puzzle.svg",
-    "./gaming_theme_cards/snake.svg",
-    "./gaming_theme_cards/square.svg",
-    "./gaming_theme_cards/super_mushroom.svg",
-    "./gaming_theme_cards/triangle.svg",
-];
 
 /**
  * Updates the checking state of the game.
@@ -157,19 +116,6 @@ export function updatePlayerScore(): void {
 export function switchPlayer(): void {
     currentPlayer = currentPlayer === "Blue" ? "Orange" : "Blue";
     updateCurrentPlayer(currentPlayer, SELECTED_THEME);
-}
-
-/**
- * Returns the card images for the selected theme.
- *
- * @returns An array containing the card image paths.
- */
-function getCardImages(): string[] {
-    if (SELECTED_THEME === "Gaming theme") {
-        return GAMING_THEME_IMAGES;
-    }
-
-    return CODE_VIBES_IMAGES;
 }
 
 /**
@@ -425,7 +371,7 @@ function showNextScreen(): void {
     }, NEXT_SCREEN_DELAY);
 }
 
-export const cardImages: string[] = getCardImages();
+export const cardImages: string[] = getCardImages(SELECTED_THEME);
 
 updateCurrentPlayer(currentPlayer, SELECTED_THEME);
 updateScores(blueScore, orangeScore);
