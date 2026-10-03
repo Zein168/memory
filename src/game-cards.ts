@@ -1,5 +1,5 @@
 import * as game from "./game";
-import { BOARD, showGameOver } from "./game-helpers";
+import { BOARD } from "./game-helpers";
 
 const CARDS_PER_TURN: number = 2;
 const MISMATCH_DELAY: number = 800;
@@ -125,7 +125,7 @@ function handleMatch(
     if (game.matchedCards === game.CARD_COUNT) {
         const { blueScore, orangeScore } = game.getScores();
 
-        showGameOver(
+        game.showGameOver(
             blueScore,
             orangeScore,
             game.SELECTED_THEME
