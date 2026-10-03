@@ -88,6 +88,8 @@ export function updateCurrentPlayer(
 /**
  * Updates the displayed scores of both players.
  *
+ * @param blueScore - The current score of the Blue player.
+ * @param orangeScore - The current score of the Orange player.
  * @returns Nothing.
  */
 export function updateScores(blueScore: number,
@@ -103,7 +105,9 @@ export function updateScores(blueScore: number,
 
 /**
  * Sets up the game board based on the selected card count.
+ * Determines the number of columns for the game board.
  *
+ * @param cardCount - The number of cards on the game board.
  * @returns Nothing.
  */
 export function setupBoard(cardCount: number): void {
@@ -175,6 +179,7 @@ function exitGame(): void {
 /**
  * Updates the player icons for the gaming theme.
  *
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 export function updateGamingThemeIcons(selectedTheme: string | null): void {
@@ -194,6 +199,7 @@ export function updateGamingThemeIcons(selectedTheme: string | null): void {
 /**
  * Updates the quit button texts for the gaming theme.
  *
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 export function updateGamingThemeQuitButtons(selectedTheme: string | null): void {
@@ -211,6 +217,7 @@ export function updateGamingThemeQuitButtons(selectedTheme: string | null): void
 /**
  * Updates the final player icons for the gaming theme.
  *
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 export function updateGamingThemeFinalIcons(selectedTheme: string | null): void {
@@ -256,6 +263,7 @@ export function setupHeaderForCardCount(): void {
 /**
  * Adds hover effects to the exit button for the gaming theme.
  *
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
 export function setupExitIconHover(selectedTheme: string | null): void {
@@ -322,6 +330,7 @@ const GAMING_THEME_IMAGES: string[] = [
 /**
  * Returns the card images for the selected theme.
  *
+ * @param selectedTheme - The currently selected game theme.
  * @returns An array containing the card image paths.
  */
 export function getCardImages(selectedTheme: string | null): string[] {
