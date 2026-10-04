@@ -30,7 +30,7 @@ if (SELECTED_THEME === "Gaming theme") {
 let currentPlayer: Player =
     SAVED_PLAYER === "Orange" ? "Orange" : "Blue";
 
-export let selectedCards: HTMLDivElement[] = [];
+export let selectedCards: HTMLButtonElement[] = [];
 export let isChecking: boolean = false;
 
 let blueScore: number = 0;
