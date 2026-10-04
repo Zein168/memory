@@ -272,13 +272,14 @@ h2 {
         height: 49px;
         border: none;
         font-size: 18px;
-        cursor: pointer;
+        cursor: default;
         transition: transform 0.25s ease;
         font-family: "RedRose", sans-serif;
         font-weight: bold;
 
         &.ready {
             background-color: $yellow;
+            cursor: pointer;
         }
 
         img {
@@ -328,8 +329,7 @@ h2 {
     }
 }
 
-.settings__group:has(.settings__option:hover)
-    .settings__option:has(.settings__radio:checked):not(:hover) {
+.settings__group:has(.settings__option:hover) .settings__option:has(.settings__radio:checked):not(:hover) {
     font-weight: normal;
 
     &::after,
