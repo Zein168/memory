@@ -208,17 +208,40 @@ function restoreSelectedTheme(): void {
   updateThemeImageFromInput(selectedTheme);
 }
 
+/**
+ * Restores a saved setting and checks the matching radio option.
+ *
+ * @param selector - The selector for the radio options.
+ * @param storageKey - The localStorage key containing the saved value.
+ * @returns Nothing.
+ */
+function restoreOption(selector: string, storageKey: string): void {
+    const savedValue: string | null = localStorage.getItem(storageKey);
+    if (!savedValue) return;
+
+    const options: NodeListOf<HTMLInputElement> =
+        document.querySelectorAll<HTMLInputElement>(selector);
+
+    options.forEach((option: HTMLInputElement) => {
+        option.checked = option.value === savedValue;
+    });
+}
+
+/**
+ * Restores all previously selected game settings.
+ *
+ * @returns Nothing.
+ */
+function restoreSavedOptions(): void {
+    restoreOption(".settings__player-choice .settings__radio", "player");
+    restoreOption(".settings__board-size .settings__radio", "cardCount");
+    restoreOption(".settings__theme-option .settings__radio", "theme");
+}
+
 setupOptions();
 setupThemeOptions();
 setupStartButton();
+restoreSavedOptions();
 updateSelectedValues();
 updateThemeOptions();
-
-const initialTheme: HTMLInputElement | null =
-  document.querySelector<HTMLInputElement>(
-    ".settings__theme-option .settings__radio:checked"
-  );
-
-if (initialTheme) {
-  updateThemeImageFromInput(initialTheme);
-}
+restoreSelectedTheme();
