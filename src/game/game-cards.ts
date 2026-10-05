@@ -1,10 +1,31 @@
-import * as game from "./game";
-import { BOARD } from "./game-helpers";
+import {
+    BOARD,
+    updateCurrentPlayer,
+    updateScores,
+} from "./game-ui";
+
+import {
+    CARD_COUNT,
+    SELECTED_THEME,
+    selectedCards,
+    isChecking,
+    matchedCards,
+    currentPlayer,
+    setIsChecking,
+    increaseMatchedCards,
+    updatePlayerScore,
+    switchPlayer,
+    getScores,
+} from "./game-state";
+
+import { getCardImages } from "./game-helpers";
+import { showGameOver } from "./game-over";
 
 const CARDS_PER_TURN: number = 2;
 const MISMATCH_DELAY: number = 800;
 const CARD_PAIR_DIVISOR: number = 2;
 
+const cardImages: string[] = getCardImages(SELECTED_THEME);
 /**
  * Creates the inner container of a game card.
  *
@@ -66,9 +87,9 @@ function handleCardClick(card: HTMLButtonElement): void {
     if (isCardBlocked(card)) return;
 
     card.classList.add("flipped");
-    game.selectedCards.push(card);
+    selectedCards.push(card);
 
-    if (game.selectedCards.length === CARDS_PER_TURN) {
+    if (selectedCards.length === CARDS_PER_TURN) {
         checkSelectedCards();
     }
 }
@@ -81,10 +102,10 @@ function handleCardClick(card: HTMLButtonElement): void {
  */
 function isCardBlocked(card: HTMLButtonElement): boolean {
     return (
-        game.isChecking ||
+        isChecking ||
         card.classList.contains("flipped") ||
         card.classList.contains("matched") ||
-        game.selectedCards.length === CARDS_PER_TURN
+        selectedCards.length === CARDS_PER_TURN
     );
 }
 
@@ -94,9 +115,9 @@ function isCardBlocked(card: HTMLButtonElement): boolean {
  * @returns Nothing.
  */
 function checkSelectedCards(): void {
-    game.setIsChecking(true);
+    setIsChecking(true);
 
-    const [first, second]: HTMLButtonElement[] = game.selectedCards;
+    const [first, second]: HTMLButtonElement[] = selectedCards;
 
     if (first.dataset.image === second.dataset.image) {
         handleMatch(first, second);
@@ -117,8 +138,13 @@ function handleMatch(
     second: HTMLButtonElement
 ): void {
     markCardsAsMatched(first, second);
-    game.updatePlayerScore();
-    game.increaseMatchedCards();
+
+    updatePlayerScore();
+
+    const { blueScore, orangeScore } = getScores();
+    updateScores(blueScore, orangeScore);
+
+    increaseMatchedCards();
     resetSelection();
     handleMatchResult();
 }
@@ -129,19 +155,20 @@ function handleMatch(
  * @returns Nothing.
  */
 function handleMatchResult(): void {
-    if (game.matchedCards === game.CARD_COUNT) {
-        const { blueScore, orangeScore } = game.getScores();
+    if (matchedCards === CARD_COUNT) {
+        const { blueScore, orangeScore } = getScores();
 
-        game.showGameOver(
+        showGameOver(
             blueScore,
             orangeScore,
-            game.SELECTED_THEME
+            SELECTED_THEME
         );
 
         return;
     }
 
-    game.switchPlayer();
+    switchPlayer();
+    updateCurrentPlayer(currentPlayer, SELECTED_THEME);
 }
 
 /**
@@ -165,9 +192,9 @@ function markCardsAsMatched(
  * @returns A shuffled list of card image paths.
  */
 function createCardList(): string[] {
-    const selected: string[] = game.cardImages.slice(
+    const selected: string[] = cardImages.slice(
         0,
-        game.CARD_COUNT / CARD_PAIR_DIVISOR
+        CARD_COUNT / CARD_PAIR_DIVISOR
     );
     const pairs: string[] = selected.flatMap((image: string) => [image, image]);
     return pairs.sort(() => Math.random() - 0.5);
@@ -204,7 +231,9 @@ function handleMismatch(
         first.classList.remove("flipped");
         second.classList.remove("flipped");
         resetSelection();
-        game.switchPlayer();
+
+        switchPlayer();
+        updateCurrentPlayer(currentPlayer, SELECTED_THEME);
     }, MISMATCH_DELAY);
 }
 
@@ -214,9 +243,9 @@ function handleMismatch(
  * @returns Nothing.
  */
 function resetSelection(): void {
-    game.selectedCards.length = 0;
-    game.setIsChecking(false);
+    selectedCards.length = 0;
+    setIsChecking(false);
 }
 
-setupCards();
+
 
