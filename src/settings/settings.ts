@@ -1,5 +1,5 @@
-import './settings.scss'
-import './global.scss'
+import "../styles/settings.scss";
+import "../styles/global.scss";
 
 const options: NodeListOf<HTMLInputElement> = document.querySelectorAll<HTMLInputElement>(
   ".settings__radio"

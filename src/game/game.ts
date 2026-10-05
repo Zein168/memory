@@ -1,5 +1,5 @@
-import "./game.scss"
-import "./global.scss"
+import "../styles/game.scss"
+import "../styles/global.scss"
 import {
     updateCurrentPlayer,
     updateScores,
