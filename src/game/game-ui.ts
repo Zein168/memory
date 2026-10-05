@@ -1,18 +1,14 @@
-type Player = "Blue" | "Orange";
+import type { Player } from "./game-state";
 
 export const BOARD = document.querySelector<HTMLDivElement>(".game__board");
 
-const CURRENT_PLAYER_ICON =
-    document.querySelector<HTMLImageElement>("#current-player-icon");
+const CURRENT_PLAYER_ICON = document.querySelector<HTMLImageElement>("#current-player-icon");
 
-const BLUE_SCORE_ELEMENT =
-    document.querySelector<HTMLSpanElement>("#blue-score");
+const BLUE_SCORE_ELEMENT = document.querySelector<HTMLSpanElement>("#blue-score");
 
-const ORANGE_SCORE_ELEMENT =
-    document.querySelector<HTMLSpanElement>("#orange-score");
+const ORANGE_SCORE_ELEMENT = document.querySelector<HTMLSpanElement>("#orange-score");
 
-const EXIT_BUTTON =
-    document.querySelector<HTMLButtonElement>(".game__exit");
+const EXIT_BUTTON = document.querySelector<HTMLButtonElement>(".game__exit");
 
 const QUIT_MODAL =
     document.querySelector<HTMLDivElement>(".game__quit-modal");
@@ -65,7 +61,6 @@ function getPlayerIcon(
         ? "./frame_blue.svg"
         : "./frame_orange.svg";
 }
-
 /**
  * Updates the icon showing the current player.
  *
@@ -135,45 +130,28 @@ function getBoardColumns(cardCount: number): number {
 }
 
 /**
- * Adds event listeners to the game exit buttons.
+ * Adds hover effects to the exit button for the gaming theme.
  *
+ * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
-export function setupExitModal(): void {
-    EXIT_BUTTON?.addEventListener("click", openQuitModal);
-    BACK_BUTTON?.addEventListener("click", closeQuitModal);
-    CONFIRM_EXIT_BUTTON?.addEventListener("click", exitGame);
-}
+export function setupExitIconHover(selectedTheme: string | null): void {
+    if (!EXIT_BUTTON || !EXIT_ICON) return;
 
-/**
- * Opens the quit-game modal.
- *
- * @returns Nothing.
- */
-function openQuitModal(): void {
-    if (QUIT_MODAL) {
-        QUIT_MODAL.style.display = "flex";
-    }
-}
+    const defaultIcon: string = "./move_item.svg";
+    const pinkIcon: string = "./move_item_pink.svg";
 
-/**
- * Closes the quit-game modal.
- *
- * @returns Nothing.
- */
-function closeQuitModal(): void {
-    if (QUIT_MODAL) {
-        QUIT_MODAL.style.display = "none";
-    }
-}
+    new Image().src = pinkIcon;
 
-/**
- * Redirects the player to the settings page.
- *
- * @returns Nothing.
- */
-function exitGame(): void {
-    window.location.href = "./settings.html";
+    if (selectedTheme !== "Gaming theme") return;
+
+    EXIT_BUTTON.addEventListener("mouseenter", () => {
+        EXIT_ICON.src = pinkIcon;
+    });
+
+    EXIT_BUTTON.addEventListener("mouseleave", () => {
+        EXIT_ICON.src = defaultIcon;
+    });
 }
 
 /**
@@ -251,6 +229,7 @@ export function updateHomeButton(): void {
  *
  * @returns Nothing.
  */
+
 export function setupHeaderForCardCount(): void {
     const cardCount: string | null = localStorage.getItem("cardCount");
     const header: HTMLElement | null = document.querySelector<HTMLElement>(".game__header");
@@ -261,82 +240,43 @@ export function setupHeaderForCardCount(): void {
 }
 
 /**
- * Adds hover effects to the exit button for the gaming theme.
+ * Adds event listeners to the game exit buttons.
  *
- * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
  */
-export function setupExitIconHover(selectedTheme: string | null): void {
-    if (!EXIT_BUTTON || !EXIT_ICON) return;
-
-    const defaultIcon: string = "./move_item.svg";
-    const pinkIcon: string = "./move_item_pink.svg";
-
-    new Image().src = pinkIcon;
-
-    if (selectedTheme !== "Gaming theme") return;
-
-    EXIT_BUTTON.addEventListener("mouseenter", () => {
-        EXIT_ICON.src = pinkIcon;
-    });
-
-    EXIT_BUTTON.addEventListener("mouseleave", () => {
-        EXIT_ICON.src = defaultIcon;
-    });
+export function setupExitModal(): void {
+    EXIT_BUTTON?.addEventListener("click", openQuitModal);
+    BACK_BUTTON?.addEventListener("click", closeQuitModal);
+    CONFIRM_EXIT_BUTTON?.addEventListener("click", exitGame);
 }
 
-const CODE_VIBES_IMAGES: string[] = [
-    "./code_vibes_theme_cards/angular.svg",
-    "./code_vibes_theme_cards/bootstrap.svg",
-    "./code_vibes_theme_cards/cmd.svg",
-    "./code_vibes_theme_cards/css.svg",
-    "./code_vibes_theme_cards/database.svg",
-    "./code_vibes_theme_cards/firebase.svg",
-    "./code_vibes_theme_cards/git.svg",
-    "./code_vibes_theme_cards/github.svg",
-    "./code_vibes_theme_cards/dj.svg",
-    "./code_vibes_theme_cards/html5.svg",
-    "./code_vibes_theme_cards/javascript.svg",
-    "./code_vibes_theme_cards/node_js.svg",
-    "./code_vibes_theme_cards/python.svg",
-    "./code_vibes_theme_cards/react.svg",
-    "./code_vibes_theme_cards/sass.svg",
-    "./code_vibes_theme_cards/typescript.svg",
-    "./code_vibes_theme_cards/vsc.svg",
-    "./code_vibes_theme_cards/vue_js.svg"
-];
-
-const GAMING_THEME_IMAGES: string[] = [
-    "./gaming_theme_cards/ace.svg",
-    "./gaming_theme_cards/circle.svg",
-    "./gaming_theme_cards/coin.svg",
-    "./gaming_theme_cards/cool_banana.svg",
-    "./gaming_theme_cards/gameboy.svg",
-    "./gaming_theme_cards/gamepad.svg",
-    "./gaming_theme_cards/greeper_face.svg",
-    "./gaming_theme_cards/level_up.svg",
-    "./gaming_theme_cards/maze.svg",
-    "./gaming_theme_cards/pac.svg",
-    "./gaming_theme_cards/pac_man.svg",
-    "./gaming_theme_cards/play button@2x 1.svg",
-    "./gaming_theme_cards/playing_dice.svg",
-    "./gaming_theme_cards/puzzle.svg",
-    "./gaming_theme_cards/snake.svg",
-    "./gaming_theme_cards/square.svg",
-    "./gaming_theme_cards/super_mushroom.svg",
-    "./gaming_theme_cards/triangle.svg",
-];
+/**
+ * Opens the quit-game modal.
+ *
+ * @returns Nothing.
+ */
+function openQuitModal(): void {
+    if (QUIT_MODAL) {
+        QUIT_MODAL.style.display = "flex";
+    }
+}
 
 /**
- * Returns the card images for the selected theme.
+ * Closes the quit-game modal.
  *
- * @param selectedTheme - The currently selected game theme.
- * @returns An array containing the card image paths.
+ * @returns Nothing.
  */
-export function getCardImages(selectedTheme: string | null): string[] {
-    if (selectedTheme === "Gaming theme") {
-        return GAMING_THEME_IMAGES;
+function closeQuitModal(): void {
+    if (QUIT_MODAL) {
+        QUIT_MODAL.style.display = "none";
     }
+}
 
-    return CODE_VIBES_IMAGES;
+/**
+ * Redirects the player to the settings page.
+ *
+ * @returns Nothing.
+ */
+function exitGame(): void {
+    window.location.href = "./settings.html";
 }

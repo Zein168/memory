@@ -1,62 +1,7 @@
-import "./game.scss"
-import "./global.scss"
-import {
-    updateCurrentPlayer,
-    updateScores,
-    setupBoard,
-    setupExitModal,
-    setupExitIconHover,
-    updateGamingThemeIcons,
-    updateGamingThemeQuitButtons,
-    updateGamingThemeFinalIcons,
-    updateHomeButton,
-    setupHeaderForCardCount,
-    getCardImages,
-} from "./game-helpers";
-
-type Player = "Blue" | "Orange";
-
-const MATCHED_CARDS_INCREMENT: number = 2;
-
-export const CARD_COUNT: number = Number(localStorage.getItem("cardCount"));
-
-const SAVED_PLAYER: string | null = localStorage.getItem("player");
-export const SELECTED_THEME: string | null = localStorage.getItem("theme");
-
-if (SELECTED_THEME === "Gaming theme") {
-    document.body.classList.add("gaming-theme");
-}
-
-let currentPlayer: Player =
-    SAVED_PLAYER === "Orange" ? "Orange" : "Blue";
-
-export let selectedCards: HTMLDivElement[] = [];
-export let isChecking: boolean = false;
-
-let blueScore: number = 0;
-let orangeScore: number = 0;
-
-
-/**
- * Returns the current scores of both players.
- *
- * @returns An object containing the current Blue and Orange scores.
- */
-export function getScores(): {
-    blueScore: number;
-    orangeScore: number;
-} {
-    return {
-        blueScore,
-        orangeScore,
-    };
-}
-
-export let matchedCards: number = 0;
-
+import type { Player } from "./game-state";
 
 const FINAL_BLUE_SCORE_ELEMENT =
-    document.querySelector<HTMLSpanElement>("#final-blue-score");
+    document.querySelector<HTMLSpanElement>("#final-blue-score");  
 
 const FINAL_ORANGE_SCORE_ELEMENT =
     document.querySelector<HTMLSpanElement>("#final-orange-score");
@@ -74,49 +19,6 @@ const CONFETTI_IMAGE =
     document.querySelector<HTMLDivElement>(".game__confetti");
 
 const NEXT_SCREEN_DELAY = 4000;
-/**
- * Increases the number of matched cards.
- *
- * @returns Nothing.
- */
-export function increaseMatchedCards(): void {
-    matchedCards += MATCHED_CARDS_INCREMENT;
-}
-
-/**
- * Updates the checking state of the game.
- *
- * @param value - The new checking state.
- * @returns Nothing.
- */
-export function setIsChecking(value: boolean): void {
-    isChecking = value;
-}
-
-/**
- * Adds one point to the current player's score.
- *
- * @returns Nothing.
- */
-export function updatePlayerScore(): void {
-    if (currentPlayer === "Blue") {
-        blueScore++;
-    } else {
-        orangeScore++;
-    }
-
-    updateScores(blueScore, orangeScore);
-}
-
-/**
- * Switches the current player and updates the player icon.
- *
- * @returns Nothing.
- */
-export function switchPlayer(): void {
-    currentPlayer = currentPlayer === "Blue" ? "Orange" : "Blue";
-    updateCurrentPlayer(currentPlayer, SELECTED_THEME);
-}
 
 /**
  * Displays the game-over screen and prepares the final results.
@@ -279,7 +181,7 @@ function setWinnerIcon(
 }
 
 /**
- * Displays the draw result and applies the corresponding theme-specific content.
+ * Displays the draw state and updates the corresponding content.
  *
  * @param selectedTheme - The currently selected game theme.
  * @returns Nothing.
@@ -370,17 +272,3 @@ function showNextScreen(): void {
         nextScreen?.classList.add("show");
     }, NEXT_SCREEN_DELAY);
 }
-
-export const cardImages: string[] = getCardImages(SELECTED_THEME);
-
-updateCurrentPlayer(currentPlayer, SELECTED_THEME);
-updateScores(blueScore, orangeScore);
-setupBoard(CARD_COUNT);
-setupExitModal();
-setupExitIconHover(SELECTED_THEME);
-updateGamingThemeIcons(SELECTED_THEME);
-updateGamingThemeQuitButtons(SELECTED_THEME);
-updateGamingThemeFinalIcons(SELECTED_THEME);
-updateHomeButton();
-setupHeaderForCardCount();
-

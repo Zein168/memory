@@ -1,5 +1,5 @@
-import './style.scss'
-import './global.scss'
+import './styles/style.scss'
+import './styles/global.scss'
 
 /**
  * Loads the game scripts only when the game board exists.
@@ -10,8 +10,8 @@ const gameBoard: HTMLDivElement | null =
 
 if (gameBoard) {
   Promise.all([
-    import("./game"),
-    import("./game-cards"),
+    import("./game/game"),
+    import("./game/game-cards"),
   ]).then(() => {
     document.documentElement.classList.remove("game-loading");
   });

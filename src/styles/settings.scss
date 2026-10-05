@@ -92,6 +92,64 @@ h2 {
         font: inherit;
         cursor: pointer;
 
+        &:has(.settings__radio:checked) {
+            font-weight: bold;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: calc(100% + 12px);
+                top: 62%;
+                width: 50px;
+                height: 2px;
+                background-color: $yellow;
+                transform: translateY(-50%);
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: calc(100% + 58px);
+                top: 48%;
+                width: 10px;
+                height: 10px;
+                background-color: $yellow;
+                transform: rotate(45deg);
+            }
+        }
+
+        &:hover {
+            font-weight: bold;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: calc(100% + 12px);
+                top: 62%;
+                width: 50px;
+                height: 2px;
+                background-color: $yellow;
+                transform: translateY(-50%);
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: calc(100% + 58px);
+                top: 48%;
+                width: 10px;
+                height: 10px;
+                background-color: $yellow;
+                transform: rotate(45deg);
+            }
+
+            .settings__radio {
+                border-width: 2px;
+                background:
+                    radial-gradient(circle, black 0 3px, transparent 4px);
+            }
+        }
+
         .settings__radio {
             appearance: none;
             width: 20px;
@@ -108,28 +166,6 @@ h2 {
                 background:
                     radial-gradient(circle, black 0 3px, transparent 4px);
             }
-        }
-
-        &:has(.settings__radio:checked)::after {
-            content: "";
-            position: absolute;
-            left: calc(100% + 12px);
-            top: 62%;
-            width: 50px;
-            height: 2px;
-            background-color: $yellow;
-            transform: translateY(-50%);
-        }
-
-        &:has(.settings__radio:checked)::before {
-            content: "";
-            position: absolute;
-            left: calc(100% + 58px);
-            top: 48%;
-            width: 10px;
-            height: 10px;
-            background-color: $yellow;
-            transform: rotate(45deg);
         }
     }
 
@@ -236,13 +272,14 @@ h2 {
         height: 49px;
         border: none;
         font-size: 18px;
-        cursor: pointer;
+        cursor: default;
         transition: transform 0.25s ease;
         font-family: "RedRose", sans-serif;
         font-weight: bold;
 
         &.ready {
             background-color: $yellow;
+            cursor: pointer;
         }
 
         img {
@@ -277,19 +314,6 @@ h2 {
     text-align: center;
 }
 
-.settings__theme-option:has(.settings__radio:checked) {
-    font-weight: bold;
-}
-
-.settings__theme-option:hover {
-    font-weight: bold;
-}
-
-.settings__player-choice .settings__option:has(.settings__radio:checked),
-.settings__board-size .settings__option:has(.settings__radio:checked) {
-    font-weight: bold;
-}
-
 @media (min-width: $widescreen) {
     .settings {
         width: 1200px;
@@ -302,5 +326,19 @@ h2 {
     .settings__option {
         width: 150px;
         box-sizing: border-box;
+    }
+}
+
+.settings__group:has(.settings__option:hover) .settings__option:has(.settings__radio:checked):not(:hover) {
+    font-weight: normal;
+
+    &::after,
+    &::before {
+        display: none;
+    }
+
+    .settings__radio {
+        border-width: 3px;
+        background: none;
     }
 }
