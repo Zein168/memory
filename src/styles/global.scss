@@ -1,9 +1,17 @@
 @font-face {
   font-family: "RedRose";
   src: url("../fonts/RedRose-Bold.ttf") format("truetype");
-  font-weight: 400;
+  font-weight: 700;
   font-style: normal;
 }
+
+@font-face {
+    font-family: "RedRose";
+    src: url("../fonts/RedRose-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
 
 @font-face {
   font-family: "Orbitron";
