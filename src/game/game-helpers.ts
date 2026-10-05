@@ -1,5 +1,3 @@
-type Player = "Blue" | "Orange";
-
 const CODE_VIBES_IMAGES: string[] = [
     "./code_vibes_theme_cards/angular.svg",
     "./code_vibes_theme_cards/bootstrap.svg",
